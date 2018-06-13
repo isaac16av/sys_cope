@@ -14,6 +14,6 @@ Generación de ordenes de liquidación.
 
 
 Integrantes:
-Issac Alfaro
+Isaac Alfaro
 Kevin Lam
 Allan Figueroa
