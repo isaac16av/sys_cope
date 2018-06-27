@@ -18,6 +18,13 @@ namespace spc_coope
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Ejecutivo",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Ejecutivo", action = "Index", id = UrlParameter.Optional }
+            );
+
         }
     }
 }
