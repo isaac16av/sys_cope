@@ -33,7 +33,7 @@ namespace spc_coope.Controllers
             {
                 using (spcDB db = new spcDB())
                 {
-                    var ejecutivoBuscar = db.Ejecutivos.find(id);
+                    var ejecutivoBuscar = db.Ejecutivos.Find(id);
                     return View(ejecutivoBuscar);
                 }
             }
