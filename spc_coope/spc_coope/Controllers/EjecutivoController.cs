@@ -33,8 +33,38 @@ namespace spc_coope.Controllers
             {
                 using (spcDB db = new spcDB())
                 {
-                    var ejecutivoBuscar = db.Ejecutivos.find(id);
+                    var ejecutivoBuscar = db.Ejecutivos.Find(id);
                     return View(ejecutivoBuscar);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Ejecutivos ejecutivo)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+
+                using (spcDB db = new spcDB())
+                {
+                    db.Ejecutivos.Add(ejecutivo);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+               
                 }
             }
             catch (Exception)
