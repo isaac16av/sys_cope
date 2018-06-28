@@ -26,5 +26,24 @@ namespace spc_coope.Controllers
             }
 
         }
+
+        public ActionResult Details(int id)
+        {
+            try
+            {
+                using (spcDB db = new spcDB())
+                {
+                    var ejecutivoBuscar = db.Ejecutivos.find(id);
+                    return View(ejecutivoBuscar);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        
     }
 }
