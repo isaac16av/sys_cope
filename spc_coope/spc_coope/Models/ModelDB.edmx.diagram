@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="1e7c3f9a5bde4c35ab1fe151f379dcb1" Name="Diagram1">
         <EntityTypeShape EntityType="DBContext.Ejecutivos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBContext.Sucursal" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -21,8 +21,19 @@
           <Property Name="FechaNacimiento" Type="date" />
           <Property Name="FechaContratacion" Type="date" />
         </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="IdSucursal" />
+          </Key>
+          <Property Name="IdSucursal" Type="int" Nullable="false" />
+          <Property Name="Provincia" Type="varchar" MaxLength="20" />
+          <Property Name="Canton" Type="varchar" MaxLength="20" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Categoria" Type="int" />
+        </EntityType>
         <EntityContainer Name="DBContextStoreContainer">
           <EntitySet Name="Ejecutivos" EntityType="Self.Ejecutivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -46,7 +57,18 @@
         </EntityType>
         <EntityContainer Name="spcDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ejecutivos" EntityType="Self.Ejecutivos" />
+          <EntitySet Name="Sucursal" EntityType="DBContext.Sucursal" />
         </EntityContainer>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="IdSucursal" />
+          </Key>
+          <Property Name="IdSucursal" Type="Int32" Nullable="false" />
+          <Property Name="Provincia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Canton" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Categoria" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -67,6 +89,17 @@
                 <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
                 <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
                 <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursal">
+            <EntityTypeMapping TypeName="DBContext.Sucursal">
+              <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

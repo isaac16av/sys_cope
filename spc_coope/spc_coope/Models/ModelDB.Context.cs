@@ -26,5 +26,6 @@ namespace spc_coope.Models
         }
     
         public virtual DbSet<Ejecutivos> Ejecutivos { get; set; }
+        public virtual DbSet<Sucursal> Sucursal { get; set; }
     }
 }

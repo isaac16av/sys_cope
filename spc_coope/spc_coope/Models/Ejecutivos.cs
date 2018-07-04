@@ -11,36 +11,19 @@ namespace spc_coope.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Ejecutivos
     {
-        [Key]
         public int Cedula { get; set; }
-
-        [Required]
         public string Nombre { get; set; }
-
-        [Required]
         public string Apellidos { get; set; }
-
-        [Required]
         public string Sexo { get; set; }
-
-        [Required]
         public string Telefono { get; set; }
-
-        [Required]
         public string Correo { get; set; }
-
-        [Required]
         public string CodigoVendedor { get; set; }
-
         public string Residencia { get; set; }
-
         public Nullable<int> Sucursal { get; set; }
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
-        [Required]
         public Nullable<System.DateTime> FechaContratacion { get; set; }
     }
 }
