@@ -243,10 +243,13 @@
     <Content Include="Views\Ejecutivo\Details.cshtml" />
     <Content Include="Views\Ejecutivo\Create.cshtml" />
     <Content Include="Views\Ejecutivo\Edit.cshtml" />
+    <Content Include="Views\Sucursal\Index.cshtml" />
+    <Content Include="Views\Sucursal\Details.cshtml" />
+    <Content Include="Views\Sucursal\Create.cshtml" />
+    <Content Include="Views\Sucursal\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Sucursal\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
