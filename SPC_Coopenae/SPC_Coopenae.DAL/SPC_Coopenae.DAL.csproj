@@ -42,5 +42,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SPC_Coopenae.DATA\SPC_Coopenae.DATA.csproj">
+      <Project>{04426405-777e-4817-b4d4-182bde0ee889}</Project>
+      <Name>SPC_Coopenae.DATA</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
