@@ -13,10 +13,10 @@ namespace SPC_Coopenae.DATA
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BDContext : DbContext
+    public partial class ConexionBD : DbContext
     {
-        public BDContext()
-            : base("name=BDContext")
+        public ConexionBD()
+            : base("name=ConexionBD")
         {
         }
     
