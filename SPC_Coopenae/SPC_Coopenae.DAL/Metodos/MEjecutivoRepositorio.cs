@@ -32,6 +32,7 @@ namespace SPC_Coopenae.DAL.Metodos
             using (var dbc = new ConexionBD())
             {
                 dbc.Ejecutivos.Add(ejecutivo);
+                dbc.SaveChanges();
             }
         }
 

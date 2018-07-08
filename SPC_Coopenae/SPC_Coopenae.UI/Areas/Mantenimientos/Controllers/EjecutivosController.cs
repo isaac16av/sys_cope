@@ -12,18 +12,44 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
     public class EjecutivosController : Controller
     {
 
-        IEjectutivoRepositorio ejecutivoRep;
+        IEjectutivoRepositorio ejecutivoReporitorio;
 
         public EjecutivosController()
         {
-            ejecutivoRep = new MEjecutivoRepositorio();
+            ejecutivoReporitorio = new MEjecutivoRepositorio();
         }
 
         public ActionResult Index()
         {
-            var ListadoEjecutivosBD = ejecutivoRep.ListarEjecutivos();
+            var ListadoEjecutivosBD = ejecutivoReporitorio.ListarEjecutivos();
             var EjecutivosMostrar = Mapper.Map<List<Models.Ejecutivos>>(ListadoEjecutivosBD);
             return View(EjecutivosMostrar);
         }
+
+        public ActionResult Registrar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Registrar(Models.Ejecutivos ejecutivoP)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+                var EjecutivoRegistrar = Mapper.Map<DATA.Ejecutivos>(ejecutivoP);
+                ejecutivoReporitorio.InsertarEjecutivo(EjecutivoRegistrar);
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                return View();
+            }
+        }
+
+
     }
 }
