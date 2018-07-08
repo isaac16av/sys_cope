@@ -4,39 +4,40 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Modelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Modelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Ejecutivos">
           <Key>
             <PropertyRef Name="Cedula" />
           </Key>
           <Property Name="Cedula" Type="int" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="50" />
-          <Property Name="Apellidos" Type="varchar" MaxLength="50" />
-          <Property Name="Sexo" Type="char" MaxLength="10" />
-          <Property Name="Telefono" Type="varchar" MaxLength="20" />
-          <Property Name="Correo" Type="varchar" MaxLength="50" />
-          <Property Name="CodigoVendedor" Type="varchar" MaxLength="50" />
-          <Property Name="Residencia" Type="varchar" MaxLength="200" />
-          <Property Name="Sucursal" Type="int" />
-          <Property Name="FechaNacimiento" Type="date" />
-          <Property Name="FechaContratacion" Type="date" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sexo" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodigoVendedor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Residencia" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Sucursal" Type="int" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="FechaContratacion" Type="date" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Sucursal">
           <Key>
             <PropertyRef Name="IdSucursal" />
           </Key>
           <Property Name="IdSucursal" Type="int" Nullable="false" />
-          <Property Name="Provincia" Type="varchar" MaxLength="20" />
-          <Property Name="Canton" Type="varchar" MaxLength="20" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
-          <Property Name="Categoria" Type="int" />
+          <Property Name="Provincia" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Canton" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Categoria" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ModeloStoreContainer">
           <EntitySet Name="Ejecutivos" EntityType="Self.Ejecutivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Modelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -45,26 +46,28 @@
             <PropertyRef Name="Cedula" />
           </Key>
           <Property Name="Cedula" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Sexo" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CodigoVendedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Residencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Sucursal" Type="Int32" />
-          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
-          <Property Name="FechaContratacion" Type="DateTime" Precision="0" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodigoVendedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Residencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sucursal" Type="Int32" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="FechaContratacion" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Sucursal">
           <Key>
             <PropertyRef Name="IdSucursal" />
           </Key>
           <Property Name="IdSucursal" Type="Int32" Nullable="false" />
-          <Property Name="Provincia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Canton" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Categoria" Type="Int32" />
+          <Property Name="Provincia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Canton" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Categoria" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ConexionBD" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ejecutivos" EntityType="Self.Ejecutivos" />
@@ -79,6 +82,7 @@
           <EntitySetMapping Name="Ejecutivos">
             <EntityTypeMapping TypeName="Modelo.Ejecutivos">
               <MappingFragment StoreEntitySet="Ejecutivos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
@@ -96,6 +100,7 @@
           <EntitySetMapping Name="Sucursal">
             <EntityTypeMapping TypeName="Modelo.Sucursal">
               <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
                 <ScalarProperty Name="Provincia" ColumnName="Provincia" />
                 <ScalarProperty Name="Canton" ColumnName="Canton" />

@@ -18,6 +18,7 @@ namespace SPC_Coopenae.DATA
         public string Provincia { get; set; }
         public string Canton { get; set; }
         public string Descripcion { get; set; }
-        public Nullable<int> Categoria { get; set; }
+        public int Categoria { get; set; }
+        public int Estado { get; set; }
     }
 }
