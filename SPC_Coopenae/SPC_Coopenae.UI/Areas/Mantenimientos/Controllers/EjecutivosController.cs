@@ -64,6 +64,53 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             
         }
 
+        public ActionResult Detalles(int id)
+        {
+            try
+            {
+                var EjecutivoBuscar = ejecutivoReporitorio.BuscarEjecutivo(id);
+                var EjecutivoDetallar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
+                return View(EjecutivoDetallar);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult Editar(int id)
+        {
+            try
+            {
+                var EjecutivoBuscar = ejecutivoReporitorio.BuscarEjecutivo(id);
+                var EjecutivoEditar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
+                return View(EjecutivoEditar);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Editar(Models.Ejecutivos ejecutivoP)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+                var ejecutivoEditarBD = Mapper.Map<DATA.Ejecutivos>(ejecutivoP);
+                ejecutivoReporitorio.ActualizarEjecutivo(ejecutivoEditarBD);
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
 
     }
 }
