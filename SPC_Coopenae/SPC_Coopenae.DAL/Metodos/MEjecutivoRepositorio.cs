@@ -25,6 +25,12 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void EliminarEjecutivo(int cedula)
         {
+            using (var dbc = new ConexionBD())
+            {
+                var aEliminar = dbc.Ejecutivos.Find(cedula);
+                aEliminar.Estado = 0;
+                dbc.SaveChanges();
+            }
         }
 
         public void InsertarEjecutivo(Ejecutivos ejecutivo)

@@ -50,6 +50,20 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             }
         }
 
+        public ActionResult Eliminar(int id)
+        {
+            try
+            {
+                ejecutivoReporitorio.EliminarEjecutivo(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
+            
+        }
+
 
     }
 }
