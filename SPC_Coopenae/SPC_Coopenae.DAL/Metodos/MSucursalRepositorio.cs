@@ -10,9 +10,18 @@ namespace SPC_Coopenae.DAL.Metodos
 {
     public class MSucursalRepositorio : ISucursalRepositorio
     {
-        public void ActualizarSucursal(Sucursal sucursal)
+        public void ActualizarSucursal(Sucursal sucursalP)
         {
-            //pendiente
+            using (var dbc = new ConexionBD())
+            {
+                var sActualizar = dbc.Sucursal.Find(sucursalP.IdSucursal);
+                sActualizar.Provincia = sucursalP.Provincia;
+                sActualizar.Canton = sucursalP.Canton;
+                sActualizar.Descripcion = sucursalP.Descripcion;
+                sActualizar.Categoria = sucursalP.Categoria;
+
+                dbc.SaveChanges();
+            }
         }
 
         public Sucursal BuscarSucursal(int id)
