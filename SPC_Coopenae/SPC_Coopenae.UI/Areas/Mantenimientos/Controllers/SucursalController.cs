@@ -9,21 +9,21 @@ using System.Web.Mvc;
 
 namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 {
-    public class EjecutivosController : Controller
+    public class SucursalController : Controller
     {
 
-        IEjectutivoRepositorio _repositorio;
+        ISucursalRepositorio _repositorio;
 
-        public EjecutivosController()
+        public SucursalController()
         {
-            _repositorio = new MEjecutivoRepositorio();
+            _repositorio = new MSucursalRepositorio();
         }
 
         public ActionResult Index()
         {
-            var ListadoEjecutivosBD = _repositorio.ListarEjecutivos();
-            var EjecutivosMostrar = Mapper.Map<List<Models.Ejecutivos>>(ListadoEjecutivosBD);
-            return View(EjecutivosMostrar);
+            var ListadoSucusalesBD = _repositorio.ListarSucursal();
+            var SucursalesMostrar = Mapper.Map<List<Models.Sucursal>>(ListadoSucusalesBD);
+            return View(SucursalesMostrar);
         }
 
         public ActionResult Registrar()
@@ -32,7 +32,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registrar(Models.Ejecutivos ejecutivoP)
+        public ActionResult Registrar(Models.Sucursal sucursalP)
         {
             try
             {
@@ -40,8 +40,8 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 {
                     return View();
                 }
-                var EjecutivoRegistrar = Mapper.Map<DATA.Ejecutivos>(ejecutivoP);
-                _repositorio.InsertarEjecutivo(EjecutivoRegistrar);
+                var SucursalRegistrar = Mapper.Map<DATA.Sucursal>(sucursalP);
+                _repositorio.InsertarSucursal(SucursalRegistrar);
                 return RedirectToAction("Index");
             }
             catch (Exception)
@@ -54,23 +54,23 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                _repositorio.EliminarEjecutivo(id);
+                _repositorio.EliminarSucursal(id);
                 return RedirectToAction("Index");
             }
             catch (Exception)
             {
                 return RedirectToAction("Index");
             }
-            
+
         }
 
         public ActionResult Detalles(int id)
         {
             try
             {
-                var EjecutivoBuscar = _repositorio.BuscarEjecutivo(id);
-                var EjecutivoDetallar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
-                return View(EjecutivoDetallar);
+                var SucursalBuscar = _repositorio.BuscarSucursal(id);
+                var SucursalDetallar = Mapper.Map<Models.Sucursal>(SucursalBuscar);
+                return View(SucursalDetallar);
             }
             catch (Exception)
             {
@@ -82,9 +82,9 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                var EjecutivoBuscar = _repositorio.BuscarEjecutivo(id);
-                var EjecutivoEditar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
-                return View(EjecutivoEditar);
+                var SucursalBuscar = _repositorio.BuscarSucursal(id);
+                var SucursalEditar = Mapper.Map<Models.Sucursal>(SucursalBuscar);
+                return View(SucursalEditar);
             }
             catch (Exception)
             {
@@ -93,7 +93,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         }
 
         [HttpPost]
-        public ActionResult Editar(Models.Ejecutivos ejecutivoP)
+        public ActionResult Editar(Models.Sucursal sucursalP)
         {
             try
             {
@@ -101,8 +101,8 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 {
                     return View();
                 }
-                var EjecutivoEditarBD = Mapper.Map<DATA.Ejecutivos>(ejecutivoP);
-                _repositorio.ActualizarEjecutivo(EjecutivoEditarBD);
+                var SucursalEditarBD = Mapper.Map<DATA.Sucursal>(sucursalP);
+                _repositorio.ActualizarSucursal(SucursalEditarBD);
                 return RedirectToAction("Index");
             }
             catch (Exception)
@@ -110,7 +110,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 return RedirectToAction("Index");
             }
         }
-
 
     }
 }
