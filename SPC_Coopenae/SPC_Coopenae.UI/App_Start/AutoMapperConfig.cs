@@ -17,6 +17,16 @@ namespace SPC_Coopenae
 
                 cfg.CreateMap<UI.Areas.Mantenimientos.Models.Sucursal, DATA.Sucursal>();
                 cfg.CreateMap<DATA.Sucursal, UI.Areas.Mantenimientos.Models.Sucursal>();
+
+
+
+
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.MetasIDP, DATA.MetasIDP>();
+                cfg.CreateMap<DATA.MetasIDP, UI.Areas.Mantenimientos.Models.MetasIDP>();
+
+
+
+
             });
         }
     }

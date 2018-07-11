@@ -50,8 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IEjectutivoRepositorio.cs" />
+    <Compile Include="Interfaces\IMetaRepositorio.cs" />
     <Compile Include="Interfaces\ISucursalRepositorio.cs" />
     <Compile Include="Metodos\MEjecutivoRepositorio.cs" />
+    <Compile Include="Metodos\MMetaRepositorio.cs" />
     <Compile Include="Metodos\MSucursalRepositorio.cs" />
     <Compile Include="ModelosBD.Context.cs">
       <AutoGen>True</AutoGen>
