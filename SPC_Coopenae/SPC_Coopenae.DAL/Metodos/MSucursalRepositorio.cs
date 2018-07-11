@@ -15,9 +15,7 @@ namespace SPC_Coopenae.DAL.Metodos
             using (var dbc = new ConexionBD())
             {
                 var sActualizar = dbc.Sucursal.Find(sucursalP.IdSucursal);
-                sActualizar.Provincia = sucursalP.Provincia;
-                sActualizar.Canton = sucursalP.Canton;
-                sActualizar.Descripcion = sucursalP.Descripcion;
+                sActualizar.NombreSucursal = sucursalP.NombreSucursal;
                 sActualizar.Categoria = sucursalP.Categoria;
 
                 dbc.SaveChanges();
