@@ -44,6 +44,7 @@
           <Property Name="TarjetasCredito" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="MinimoComisionarCDP" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -169,6 +170,7 @@
           <Property Name="TarjetasCredito" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="MinimoComisionarCDP" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -255,6 +257,7 @@
           <EntitySetMapping Name="MetasIDP">
             <EntityTypeMapping TypeName="Modelo.MetasIDP">
               <MappingFragment StoreEntitySet="MetasIDP">
+                <ScalarProperty Name="MinimoComisionarCDP" ColumnName="MinimoComisionarCDP" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="TarjetasCredito" ColumnName="TarjetasCredito" />

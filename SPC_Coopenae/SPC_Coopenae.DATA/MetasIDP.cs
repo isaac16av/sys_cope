@@ -20,5 +20,6 @@ namespace SPC_Coopenae.DATA
         public int TarjetasCredito { get; set; }
         public string Descripcion { get; set; }
         public int Estado { get; set; }
+        public double MinimoComisionarCDP { get; set; }
     }
 }
