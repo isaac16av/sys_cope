@@ -12,24 +12,21 @@ namespace SPC_Coopenae.DATA
     using System;
     using System.Collections.Generic;
     
-    public partial class Sucursal
+    public partial class Categorias
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sucursal()
+        public Categorias()
         {
-            this.Ejecutivos = new HashSet<Ejecutivos>();
+            this.Sucursal = new HashSet<Sucursal>();
         }
     
-        public int IdSucursal { get; set; }
-        public string Provincia { get; set; }
-        public string Canton { get; set; }
-        public string Descripcion { get; set; }
-        public int Categoria { get; set; }
-        public int Estado { get; set; }
-        public string NombreSucursal { get; set; }
+        public int IdCategoria { get; set; }
+        public string Nombre { get; set; }
+        public int Escala { get; set; }
+        public int Metas { get; set; }
     
+        public virtual MetasIDP MetasIDP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ejecutivos> Ejecutivos { get; set; }
-        public virtual Categorias Categorias { get; set; }
+        public virtual ICollection<Sucursal> Sucursal { get; set; }
     }
 }

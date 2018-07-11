@@ -7,6 +7,11 @@
       <Diagram DiagramId="4c5174d80aa34c6d9cf91730d0ac74d5" Name="Diagram1">
         <EntityTypeShape EntityType="Modelo.Ejecutivos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Modelo.Sucursal" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Modelo.FK_Ejecutivos_Sucursal" />
+        <EntityTypeShape EntityType="Modelo.Categorias" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="Modelo.MetasIDP" Width="1.5" PointX="1.5" PointY="9" />
+        <AssociationConnector Association="Modelo.FK_Categorias_Metas" />
+        <AssociationConnector Association="Modelo.FK_Sucursal_Categorias" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
