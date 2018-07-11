@@ -110,70 +110,24 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Modelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Ejecutivos">
-          <Key>
-            <PropertyRef Name="Cedula" />
-          </Key>
-          <Property Name="Cedula" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CodigoVendedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Residencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Sucursal" Type="Int32" Nullable="false" />
-          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" Nullable="false" />
-          <Property Name="FechaContratacion" Type="DateTime" Precision="0" Nullable="false" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="MetaAparte" Type="Int32" Nullable="false" />
-          <Property Name="Salario" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Sucursal1" Relationship="Modelo.FK_Ejecutivos_Sucursal" FromRole="Ejecutivos" ToRole="Sucursal" />
-        </EntityType>
-        <EntityType Name="Sucursal">
-          <Key>
-            <PropertyRef Name="IdSucursal" />
-          </Key>
-          <Property Name="IdSucursal" Type="Int32" Nullable="false" />
-          <Property Name="Provincia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Canton" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Categoria" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="NombreSucursal" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ejecutivos" Relationship="Modelo.FK_Ejecutivos_Sucursal" FromRole="Sucursal" ToRole="Ejecutivos" />
-          <NavigationProperty Name="Categorias" Relationship="Modelo.FK_Sucursal_Categorias" FromRole="Sucursal" ToRole="Categorias" />
-        </EntityType>
         <EntityContainer Name="ConexionBD" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Ejecutivos" EntityType="Self.Ejecutivos" />
-          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" />
-          <AssociationSet Name="FK_Ejecutivos_Sucursal" Association="Modelo.FK_Ejecutivos_Sucursal">
-            <End Role="Sucursal" EntitySet="Sucursal" />
-            <End Role="Ejecutivos" EntitySet="Ejecutivos" />
-          </AssociationSet>
           <EntitySet Name="Categorias" EntityType="Modelo.Categorias" />
           <EntitySet Name="MetasIDP" EntityType="Modelo.MetasIDP" />
           <AssociationSet Name="FK_Categorias_Metas" Association="Modelo.FK_Categorias_Metas">
             <End Role="MetasIDP" EntitySet="MetasIDP" />
             <End Role="Categorias" EntitySet="Categorias" />
           </AssociationSet>
+          <EntitySet Name="Ejecutivos" EntityType="Modelo.Ejecutivos" />
+          <EntitySet Name="Sucursal" EntityType="Modelo.Sucursal" />
           <AssociationSet Name="FK_Sucursal_Categorias" Association="Modelo.FK_Sucursal_Categorias">
             <End Role="Categorias" EntitySet="Categorias" />
             <End Role="Sucursal" EntitySet="Sucursal" />
           </AssociationSet>
+          <AssociationSet Name="FK_Ejecutivos_Sucursal" Association="Modelo.FK_Ejecutivos_Sucursal">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="Ejecutivos" EntitySet="Ejecutivos" />
+          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_Ejecutivos_Sucursal">
-          <End Type="Modelo.Sucursal" Role="Sucursal" Multiplicity="1" />
-          <End Type="Modelo.Ejecutivos" Role="Ejecutivos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sucursal">
-              <PropertyRef Name="IdSucursal" />
-            </Principal>
-            <Dependent Role="Ejecutivos">
-              <PropertyRef Name="Sucursal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Categorias">
           <Key>
             <PropertyRef Name="IdCategoria" />
@@ -208,6 +162,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Ejecutivos">
+          <Key>
+            <PropertyRef Name="Cedula" />
+          </Key>
+          <Property Name="Cedula" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoVendedor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Residencia" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Sucursal" Type="Int32" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaContratacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="MetaAparte" Type="Int32" Nullable="false" />
+          <Property Name="Salario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sucursal1" Relationship="Modelo.FK_Ejecutivos_Sucursal" FromRole="Ejecutivos" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="IdSucursal" />
+          </Key>
+          <Property Name="IdSucursal" Type="Int32" Nullable="false" />
+          <Property Name="NombreSucursal" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Categoria" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categorias" Relationship="Modelo.FK_Sucursal_Categorias" FromRole="Sucursal" ToRole="Categorias" />
+          <NavigationProperty Name="Ejecutivos" Relationship="Modelo.FK_Ejecutivos_Sucursal" FromRole="Sucursal" ToRole="Ejecutivos" />
+        </EntityType>
         <Association Name="FK_Sucursal_Categorias">
           <End Type="Modelo.Categorias" Role="Categorias" Multiplicity="1" />
           <End Type="Modelo.Sucursal" Role="Sucursal" Multiplicity="*" />
@@ -220,42 +205,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Ejecutivos_Sucursal">
+          <End Type="Modelo.Sucursal" Role="Sucursal" Multiplicity="1" />
+          <End Type="Modelo.Ejecutivos" Role="Ejecutivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="IdSucursal" />
+            </Principal>
+            <Dependent Role="Ejecutivos">
+              <PropertyRef Name="Sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModeloStoreContainer" CdmEntityContainer="ConexionBD">
-          <EntitySetMapping Name="Ejecutivos">
-            <EntityTypeMapping TypeName="Modelo.Ejecutivos">
-              <MappingFragment StoreEntitySet="Ejecutivos">
-                <ScalarProperty Name="Salario" ColumnName="Salario" />
-                <ScalarProperty Name="MetaAparte" ColumnName="MetaAparte" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-                <ScalarProperty Name="CodigoVendedor" ColumnName="CodigoVendedor" />
-                <ScalarProperty Name="Residencia" ColumnName="Residencia" />
-                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
-                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sucursal">
-            <EntityTypeMapping TypeName="Modelo.Sucursal">
-              <MappingFragment StoreEntitySet="Sucursal">
-                <ScalarProperty Name="NombreSucursal" ColumnName="NombreSucursal" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Categorias">
             <EntityTypeMapping TypeName="Modelo.Categorias">
               <MappingFragment StoreEntitySet="Categorias">
@@ -274,6 +241,36 @@
                 <ScalarProperty Name="OtrosProductos" ColumnName="OtrosProductos" />
                 <ScalarProperty Name="Creditos" ColumnName="Creditos" />
                 <ScalarProperty Name="IdMeta" ColumnName="IdMeta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ejecutivos">
+            <EntityTypeMapping TypeName="Modelo.Ejecutivos">
+              <MappingFragment StoreEntitySet="Ejecutivos">
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+                <ScalarProperty Name="MetaAparte" ColumnName="MetaAparte" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+                <ScalarProperty Name="Residencia" ColumnName="Residencia" />
+                <ScalarProperty Name="CodigoVendedor" ColumnName="CodigoVendedor" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursal">
+            <EntityTypeMapping TypeName="Modelo.Sucursal">
+              <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="NombreSucursal" ColumnName="NombreSucursal" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
