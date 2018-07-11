@@ -12,11 +12,12 @@ namespace SPC_Coopenae.DATA
     using System;
     using System.Collections.Generic;
     
-    public partial class Sucursal
+    public partial class Categorias
     {
-        public int IdSucursal { get; set; }
-        public string NombreSucursal { get; set; }
-        public int Categoria { get; set; }
+        public int IdCategoria { get; set; }
+        public string Nombre { get; set; }
+        public int Escala { get; set; }
+        public int Meta { get; set; }
         public int Estado { get; set; }
     }
 }

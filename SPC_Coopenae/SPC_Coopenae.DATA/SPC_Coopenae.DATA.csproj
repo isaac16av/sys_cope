@@ -40,7 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categorias.cs">
+      <DependentUpon>ModelosBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ejecutivos.cs">
+      <DependentUpon>ModelosBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetasIDP.cs">
       <DependentUpon>ModelosBD.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelosBD.cs">

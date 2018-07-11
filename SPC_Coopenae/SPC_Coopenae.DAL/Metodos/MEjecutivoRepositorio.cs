@@ -14,18 +14,17 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new ConexionBD())
             {
-                var eActualizar = dbc.Ejecutivos.Find(ejecutivoP.Cedula);
-                eActualizar.Nombre = ejecutivoP.Nombre;
-                eActualizar.Apellidos = ejecutivoP.Apellidos;
-                eActualizar.Correo = ejecutivoP.Correo;
-                eActualizar.Sexo = ejecutivoP.Sexo;
-                eActualizar.Telefono = ejecutivoP.Telefono;
-                eActualizar.Residencia = ejecutivoP.Residencia;
-                eActualizar.CodigoVendedor = ejecutivoP.CodigoVendedor;
-                eActualizar.Sucursal = ejecutivoP.Sucursal;
+                var aActualizar = dbc.Ejecutivos.Find(ejecutivoP.Cedula);
+                aActualizar.Nombre = ejecutivoP.Nombre;
+                aActualizar.Apellidos = ejecutivoP.Apellidos;
+                aActualizar.Correo = ejecutivoP.Correo;
+                aActualizar.Sexo = ejecutivoP.Sexo;
+                aActualizar.Telefono = ejecutivoP.Telefono;
+                aActualizar.Residencia = ejecutivoP.Residencia;
+                aActualizar.CodigoVendedor = ejecutivoP.CodigoVendedor;
+                aActualizar.Sucursal = ejecutivoP.Sucursal;
                 
                 dbc.SaveChanges();
-
 
             }
         }

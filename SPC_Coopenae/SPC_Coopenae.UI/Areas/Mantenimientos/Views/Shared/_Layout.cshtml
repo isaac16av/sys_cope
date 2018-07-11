@@ -20,27 +20,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mantenimientos<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Ejecutivos", "Index", "Ejecutivos", new { area = "Mantenimientos" }, new { })</li>
-                            <li>@Html.ActionLink("Sucursal", "Index", "Sucursal", new { area = "Mantenimientos" }, new { })</li>
-                            <li>@Html.ActionLink("Categorias", "Index", "Categorias", new { area = "Mantenimientos" }, new { })</li>
-                        </ul>
-                    </li>
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Footer</p>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 

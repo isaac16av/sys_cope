@@ -12,11 +12,14 @@ namespace SPC_Coopenae.DATA
     using System;
     using System.Collections.Generic;
     
-    public partial class Sucursal
+    public partial class MetasIDP
     {
-        public int IdSucursal { get; set; }
-        public string NombreSucursal { get; set; }
-        public int Categoria { get; set; }
+        public int IdMeta { get; set; }
+        public double Creditos { get; set; }
+        public int OtrosProductos { get; set; }
+        public int TarjetasCredito { get; set; }
+        public string Descripcion { get; set; }
         public int Estado { get; set; }
+        public double MinimoComisionarCDP { get; set; }
     }
 }

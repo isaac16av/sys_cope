@@ -26,5 +26,7 @@ namespace SPC_Coopenae.DATA
         public System.DateTime FechaNacimiento { get; set; }
         public System.DateTime FechaContratacion { get; set; }
         public int Estado { get; set; }
+        public int MetaAparte { get; set; }
+        public int Salario { get; set; }
     }
 }

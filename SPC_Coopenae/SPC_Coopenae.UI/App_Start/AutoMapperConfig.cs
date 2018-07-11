@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +17,12 @@ namespace SPC_Coopenae
 
                 cfg.CreateMap<UI.Areas.Mantenimientos.Models.Sucursal, DATA.Sucursal>();
                 cfg.CreateMap<DATA.Sucursal, UI.Areas.Mantenimientos.Models.Sucursal>();
+
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.MetasIDP, DATA.MetasIDP>();
+                cfg.CreateMap<DATA.MetasIDP, UI.Areas.Mantenimientos.Models.MetasIDP>();
+              
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Categorias, DATA.Categorias>();
+                cfg.CreateMap<DATA.Categorias, UI.Areas.Mantenimientos.Models.Categorias>();
             });
         }
     }
