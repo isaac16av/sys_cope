@@ -26,8 +26,8 @@ namespace SPC_Coopenae.DATA
         }
     
         public virtual DbSet<Categorias> Categorias { get; set; }
-        public virtual DbSet<MetasIDP> MetasIDP { get; set; }
         public virtual DbSet<Ejecutivos> Ejecutivos { get; set; }
+        public virtual DbSet<MetasIDP> MetasIDP { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
     }
 }

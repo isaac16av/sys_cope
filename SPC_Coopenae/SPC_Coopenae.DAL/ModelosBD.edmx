@@ -12,7 +12,8 @@
           <Property Name="IdCategoria" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Escala" Type="int" Nullable="false" />
-          <Property Name="Metas" Type="int" Nullable="false" />
+          <Property Name="Meta" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Ejecutivos">
           <Key>
@@ -42,6 +43,7 @@
           <Property Name="OtrosProductos" Type="int" Nullable="false" />
           <Property Name="TarjetasCredito" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -60,7 +62,7 @@
               <PropertyRef Name="IdMeta" />
             </Principal>
             <Dependent Role="Categorias">
-              <PropertyRef Name="Metas" />
+              <PropertyRef Name="Meta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -112,13 +114,13 @@
       <Schema Namespace="Modelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ConexionBD" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categorias" EntityType="Modelo.Categorias" />
+          <EntitySet Name="Ejecutivos" EntityType="Modelo.Ejecutivos" />
           <EntitySet Name="MetasIDP" EntityType="Modelo.MetasIDP" />
+          <EntitySet Name="Sucursal" EntityType="Modelo.Sucursal" />
           <AssociationSet Name="FK_Categorias_Metas" Association="Modelo.FK_Categorias_Metas">
             <End Role="MetasIDP" EntitySet="MetasIDP" />
             <End Role="Categorias" EntitySet="Categorias" />
           </AssociationSet>
-          <EntitySet Name="Ejecutivos" EntityType="Modelo.Ejecutivos" />
-          <EntitySet Name="Sucursal" EntityType="Modelo.Sucursal" />
           <AssociationSet Name="FK_Sucursal_Categorias" Association="Modelo.FK_Sucursal_Categorias">
             <End Role="Categorias" EntitySet="Categorias" />
             <End Role="Sucursal" EntitySet="Sucursal" />
@@ -135,33 +137,9 @@
           <Property Name="IdCategoria" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Escala" Type="Int32" Nullable="false" />
-          <Property Name="Metas" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MetasIDP" Relationship="Modelo.FK_Categorias_Metas" FromRole="Categorias" ToRole="MetasIDP" />
-          <NavigationProperty Name="Sucursal" Relationship="Modelo.FK_Sucursal_Categorias" FromRole="Categorias" ToRole="Sucursal" />
+          <Property Name="Meta" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="MetasIDP">
-          <Key>
-            <PropertyRef Name="IdMeta" />
-          </Key>
-          <Property Name="IdMeta" Type="Int32" Nullable="false" />
-          <Property Name="Creditos" Type="Double" Nullable="false" />
-          <Property Name="OtrosProductos" Type="Int32" Nullable="false" />
-          <Property Name="TarjetasCredito" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Categorias" Relationship="Modelo.FK_Categorias_Metas" FromRole="MetasIDP" ToRole="Categorias" />
-        </EntityType>
-        <Association Name="FK_Categorias_Metas">
-          <End Type="Modelo.MetasIDP" Role="MetasIDP" Multiplicity="1" />
-          <End Type="Modelo.Categorias" Role="Categorias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MetasIDP">
-              <PropertyRef Name="IdMeta" />
-            </Principal>
-            <Dependent Role="Categorias">
-              <PropertyRef Name="Metas" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Ejecutivos">
           <Key>
             <PropertyRef Name="Cedula" />
@@ -180,7 +158,17 @@
           <Property Name="Estado" Type="Int32" Nullable="false" />
           <Property Name="MetaAparte" Type="Int32" Nullable="false" />
           <Property Name="Salario" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Sucursal1" Relationship="Modelo.FK_Ejecutivos_Sucursal" FromRole="Ejecutivos" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="MetasIDP">
+          <Key>
+            <PropertyRef Name="IdMeta" />
+          </Key>
+          <Property Name="IdMeta" Type="Int32" Nullable="false" />
+          <Property Name="Creditos" Type="Double" Nullable="false" />
+          <Property Name="OtrosProductos" Type="Int32" Nullable="false" />
+          <Property Name="TarjetasCredito" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -190,9 +178,19 @@
           <Property Name="NombreSucursal" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Categoria" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Categorias" Relationship="Modelo.FK_Sucursal_Categorias" FromRole="Sucursal" ToRole="Categorias" />
-          <NavigationProperty Name="Ejecutivos" Relationship="Modelo.FK_Ejecutivos_Sucursal" FromRole="Sucursal" ToRole="Ejecutivos" />
         </EntityType>
+        <Association Name="FK_Categorias_Metas">
+          <End Type="Modelo.MetasIDP" Role="MetasIDP" Multiplicity="1" />
+          <End Type="Modelo.Categorias" Role="Categorias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetasIDP">
+              <PropertyRef Name="IdMeta" />
+            </Principal>
+            <Dependent Role="Categorias">
+              <PropertyRef Name="Meta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Sucursal_Categorias">
           <End Type="Modelo.Categorias" Role="Categorias" Multiplicity="1" />
           <End Type="Modelo.Sucursal" Role="Sucursal" Multiplicity="*" />
@@ -217,7 +215,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -226,21 +224,11 @@
           <EntitySetMapping Name="Categorias">
             <EntityTypeMapping TypeName="Modelo.Categorias">
               <MappingFragment StoreEntitySet="Categorias">
-                <ScalarProperty Name="Metas" ColumnName="Metas" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Meta" ColumnName="Meta" />
                 <ScalarProperty Name="Escala" ColumnName="Escala" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MetasIDP">
-            <EntityTypeMapping TypeName="Modelo.MetasIDP">
-              <MappingFragment StoreEntitySet="MetasIDP">
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="TarjetasCredito" ColumnName="TarjetasCredito" />
-                <ScalarProperty Name="OtrosProductos" ColumnName="OtrosProductos" />
-                <ScalarProperty Name="Creditos" ColumnName="Creditos" />
-                <ScalarProperty Name="IdMeta" ColumnName="IdMeta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -261,6 +249,18 @@
                 <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetasIDP">
+            <EntityTypeMapping TypeName="Modelo.MetasIDP">
+              <MappingFragment StoreEntitySet="MetasIDP">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="TarjetasCredito" ColumnName="TarjetasCredito" />
+                <ScalarProperty Name="OtrosProductos" ColumnName="OtrosProductos" />
+                <ScalarProperty Name="Creditos" ColumnName="Creditos" />
+                <ScalarProperty Name="IdMeta" ColumnName="IdMeta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

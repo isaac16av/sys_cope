@@ -28,7 +28,5 @@ namespace SPC_Coopenae.DATA
         public int Estado { get; set; }
         public int MetaAparte { get; set; }
         public int Salario { get; set; }
-    
-        public virtual Sucursal Sucursal1 { get; set; }
     }
 }

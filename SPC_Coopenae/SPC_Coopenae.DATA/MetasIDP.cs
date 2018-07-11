@@ -14,19 +14,11 @@ namespace SPC_Coopenae.DATA
     
     public partial class MetasIDP
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MetasIDP()
-        {
-            this.Categorias = new HashSet<Categorias>();
-        }
-    
         public int IdMeta { get; set; }
         public double Creditos { get; set; }
         public int OtrosProductos { get; set; }
         public int TarjetasCredito { get; set; }
         public string Descripcion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Categorias> Categorias { get; set; }
+        public int Estado { get; set; }
     }
 }

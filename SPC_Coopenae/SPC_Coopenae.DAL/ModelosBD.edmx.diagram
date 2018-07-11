@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4c5174d80aa34c6d9cf91730d0ac74d5" Name="Diagram1">
-        <EntityTypeShape EntityType="Modelo.Categorias" Width="1.5" PointX="0.5" PointY="2.375" />
-        <EntityTypeShape EntityType="Modelo.MetasIDP" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="Modelo.Categorias" Width="1.5" PointX="3" PointY="1.75" />
+        <EntityTypeShape EntityType="Modelo.Ejecutivos" Width="1.5" PointX="7.5" PointY="1" />
+        <EntityTypeShape EntityType="Modelo.MetasIDP" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="Modelo.Sucursal" Width="1.5" PointX="5.25" PointY="1.875" />
         <AssociationConnector Association="Modelo.FK_Categorias_Metas" />
-        <EntityTypeShape EntityType="Modelo.Ejecutivos" Width="1.5" PointX="5" PointY="0.5" />
-        <EntityTypeShape EntityType="Modelo.Sucursal" Width="1.5" PointX="2.75" PointY="1.375" />
         <AssociationConnector Association="Modelo.FK_Sucursal_Categorias" />
         <AssociationConnector Association="Modelo.FK_Ejecutivos_Sucursal" />
       </Diagram>

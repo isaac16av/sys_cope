@@ -14,19 +14,10 @@ namespace SPC_Coopenae.DATA
     
     public partial class Categorias
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Categorias()
-        {
-            this.Sucursal = new HashSet<Sucursal>();
-        }
-    
         public int IdCategoria { get; set; }
         public string Nombre { get; set; }
         public int Escala { get; set; }
-        public int Metas { get; set; }
-    
-        public virtual MetasIDP MetasIDP { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sucursal> Sucursal { get; set; }
+        public int Meta { get; set; }
+        public int Estado { get; set; }
     }
 }
