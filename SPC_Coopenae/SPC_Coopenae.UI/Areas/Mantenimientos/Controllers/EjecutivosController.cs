@@ -85,6 +85,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.listaSucursales = new SelectList(_repositorioSucursal.ListarSucursal(), "IdSucursal", "NombreSucursal");
                 var EjecutivoBuscar = _repositorioEjecutivo.BuscarEjecutivo(id);
                 var EjecutivoEditar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
                 return View(EjecutivoEditar);
