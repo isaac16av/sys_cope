@@ -107,9 +107,25 @@
             @Html.DisplayFor(model => model.Estado)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaAparte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaAparte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salario)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Editar", new { id = Model.Cedula }) |
+    @Html.ActionLink("Editar", "Editar", new { Model.Cedula }) |
     @Html.ActionLink("Regresar a la lista", "Index")
 </p>

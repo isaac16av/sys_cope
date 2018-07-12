@@ -12,22 +12,25 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
     public class EjecutivosController : Controller
     {
 
-        IEjectutivoRepositorio _repositorio;
+        IEjectutivoRepositorio _repositorioEjecutivo;
+        ISucursalRepositorio _repositorioSucursal;
 
         public EjecutivosController()
         {
-            _repositorio = new MEjecutivoRepositorio();
+            _repositorioEjecutivo = new MEjecutivoRepositorio();
+            _repositorioSucursal = new MSucursalRepositorio();
         }
 
         public ActionResult Index()
         {
-            var ListadoEjecutivosBD = _repositorio.ListarEjecutivos();
+            var ListadoEjecutivosBD = _repositorioEjecutivo.ListarEjecutivos();
             var EjecutivosMostrar = Mapper.Map<List<Models.Ejecutivos>>(ListadoEjecutivosBD);
             return View(EjecutivosMostrar);
         }
 
         public ActionResult Registrar()
         {
+            ViewBag.listaSucursales = new SelectList(_repositorioSucursal.ListarSucursal(), "IdSucursal", "NombreSucursal");
             return View();
         }
 
@@ -41,7 +44,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                     return View();
                 }
                 var EjecutivoRegistrar = Mapper.Map<DATA.Ejecutivos>(ejecutivoP);
-                _repositorio.InsertarEjecutivo(EjecutivoRegistrar);
+                _repositorioEjecutivo.InsertarEjecutivo(EjecutivoRegistrar);
                 return RedirectToAction("Index");
             }
             catch (Exception)
@@ -54,7 +57,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                _repositorio.EliminarEjecutivo(id);
+                _repositorioEjecutivo.EliminarEjecutivo(id);
                 return RedirectToAction("Index");
             }
             catch (Exception)
@@ -68,7 +71,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                var EjecutivoBuscar = _repositorio.BuscarEjecutivo(id);
+                var EjecutivoBuscar = _repositorioEjecutivo.BuscarEjecutivo(id);
                 var EjecutivoDetallar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
                 return View(EjecutivoDetallar);
             }
@@ -82,7 +85,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                var EjecutivoBuscar = _repositorio.BuscarEjecutivo(id);
+                var EjecutivoBuscar = _repositorioEjecutivo.BuscarEjecutivo(id);
                 var EjecutivoEditar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
                 return View(EjecutivoEditar);
             }
@@ -102,7 +105,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                     return View();
                 }
                 var EjecutivoEditarBD = Mapper.Map<DATA.Ejecutivos>(ejecutivoP);
-                _repositorio.ActualizarEjecutivo(EjecutivoEditarBD);
+                _repositorioEjecutivo.ActualizarEjecutivo(EjecutivoEditarBD);
                 return RedirectToAction("Index");
             }
             catch (Exception)
@@ -110,7 +113,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 return RedirectToAction("Index");
             }
         }
-
 
     }
 }

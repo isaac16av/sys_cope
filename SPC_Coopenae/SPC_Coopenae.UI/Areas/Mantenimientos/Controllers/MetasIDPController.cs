@@ -19,7 +19,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             _repositorio = new MMetaRepositorio();
         }
-        // GET: Mantenimientos/MetasIDP
+
         public ActionResult Index()
         {
             var metas = _repositorio.ListarMetasIDP();
