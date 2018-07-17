@@ -15,6 +15,35 @@
           <Property Name="Meta" Type="int" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="ColocacionCredito">
+          <Key>
+            <PropertyRef Name="IdColocacionCredito" />
+          </Key>
+          <Property Name="IdColocacionCredito" Type="int" Nullable="false" />
+          <Property Name="FechaFormalizacion" Type="date" Nullable="false" />
+          <Property Name="Cedula" Type="int" Nullable="false" />
+          <Property Name="CentroTrabajo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sector" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FechaAfiliacion" Type="date" Nullable="false" />
+          <Property Name="NumeroOperacion" Type="int" Nullable="false" />
+          <Property Name="Sucursal" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MontoDesembolsado" Type="float" Nullable="false" />
+          <Property Name="PlazoMeses" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="TipoCredito" Type="int" Nullable="false" />
+          <Property Name="Ejecutivo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ColocacionProducto">
+          <Key>
+            <PropertyRef Name="IdColocacionProducto" />
+          </Key>
+          <Property Name="IdColocacionProducto" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Cedula" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="CentroTrabajo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Producto" Type="int" Nullable="false" />
+          <Property Name="Ejecutivo" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Ejecutivos">
           <Key>
             <PropertyRef Name="Cedula" />
@@ -46,6 +75,14 @@
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="MinimoComisionarCDP" Type="float" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProductosColocar">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ComisionGenera" Type="float" Nullable="false" />
+        </EntityType>
         <EntityType Name="Sucursal">
           <Key>
             <PropertyRef Name="IdSucursal" />
@@ -54,6 +91,14 @@
           <Property Name="NombreSucursal" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Categoria" Type="int" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoCredito">
+          <Key>
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCredito" Type="int" Nullable="false" />
+          <Property Name="NombreDeCredito" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ComisionDirefente" Type="float" />
         </EntityType>
         <Association Name="FK_Categorias_Metas">
           <End Role="MetasIDP" Type="Self.MetasIDP" Multiplicity="1" />
@@ -64,6 +109,54 @@
             </Principal>
             <Dependent Role="Categorias">
               <PropertyRef Name="Meta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ColocacionCredito_Ejecutivos">
+          <End Role="Ejecutivos" Type="Self.Ejecutivos" Multiplicity="1" />
+          <End Role="ColocacionCredito" Type="Self.ColocacionCredito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ejecutivos">
+              <PropertyRef Name="Cedula" />
+            </Principal>
+            <Dependent Role="ColocacionCredito">
+              <PropertyRef Name="Ejecutivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ColocacionCredito_TipoCredito">
+          <End Role="TipoCredito" Type="Self.TipoCredito" Multiplicity="1" />
+          <End Role="ColocacionCredito" Type="Self.ColocacionCredito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCredito">
+              <PropertyRef Name="IdCredito" />
+            </Principal>
+            <Dependent Role="ColocacionCredito">
+              <PropertyRef Name="TipoCredito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ColocacionProducto_Ejecutivos">
+          <End Role="Ejecutivos" Type="Self.Ejecutivos" Multiplicity="1" />
+          <End Role="ColocacionProducto" Type="Self.ColocacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ejecutivos">
+              <PropertyRef Name="Cedula" />
+            </Principal>
+            <Dependent Role="ColocacionProducto">
+              <PropertyRef Name="Ejecutivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ColocacionProducto_ProductosColocar">
+          <End Role="ProductosColocar" Type="Self.ProductosColocar" Multiplicity="1" />
+          <End Role="ColocacionProducto" Type="Self.ColocacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductosColocar">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="ColocacionProducto">
+              <PropertyRef Name="Producto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -93,12 +186,32 @@
         </Association>
         <EntityContainer Name="ModeloStoreContainer">
           <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ColocacionCredito" EntityType="Self.ColocacionCredito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ColocacionProducto" EntityType="Self.ColocacionProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ejecutivos" EntityType="Self.Ejecutivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MetasIDP" EntityType="Self.MetasIDP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductosColocar" EntityType="Self.ProductosColocar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCredito" EntityType="Self.TipoCredito" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Categorias_Metas" Association="Self.FK_Categorias_Metas">
             <End Role="MetasIDP" EntitySet="MetasIDP" />
             <End Role="Categorias" EntitySet="Categorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ColocacionCredito_Ejecutivos" Association="Self.FK_ColocacionCredito_Ejecutivos">
+            <End Role="Ejecutivos" EntitySet="Ejecutivos" />
+            <End Role="ColocacionCredito" EntitySet="ColocacionCredito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ColocacionCredito_TipoCredito" Association="Self.FK_ColocacionCredito_TipoCredito">
+            <End Role="TipoCredito" EntitySet="TipoCredito" />
+            <End Role="ColocacionCredito" EntitySet="ColocacionCredito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ColocacionProducto_Ejecutivos" Association="Self.FK_ColocacionProducto_Ejecutivos">
+            <End Role="Ejecutivos" EntitySet="Ejecutivos" />
+            <End Role="ColocacionProducto" EntitySet="ColocacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ColocacionProducto_ProductosColocar" Association="Self.FK_ColocacionProducto_ProductosColocar">
+            <End Role="ProductosColocar" EntitySet="ProductosColocar" />
+            <End Role="ColocacionProducto" EntitySet="ColocacionProducto" />
           </AssociationSet>
           <AssociationSet Name="FK_Ejecutivos_Sucursal" Association="Self.FK_Ejecutivos_Sucursal">
             <End Role="Sucursal" EntitySet="Sucursal" />
@@ -129,6 +242,26 @@
           <AssociationSet Name="FK_Ejecutivos_Sucursal" Association="Modelo.FK_Ejecutivos_Sucursal">
             <End Role="Sucursal" EntitySet="Sucursal" />
             <End Role="Ejecutivos" EntitySet="Ejecutivos" />
+          </AssociationSet>
+          <EntitySet Name="ColocacionCredito" EntityType="Modelo.ColocacionCredito" />
+          <EntitySet Name="ColocacionProducto" EntityType="Modelo.ColocacionProducto" />
+          <EntitySet Name="ProductosColocar" EntityType="Modelo.ProductosColocar" />
+          <EntitySet Name="TipoCredito" EntityType="Modelo.TipoCredito" />
+          <AssociationSet Name="FK_ColocacionCredito_Ejecutivos" Association="Modelo.FK_ColocacionCredito_Ejecutivos">
+            <End Role="Ejecutivos" EntitySet="Ejecutivos" />
+            <End Role="ColocacionCredito" EntitySet="ColocacionCredito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ColocacionCredito_TipoCredito" Association="Modelo.FK_ColocacionCredito_TipoCredito">
+            <End Role="TipoCredito" EntitySet="TipoCredito" />
+            <End Role="ColocacionCredito" EntitySet="ColocacionCredito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ColocacionProducto_Ejecutivos" Association="Modelo.FK_ColocacionProducto_Ejecutivos">
+            <End Role="Ejecutivos" EntitySet="Ejecutivos" />
+            <End Role="ColocacionProducto" EntitySet="ColocacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ColocacionProducto_ProductosColocar" Association="Modelo.FK_ColocacionProducto_ProductosColocar">
+            <End Role="ProductosColocar" EntitySet="ProductosColocar" />
+            <End Role="ColocacionProducto" EntitySet="ColocacionProducto" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Categorias">
@@ -217,6 +350,99 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ColocacionCredito">
+          <Key>
+            <PropertyRef Name="IdColocacionCredito" />
+          </Key>
+          <Property Name="IdColocacionCredito" Type="Int32" Nullable="false" />
+          <Property Name="FechaFormalizacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cedula" Type="Int32" Nullable="false" />
+          <Property Name="CentroTrabajo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sector" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FechaAfiliacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NumeroOperacion" Type="Int32" Nullable="false" />
+          <Property Name="Sucursal" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MontoDesembolsado" Type="Double" Nullable="false" />
+          <Property Name="PlazoMeses" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TipoCredito" Type="Int32" Nullable="false" />
+          <Property Name="Ejecutivo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ColocacionProducto">
+          <Key>
+            <PropertyRef Name="IdColocacionProducto" />
+          </Key>
+          <Property Name="IdColocacionProducto" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cedula" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CentroTrabajo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Producto" Type="Int32" Nullable="false" />
+          <Property Name="Ejecutivo" Type="Int32" Nullable="false" />
+          </EntityType>
+        <EntityType Name="ProductosColocar">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ComisionGenera" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoCredito">
+          <Key>
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCredito" Type="Int32" Nullable="false" />
+          <Property Name="NombreDeCredito" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ComisionDirefente" Type="Double" />
+        </EntityType>
+        <Association Name="FK_ColocacionCredito_Ejecutivos">
+          <End Type="Modelo.Ejecutivos" Role="Ejecutivos" Multiplicity="1" />
+          <End Type="Modelo.ColocacionCredito" Role="ColocacionCredito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ejecutivos">
+              <PropertyRef Name="Cedula" />
+            </Principal>
+            <Dependent Role="ColocacionCredito">
+              <PropertyRef Name="Ejecutivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ColocacionCredito_TipoCredito">
+          <End Type="Modelo.TipoCredito" Role="TipoCredito" Multiplicity="1" />
+          <End Type="Modelo.ColocacionCredito" Role="ColocacionCredito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCredito">
+              <PropertyRef Name="IdCredito" />
+            </Principal>
+            <Dependent Role="ColocacionCredito">
+              <PropertyRef Name="TipoCredito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ColocacionProducto_Ejecutivos">
+          <End Type="Modelo.Ejecutivos" Role="Ejecutivos" Multiplicity="1" />
+          <End Type="Modelo.ColocacionProducto" Role="ColocacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ejecutivos">
+              <PropertyRef Name="Cedula" />
+            </Principal>
+            <Dependent Role="ColocacionProducto">
+              <PropertyRef Name="Ejecutivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ColocacionProducto_ProductosColocar">
+          <End Type="Modelo.ProductosColocar" Role="ProductosColocar" Multiplicity="1" />
+          <End Type="Modelo.ColocacionProducto" Role="ColocacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductosColocar">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="ColocacionProducto">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -274,6 +500,55 @@
                 <ScalarProperty Name="Categoria" ColumnName="Categoria" />
                 <ScalarProperty Name="NombreSucursal" ColumnName="NombreSucursal" />
                 <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ColocacionCredito">
+            <EntityTypeMapping TypeName="Modelo.ColocacionCredito">
+              <MappingFragment StoreEntitySet="ColocacionCredito">
+                <ScalarProperty Name="Ejecutivo" ColumnName="Ejecutivo" />
+                <ScalarProperty Name="TipoCredito" ColumnName="TipoCredito" />
+                <ScalarProperty Name="PlazoMeses" ColumnName="PlazoMeses" />
+                <ScalarProperty Name="MontoDesembolsado" ColumnName="MontoDesembolsado" />
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+                <ScalarProperty Name="NumeroOperacion" ColumnName="NumeroOperacion" />
+                <ScalarProperty Name="FechaAfiliacion" ColumnName="FechaAfiliacion" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="CentroTrabajo" ColumnName="CentroTrabajo" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="FechaFormalizacion" ColumnName="FechaFormalizacion" />
+                <ScalarProperty Name="IdColocacionCredito" ColumnName="IdColocacionCredito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ColocacionProducto">
+            <EntityTypeMapping TypeName="Modelo.ColocacionProducto">
+              <MappingFragment StoreEntitySet="ColocacionProducto">
+                <ScalarProperty Name="Ejecutivo" ColumnName="Ejecutivo" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="CentroTrabajo" ColumnName="CentroTrabajo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdColocacionProducto" ColumnName="IdColocacionProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductosColocar">
+            <EntityTypeMapping TypeName="Modelo.ProductosColocar">
+              <MappingFragment StoreEntitySet="ProductosColocar">
+                <ScalarProperty Name="ComisionGenera" ColumnName="ComisionGenera" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCredito">
+            <EntityTypeMapping TypeName="Modelo.TipoCredito">
+              <MappingFragment StoreEntitySet="TipoCredito">
+                <ScalarProperty Name="ComisionDirefente" ColumnName="ComisionDirefente" />
+                <ScalarProperty Name="NombreDeCredito" ColumnName="NombreDeCredito" />
+                <ScalarProperty Name="IdCredito" ColumnName="IdCredito" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,6 +12,14 @@
         <AssociationConnector Association="Modelo.FK_Categorias_Metas" />
         <AssociationConnector Association="Modelo.FK_Sucursal_Categorias" />
         <AssociationConnector Association="Modelo.FK_Ejecutivos_Sucursal" />
+        <EntityTypeShape EntityType="Modelo.ColocacionCredito" Width="1.5" PointX="12.75" PointY="1.25" />
+        <EntityTypeShape EntityType="Modelo.ColocacionProducto" Width="1.5" PointX="9.75" PointY="1.625" />
+        <EntityTypeShape EntityType="Modelo.ProductosColocar" Width="1.5" PointX="7.5" PointY="7.125" />
+        <EntityTypeShape EntityType="Modelo.TipoCredito" Width="1.5" PointX="10.5" PointY="7.125" />
+        <AssociationConnector Association="Modelo.FK_ColocacionCredito_Ejecutivos" />
+        <AssociationConnector Association="Modelo.FK_ColocacionCredito_TipoCredito" />
+        <AssociationConnector Association="Modelo.FK_ColocacionProducto_Ejecutivos" />
+        <AssociationConnector Association="Modelo.FK_ColocacionProducto_ProductosColocar" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
