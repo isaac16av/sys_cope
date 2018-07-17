@@ -23,6 +23,9 @@ namespace SPC_Coopenae
               
                 cfg.CreateMap<UI.Areas.Mantenimientos.Models.Categorias, DATA.Categorias>();
                 cfg.CreateMap<DATA.Categorias, UI.Areas.Mantenimientos.Models.Categorias>();
+
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.ColocacionCredito, DATA.ColocacionCredito>();
+                cfg.CreateMap<DATA.ColocacionCredito, UI.Areas.Mantenimientos.Models.ColocacionCredito>();
             });
         }
     }
