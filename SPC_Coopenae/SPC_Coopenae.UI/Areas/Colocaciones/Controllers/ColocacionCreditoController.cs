@@ -8,7 +8,7 @@ using SPC_Coopenae.DAL.Interfaces;
 using SPC_Coopenae.DAL.Metodos;
 using SPC_Coopenae.DATA;
 
-namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
+namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
 {
     public class ColocacionCreditoController : Controller
     {

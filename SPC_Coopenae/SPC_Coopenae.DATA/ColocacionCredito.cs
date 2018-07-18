@@ -26,5 +26,6 @@ namespace SPC_Coopenae.DATA
         public string PlazoMeses { get; set; }
         public int TipoCredito { get; set; }
         public int Ejecutivo { get; set; }
+        public int Estado { get; set; }
     }
 }

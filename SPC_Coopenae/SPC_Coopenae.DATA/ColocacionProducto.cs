@@ -21,5 +21,6 @@ namespace SPC_Coopenae.DATA
         public string CentroTrabajo { get; set; }
         public int Producto { get; set; }
         public int Ejecutivo { get; set; }
+        public int Estado { get; set; }
     }
 }

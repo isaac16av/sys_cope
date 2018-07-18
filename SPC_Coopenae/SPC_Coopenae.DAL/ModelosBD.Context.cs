@@ -26,12 +26,12 @@ namespace SPC_Coopenae.DATA
         }
     
         public virtual DbSet<Categorias> Categorias { get; set; }
-        public virtual DbSet<Ejecutivos> Ejecutivos { get; set; }
-        public virtual DbSet<MetasIDP> MetasIDP { get; set; }
-        public virtual DbSet<Sucursal> Sucursal { get; set; }
         public virtual DbSet<ColocacionCredito> ColocacionCredito { get; set; }
         public virtual DbSet<ColocacionProducto> ColocacionProducto { get; set; }
-        public virtual DbSet<TipoCredito> TipoCredito { get; set; }
+        public virtual DbSet<Ejecutivos> Ejecutivos { get; set; }
+        public virtual DbSet<MetasIDP> MetasIDP { get; set; }
         public virtual DbSet<Productos> Productos { get; set; }
+        public virtual DbSet<Sucursal> Sucursal { get; set; }
+        public virtual DbSet<TipoCredito> TipoCredito { get; set; }
     }
 }

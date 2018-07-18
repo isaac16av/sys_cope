@@ -160,7 +160,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Colocaciones\ColocacionesAreaRegistration.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\CategoriasController.cs" />
-    <Compile Include="Areas\Mantenimientos\Controllers\ColocacionCreditoController.cs" />
+    <Compile Include="Areas\Colocaciones\Controllers\ColocacionCreditoController.cs" />
     <Compile Include="Areas\Colocaciones\Controllers\ColocacionProductoController.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\EjecutivosController.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\MetasIDPController.cs" />
@@ -168,7 +168,7 @@
     <Compile Include="Areas\Mantenimientos\Controllers\SucursalController.cs" />
     <Compile Include="Areas\Mantenimientos\MantenimientosAreaRegistration.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Categorias.cs" />
-    <Compile Include="Areas\Mantenimientos\Models\ColocacionCredito.cs" />
+    <Compile Include="Areas\Colocaciones\Models\ColocacionCredito.cs" />
     <Compile Include="Areas\Colocaciones\Models\ColocacionProducto.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Ejecutivos.cs" />
     <Compile Include="Areas\Mantenimientos\Models\MetasIDP.cs" />
@@ -181,6 +181,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Colocaciones\Views\ColocacionCredito\Detalles.cshtml" />
+    <Content Include="Areas\Colocaciones\Views\ColocacionCredito\Editar.cshtml" />
+    <Content Include="Areas\Colocaciones\Views\ColocacionCredito\Index.cshtml" />
+    <Content Include="Areas\Colocaciones\Views\ColocacionCredito\Registrar.cshtml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -228,20 +232,15 @@
     <Content Include="Areas\Mantenimientos\Views\Ejecutivos\Registrar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Ejecutivos\Detalles.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Ejecutivos\Editar.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\ColocacionCredito\Index.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\ColocacionCredito\Registrar.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\ColocacionCredito\Eliminar.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\ColocacionCredito\Detalles.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\ColocacionCredito\Editar.cshtml" />
-    <Content Include="Areas\Colocaciones\Views\ColocacionProducto\Registrar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Productos\Index.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Productos\Registrar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Productos\Detalles.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Productos\Editar.cshtml" />
-    <Content Include="Areas\Colocaciones\Views\ColocacionProducto\Editar.cshtml" />
     <Content Include="Areas\Colocaciones\Views\web.config" />
     <Content Include="Areas\Colocaciones\Views\ColocacionProducto\Index.cshtml" />
+    <Content Include="Areas\Colocaciones\Views\ColocacionProducto\Registrar.cshtml" />
     <Content Include="Areas\Colocaciones\Views\ColocacionProducto\Detalles.cshtml" />
+    <Content Include="Areas\Colocaciones\Views\ColocacionProducto\Editar.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

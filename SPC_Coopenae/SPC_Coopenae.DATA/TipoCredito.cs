@@ -17,5 +17,6 @@ namespace SPC_Coopenae.DATA
         public int IdCredito { get; set; }
         public string NombreDeCredito { get; set; }
         public Nullable<double> ComisionDirefente { get; set; }
+        public int Estado { get; set; }
     }
 }

@@ -14,5 +14,6 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Models
         public string CentroTrabajo { get; set; }
         public int Producto { get; set; }
         public int Ejecutivo { get; set; }
+        public int Estado { get; set; }
     }
 }

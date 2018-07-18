@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
+namespace SPC_Coopenae.UI.Areas.Colocaciones.Models
 {
     public class ColocacionCredito
     {
@@ -19,5 +19,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
         public string PlazoMeses { get; set; }
         public int TipoCredito { get; set; }
         public int Ejecutivo { get; set; }
+        public int Estado { get; set; }
     }
 }
