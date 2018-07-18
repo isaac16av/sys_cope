@@ -75,13 +75,15 @@
           <Property Name="Estado" Type="int" Nullable="false" />
           <Property Name="MinimoComisionarCDP" Type="float" Nullable="false" />
         </EntityType>
-        <EntityType Name="ProductosColocar">
+        <EntityType Name="Productos">
           <Key>
             <PropertyRef Name="IdProducto" />
           </Key>
           <Property Name="IdProducto" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ComisionGenera" Type="float" Nullable="false" />
+          <Property Name="EsDolar" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -149,10 +151,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ColocacionProducto_ProductosColocar">
-          <End Role="ProductosColocar" Type="Self.ProductosColocar" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
           <End Role="ColocacionProducto" Type="Self.ColocacionProducto" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductosColocar">
+            <Principal Role="Productos">
               <PropertyRef Name="IdProducto" />
             </Principal>
             <Dependent Role="ColocacionProducto">
@@ -190,7 +192,7 @@
           <EntitySet Name="ColocacionProducto" EntityType="Self.ColocacionProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ejecutivos" EntityType="Self.Ejecutivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MetasIDP" EntityType="Self.MetasIDP" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductosColocar" EntityType="Self.ProductosColocar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoCredito" EntityType="Self.TipoCredito" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Categorias_Metas" Association="Self.FK_Categorias_Metas">
@@ -210,7 +212,7 @@
             <End Role="ColocacionProducto" EntitySet="ColocacionProducto" />
           </AssociationSet>
           <AssociationSet Name="FK_ColocacionProducto_ProductosColocar" Association="Self.FK_ColocacionProducto_ProductosColocar">
-            <End Role="ProductosColocar" EntitySet="ProductosColocar" />
+            <End Role="Productos" EntitySet="Productos" />
             <End Role="ColocacionProducto" EntitySet="ColocacionProducto" />
           </AssociationSet>
           <AssociationSet Name="FK_Ejecutivos_Sucursal" Association="Self.FK_Ejecutivos_Sucursal">
@@ -245,7 +247,6 @@
           </AssociationSet>
           <EntitySet Name="ColocacionCredito" EntityType="Modelo.ColocacionCredito" />
           <EntitySet Name="ColocacionProducto" EntityType="Modelo.ColocacionProducto" />
-          <EntitySet Name="ProductosColocar" EntityType="Modelo.ProductosColocar" />
           <EntitySet Name="TipoCredito" EntityType="Modelo.TipoCredito" />
           <AssociationSet Name="FK_ColocacionCredito_Ejecutivos" Association="Modelo.FK_ColocacionCredito_Ejecutivos">
             <End Role="Ejecutivos" EntitySet="Ejecutivos" />
@@ -259,8 +260,9 @@
             <End Role="Ejecutivos" EntitySet="Ejecutivos" />
             <End Role="ColocacionProducto" EntitySet="ColocacionProducto" />
           </AssociationSet>
+          <EntitySet Name="Productos" EntityType="Modelo.Productos" />
           <AssociationSet Name="FK_ColocacionProducto_ProductosColocar" Association="Modelo.FK_ColocacionProducto_ProductosColocar">
-            <End Role="ProductosColocar" EntitySet="ProductosColocar" />
+            <End Role="Productos" EntitySet="Productos" />
             <End Role="ColocacionProducto" EntitySet="ColocacionProducto" />
           </AssociationSet>
         </EntityContainer>
@@ -379,14 +381,6 @@
           <Property Name="Producto" Type="Int32" Nullable="false" />
           <Property Name="Ejecutivo" Type="Int32" Nullable="false" />
           </EntityType>
-        <EntityType Name="ProductosColocar">
-          <Key>
-            <PropertyRef Name="IdProducto" />
-          </Key>
-          <Property Name="IdProducto" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ComisionGenera" Type="Double" Nullable="false" />
-        </EntityType>
         <EntityType Name="TipoCredito">
           <Key>
             <PropertyRef Name="IdCredito" />
@@ -431,11 +425,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ComisionGenera" Type="Double" Nullable="false" />
+          <Property Name="EsDolar" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+        </EntityType>
         <Association Name="FK_ColocacionProducto_ProductosColocar">
-          <End Type="Modelo.ProductosColocar" Role="ProductosColocar" Multiplicity="1" />
+          <End Type="Modelo.Productos" Role="Productos" Multiplicity="1" />
           <End Type="Modelo.ColocacionProducto" Role="ColocacionProducto" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductosColocar">
+            <Principal Role="Productos">
               <PropertyRef Name="IdProducto" />
             </Principal>
             <Dependent Role="ColocacionProducto">
@@ -534,21 +538,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductosColocar">
-            <EntityTypeMapping TypeName="Modelo.ProductosColocar">
-              <MappingFragment StoreEntitySet="ProductosColocar">
-                <ScalarProperty Name="ComisionGenera" ColumnName="ComisionGenera" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TipoCredito">
             <EntityTypeMapping TypeName="Modelo.TipoCredito">
               <MappingFragment StoreEntitySet="TipoCredito">
                 <ScalarProperty Name="ComisionDirefente" ColumnName="ComisionDirefente" />
                 <ScalarProperty Name="NombreDeCredito" ColumnName="NombreDeCredito" />
                 <ScalarProperty Name="IdCredito" ColumnName="IdCredito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="Modelo.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="EsDolar" ColumnName="EsDolar" />
+                <ScalarProperty Name="ComisionGenera" ColumnName="ComisionGenera" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

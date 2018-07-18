@@ -12,10 +12,12 @@ namespace SPC_Coopenae.DATA
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductosColocar
+    public partial class Productos
     {
         public int IdProducto { get; set; }
         public string Nombre { get; set; }
         public double ComisionGenera { get; set; }
+        public int EsDolar { get; set; }
+        public int Estado { get; set; }
     }
 }

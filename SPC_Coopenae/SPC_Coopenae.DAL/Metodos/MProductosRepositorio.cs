@@ -9,51 +9,49 @@ using System.Threading.Tasks;
 
 namespace SPC_Coopenae.DAL.Metodos
 {
-    public class MEjecutivoRepositorio : IEjectutivoRepositorio
+    public class MProductosRepositorio : IProductosRepositorio
     {
-        public void ActualizarEjecutivo(Ejecutivos ejecutivoP)
+        public void ActualizarProductos(Productos productos)
         {
             using (var dbc = new ConexionBD())
             {
-                dbc.Entry(ejecutivoP).State = EntityState.Modified;
-                
+                dbc.Entry(productos).State = EntityState.Modified;
                 dbc.SaveChanges();
-
             }
         }
 
-        public Ejecutivos BuscarEjecutivo(int cedula)
+        public Productos BuscarProductos(int id)
         {
             using (var dbc = new ConexionBD())
             {
-                return dbc.Ejecutivos.Find(cedula);
+                return dbc.Productos.Find(id);
             }
         }
 
-        public void EliminarEjecutivo(int cedula)
+        public void EliminarProductos(int id)
         {
             using (var dbc = new ConexionBD())
             {
-                var aEliminar = dbc.Ejecutivos.Find(cedula);
+                var aEliminar = dbc.Productos.Find(id);
                 aEliminar.Estado = 0;
                 dbc.SaveChanges();
             }
         }
 
-        public void InsertarEjecutivo(Ejecutivos ejecutivo)
+        public void InsertarProductos(Productos productos)
         {
             using (var dbc = new ConexionBD())
             {
-                dbc.Ejecutivos.Add(ejecutivo);
+                dbc.Productos.Add(productos);
                 dbc.SaveChanges();
             }
         }
 
-        public List<Ejecutivos> ListarEjecutivos()
+        public List<Productos> ListarProductos()
         {
-            using (var dbc  = new ConexionBD())
+            using (var dbc = new ConexionBD())
             {
-                return dbc.Ejecutivos.Where(x => x.Estado == 1).ToList();
+                return dbc.Productos.Where(x => x.Estado == 1).ToList();
             }
         }
     }
