@@ -1,0 +1,99 @@
+﻿@model IEnumerable<SPC_Coopenae.UI.Areas.Mantenimientos.Models.ColocacionCredito>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Registrar Nueva ColocacionCredito", "Registrar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdColocacionCredito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaFormalizacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CentroTrabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sector)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaAfiliacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroOperacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sucursal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontoDesembolsado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlazoMeses)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoCredito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ejecutivo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdColocacionCredito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaFormalizacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CentroTrabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sector)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAfiliacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroOperacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sucursal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoDesembolsado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlazoMeses)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoCredito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ejecutivo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.IdColocacionCredito }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdColocacionCredito  }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.IdColocacionCredito })
+        </td>
+    </tr>
+}
+
+</table>
