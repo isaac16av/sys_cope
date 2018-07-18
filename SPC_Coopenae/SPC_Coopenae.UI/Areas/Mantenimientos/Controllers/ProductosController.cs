@@ -9,32 +9,30 @@ using System.Web.Mvc;
 
 namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 {
-    public class ColocacionProductoController : Controller
+    public class ProductosController : Controller
     {
 
-        IColocacionProductoRepositorio _repositorioColProd;
+        IProductosRepositorio _repositorioProductos;
 
-        public ColocacionProductoController()
+        public ProductosController()
         {
-            _repositorioColProd = new MColocacionProductoRepositorio();
+            _repositorioProductos = new MProductosRepositorio();
         }
 
         public ActionResult Index()
         {
-            var ListadoColocacionessBD = _repositorioColProd;
-            var ColocacionesMostrar = Mapper.Map<List<Models.ColocacionProducto>>(ListadoColocacionessBD);
-            return View(ColocacionesMostrar);
+            var ListadoProductosBD = _repositorioProductos.ListarProductos();
+            var ProductosMostrar = Mapper.Map<List<Models.Productos>>(ListadoProductosBD);
+            return View(ProductosMostrar);
         }
 
         public ActionResult Registrar()
         {
-            //agregar tipos de productos
-            //ViewBag.listaSucursales = new (_repositorioSucursal.ListarSucursal(), "IdSucursal", "NombreSucursal");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Registrar(Models.ColocacionProducto colocacionP)
+        public ActionResult Registrar(Models.Productos productosP)
         {
             try
             {
@@ -42,8 +40,8 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 {
                     return View();
                 }
-                var ColocacionRegistrar = Mapper.Map<DATA.ColocacionProducto>(colocacionP);
-                _repositorioColProd.InsertarColocacionProducto(ColocacionRegistrar);
+                var ProductoRegistrar = Mapper.Map<DATA.Productos>(productosP);
+                _repositorioProductos.InsertarProductos(ProductoRegistrar);
                 return RedirectToAction("Index");
             }
             catch (Exception)
@@ -56,7 +54,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                _repositorioColProd.EliminarColocacionProducto(id);
+                _repositorioProductos.EliminarProductos(id);
                 return RedirectToAction("Index");
             }
             catch (Exception)
@@ -70,9 +68,9 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                var ColocacionBuscar = _repositorioColProd.BuscarColocacionProducto(id);
-                var ColocacionDetallar = Mapper.Map<Models.ColocacionProducto>(ColocacionBuscar);
-                return View(ColocacionDetallar);
+                var ProductoBuscar = _repositorioProductos.BuscarProductos(id);
+                var ProductoDetallar = Mapper.Map<Models.Productos>(ProductoBuscar);
+                return View(ProductoDetallar);
             }
             catch (Exception)
             {
@@ -84,10 +82,9 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                //ViewBag.listaSucursales = new SelectList(_repositorioSucursal.ListarSucursal(), "IdSucursal", "NombreSucursal");
-                var ColocacionBuscar = _repositorioColProd.BuscarColocacionProducto(id);
-                var ColocacionEditar = Mapper.Map<Models.ColocacionProducto>(ColocacionBuscar);
-                return View(ColocacionEditar);
+                var ProductoBuscar = _repositorioProductos.BuscarProductos(id);
+                var ProductoEditar = Mapper.Map<Models.Productos>(ProductoBuscar);
+                return View(ProductoEditar);
             }
             catch (Exception)
             {
@@ -96,7 +93,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         }
 
         [HttpPost]
-        public ActionResult Editar(Models.ColocacionProducto colocacionP)
+        public ActionResult Editar(Models.Productos productosP)
         {
             try
             {
@@ -104,8 +101,8 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 {
                     return View();
                 }
-                var ColocacionEditarBD = Mapper.Map<DATA.ColocacionProducto>(colocacionP);
-                _repositorioColProd.ActualizarColocacionProducto(ColocacionEditarBD);
+                var ProductoEditarBD = Mapper.Map<DATA.Productos>(productosP);
+                _repositorioProductos.ActualizarProductos(ProductoEditarBD);
                 return RedirectToAction("Index");
             }
             catch (Exception)

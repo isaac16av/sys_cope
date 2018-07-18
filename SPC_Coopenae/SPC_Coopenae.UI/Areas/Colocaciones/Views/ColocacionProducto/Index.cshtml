@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SPC_Coopenae.UI.Areas.Mantenimientos.Models.ColocacionProducto>
+﻿@model IEnumerable<SPC_Coopenae.UI.Areas.Colocaciones.Models.ColocacionProducto>
 
 @{
     ViewBag.Title = "Index";
@@ -60,9 +60,9 @@
             @Html.DisplayFor(modelItem => item.Ejecutivo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Editar", new { id=item.IdColocacionProducto }) |
+            @Html.ActionLink("Details", "Detalles", new { id = item.IdColocacionProducto }) |
+            @Html.ActionLink("Delete", "Eliminar", new { id = item.IdColocacionProducto })
         </td>
     </tr>
 }

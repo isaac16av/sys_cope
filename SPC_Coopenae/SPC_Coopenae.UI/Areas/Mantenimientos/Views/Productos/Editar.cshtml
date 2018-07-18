@@ -1,4 +1,4 @@
-﻿@model SPC_Coopenae.UI.Areas.Mantenimientos.Models.Categorias
+﻿@model SPC_Coopenae.UI.Areas.Mantenimientos.Models.Productos
 
 @{
     ViewBag.Title = "Editar";
@@ -13,14 +13,14 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Categorias</h4>
+        <h4>Productos</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.IdCategoria, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdProducto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IdCategoria, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IdCategoria, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.IdProducto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IdProducto, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -33,18 +33,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Escala, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ComisionGenera, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Escala, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Escala, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.ComisionGenera, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ComisionGenera, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Meta, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EsDolar, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Meta, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Meta, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.EsDolar, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EsDolar, "", new { @class = "text-danger" })
             </div>
         </div>
 

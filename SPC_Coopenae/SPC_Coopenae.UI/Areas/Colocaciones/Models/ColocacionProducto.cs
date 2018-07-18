@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
+namespace SPC_Coopenae.UI.Areas.Colocaciones.Models
 {
     public class ColocacionProducto
     {

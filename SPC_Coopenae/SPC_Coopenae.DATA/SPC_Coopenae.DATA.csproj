@@ -60,7 +60,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelosBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductosColocar.cs">
+    <Compile Include="Productos.cs">
       <DependentUpon>ModelosBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

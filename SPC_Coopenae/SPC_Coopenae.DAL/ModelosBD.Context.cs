@@ -31,7 +31,7 @@ namespace SPC_Coopenae.DATA
         public virtual DbSet<Sucursal> Sucursal { get; set; }
         public virtual DbSet<ColocacionCredito> ColocacionCredito { get; set; }
         public virtual DbSet<ColocacionProducto> ColocacionProducto { get; set; }
-        public virtual DbSet<ProductosColocar> ProductosColocar { get; set; }
         public virtual DbSet<TipoCredito> TipoCredito { get; set; }
+        public virtual DbSet<Productos> Productos { get; set; }
     }
 }
