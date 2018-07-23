@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Detalles</h2>
@@ -106,9 +107,17 @@
             @Html.DisplayFor(model => model.Ejecutivo)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.IdColocacionCredito }) |
-    @Html.ActionLink("Regresar a la lista", "Index")
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

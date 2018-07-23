@@ -102,7 +102,7 @@
           </Key>
           <Property Name="IdCredito" Type="int" Nullable="false" />
           <Property Name="NombreDeCredito" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="ComisionDirefente" Type="float" />
+          <Property Name="ComisionDirefente" Type="float" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Categorias_Metas">
@@ -239,7 +239,6 @@
           <EntitySet Name="MetasIDP" EntityType="Modelo.MetasIDP" />
           <EntitySet Name="Productos" EntityType="Modelo.Productos" />
           <EntitySet Name="Sucursal" EntityType="Modelo.Sucursal" />
-          <EntitySet Name="TipoCredito" EntityType="Modelo.TipoCredito" />
           <AssociationSet Name="FK_Categorias_Metas" Association="Modelo.FK_Categorias_Metas">
             <End Role="MetasIDP" EntitySet="MetasIDP" />
             <End Role="Categorias" EntitySet="Categorias" />
@@ -250,10 +249,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_ColocacionCredito_Ejecutivos" Association="Modelo.FK_ColocacionCredito_Ejecutivos">
             <End Role="Ejecutivos" EntitySet="Ejecutivos" />
-            <End Role="ColocacionCredito" EntitySet="ColocacionCredito" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ColocacionCredito_TipoCredito" Association="Modelo.FK_ColocacionCredito_TipoCredito">
-            <End Role="TipoCredito" EntitySet="TipoCredito" />
             <End Role="ColocacionCredito" EntitySet="ColocacionCredito" />
           </AssociationSet>
           <AssociationSet Name="FK_ColocacionProducto_Ejecutivos" Association="Modelo.FK_ColocacionProducto_Ejecutivos">
@@ -267,6 +262,11 @@
           <AssociationSet Name="FK_Ejecutivos_Sucursal" Association="Modelo.FK_Ejecutivos_Sucursal">
             <End Role="Sucursal" EntitySet="Sucursal" />
             <End Role="Ejecutivos" EntitySet="Ejecutivos" />
+          </AssociationSet>
+          <EntitySet Name="TipoCredito" EntityType="Modelo.TipoCredito" />
+          <AssociationSet Name="FK_ColocacionCredito_TipoCredito" Association="Modelo.FK_ColocacionCredito_TipoCredito">
+            <End Role="TipoCredito" EntitySet="TipoCredito" />
+            <End Role="ColocacionCredito" EntitySet="ColocacionCredito" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Categorias">
@@ -360,15 +360,6 @@
           <Property Name="Categoria" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="TipoCredito">
-          <Key>
-            <PropertyRef Name="IdCredito" />
-          </Key>
-          <Property Name="IdCredito" Type="Int32" Nullable="false" />
-          <Property Name="NombreDeCredito" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ComisionDirefente" Type="Double" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-        </EntityType>
         <Association Name="FK_Categorias_Metas">
           <End Type="Modelo.MetasIDP" Role="MetasIDP" Multiplicity="1" />
           <End Type="Modelo.Categorias" Role="Categorias" Multiplicity="*" />
@@ -405,18 +396,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ColocacionCredito_TipoCredito">
-          <End Type="Modelo.TipoCredito" Role="TipoCredito" Multiplicity="1" />
-          <End Type="Modelo.ColocacionCredito" Role="ColocacionCredito" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoCredito">
-              <PropertyRef Name="IdCredito" />
-            </Principal>
-            <Dependent Role="ColocacionCredito">
-              <PropertyRef Name="TipoCredito" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ColocacionProducto_Ejecutivos">
           <End Type="Modelo.Ejecutivos" Role="Ejecutivos" Multiplicity="1" />
           <End Type="Modelo.ColocacionProducto" Role="ColocacionProducto" Multiplicity="*" />
@@ -450,6 +429,27 @@
             </Principal>
             <Dependent Role="Ejecutivos">
               <PropertyRef Name="Sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TipoCredito">
+          <Key>
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCredito" Type="Int32" Nullable="false" />
+          <Property Name="NombreDeCredito" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ComisionDirefente" Type="Double" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ColocacionCredito_TipoCredito">
+          <End Type="Modelo.TipoCredito" Role="TipoCredito" Multiplicity="1" />
+          <End Type="Modelo.ColocacionCredito" Role="ColocacionCredito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCredito">
+              <PropertyRef Name="IdCredito" />
+            </Principal>
+            <Dependent Role="ColocacionCredito">
+              <PropertyRef Name="TipoCredito" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
