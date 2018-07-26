@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SPC_Coopenae.UI.Areas.Mantenimientos.Models.TipoCredito>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Registrar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdCredito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreDeCredito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComisionDirefente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdCredito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreDeCredito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComisionDirefente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

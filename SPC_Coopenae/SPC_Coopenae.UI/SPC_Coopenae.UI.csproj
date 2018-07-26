@@ -166,6 +166,7 @@
     <Compile Include="Areas\Mantenimientos\Controllers\MetasIDPController.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\ProductosController.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\SucursalController.cs" />
+    <Compile Include="Areas\Mantenimientos\Controllers\TipoCreditoController.cs" />
     <Compile Include="Areas\Mantenimientos\MantenimientosAreaRegistration.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Categorias.cs" />
     <Compile Include="Areas\Colocaciones\Models\ColocacionCredito.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Areas\Mantenimientos\Models\MetasIDP.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Productos.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Sucursal.cs" />
+    <Compile Include="Areas\Mantenimientos\Models\TipoCredito.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -181,10 +183,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Colocaciones\Views\ColocacionCredito\Detalles.cshtml" />
     <Content Include="Areas\Colocaciones\Views\ColocacionCredito\Editar.cshtml" />
     <Content Include="Areas\Colocaciones\Views\ColocacionCredito\Index.cshtml" />
-    <Content Include="Areas\Colocaciones\Views\ColocacionCredito\Registrar.cshtml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -241,6 +241,10 @@
     <Content Include="Areas\Colocaciones\Views\ColocacionProducto\Registrar.cshtml" />
     <Content Include="Areas\Colocaciones\Views\ColocacionProducto\Detalles.cshtml" />
     <Content Include="Areas\Colocaciones\Views\ColocacionProducto\Editar.cshtml" />
+    <Content Include="Areas\Colocaciones\Views\ColocacionCredito\Registrar.cshtml" />
+    <Content Include="Areas\Colocaciones\Views\ColocacionCredito\Detalles.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\TipoCredito\Index.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\TipoCredito\Registrar.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
