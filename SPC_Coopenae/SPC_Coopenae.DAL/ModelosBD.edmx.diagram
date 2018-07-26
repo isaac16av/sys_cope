@@ -19,14 +19,7 @@
         <AssociationConnector Association="Modelo.FK_ColocacionProducto_ProductosColocar" />
         <AssociationConnector Association="Modelo.FK_Ejecutivos_Sucursal" />
         <EntityTypeShape EntityType="Modelo.TipoCredito" Width="1.5" PointX="8.5" PointY="0.875" />
-        <AssociationConnector Association="Modelo.FK_ColocacionCredito_TipoCredito" ManuallyRouted="true" >
-          <ConnectorPoint PointX="10" PointY="2.6618301798878208" />
-          <ConnectorPoint PointX="10.375" PointY="3.0368301798878203" />
-          <ConnectorPoint PointX="10.375" PointY="3.260416666666667" />
-          <ConnectorPoint PointX="9.375" PointY="3.260416666666667" />
-          <ConnectorPoint PointX="9.375" PointY="3.5" />
-          <ConnectorPoint PointX="9.75" PointY="3.875" />
-        </AssociationConnector>
+        <AssociationConnector Association="Modelo.FK_ColocacionCredito_TipoCredito" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

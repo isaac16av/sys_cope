@@ -102,7 +102,7 @@
           </Key>
           <Property Name="IdCredito" Type="int" Nullable="false" />
           <Property Name="NombreDeCredito" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="ComisionDirefente" Type="float" Nullable="false" />
+          <Property Name="ComisionDirefente" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Categorias_Metas">
@@ -438,7 +438,7 @@
           </Key>
           <Property Name="IdCredito" Type="Int32" Nullable="false" />
           <Property Name="NombreDeCredito" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ComisionDirefente" Type="Double" Nullable="false" />
+          <Property Name="ComisionDirefente" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_ColocacionCredito_TipoCredito">

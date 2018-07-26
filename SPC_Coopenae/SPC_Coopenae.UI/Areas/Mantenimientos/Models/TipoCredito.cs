@@ -10,8 +10,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
     {
         public int IdCredito { get; set; }
         public string NombreDeCredito { get; set; }
-
-        public double ComisionDirefente { get; set; }
+        public decimal ComisionDirefente { get; set; }
         public int Estado { get; set; }
     }
 }
