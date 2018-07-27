@@ -22,7 +22,7 @@ namespace SPC_Coopenae.DATA
         public System.DateTime FechaAfiliacion { get; set; }
         public int NumeroOperacion { get; set; }
         public string Sucursal { get; set; }
-        public double MontoDesembolsado { get; set; }
+        public decimal MontoDesembolsado { get; set; }
         public string PlazoMeses { get; set; }
         public int TipoCredito { get; set; }
         public int Ejecutivo { get; set; }

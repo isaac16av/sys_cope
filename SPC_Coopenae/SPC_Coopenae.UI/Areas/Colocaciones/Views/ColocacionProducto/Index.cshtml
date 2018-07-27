@@ -66,9 +66,9 @@
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.Cedula }) |
-            @Html.ActionLink("Detalles", "Detalles", new { id = item.Cedula }) |
-            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Cedula })
+            @Html.ActionLink("Editar", "Editar", new { id=item.IdColocacionProducto }) |
+            @Html.ActionLink("Detalles", "Detalles", new { id = item.IdColocacionProducto }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdColocacionProducto  })
         </td>
     </tr>
 }

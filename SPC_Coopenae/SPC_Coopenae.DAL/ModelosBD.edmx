@@ -27,7 +27,7 @@
           <Property Name="FechaAfiliacion" Type="date" Nullable="false" />
           <Property Name="NumeroOperacion" Type="int" Nullable="false" />
           <Property Name="Sucursal" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="MontoDesembolsado" Type="float" Nullable="false" />
+          <Property Name="MontoDesembolsado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="PlazoMeses" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="TipoCredito" Type="int" Nullable="false" />
           <Property Name="Ejecutivo" Type="int" Nullable="false" />
@@ -70,12 +70,12 @@
             <PropertyRef Name="IdMeta" />
           </Key>
           <Property Name="IdMeta" Type="int" Nullable="false" />
-          <Property Name="Creditos" Type="float" Nullable="false" />
+          <Property Name="Creditos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="OtrosProductos" Type="int" Nullable="false" />
           <Property Name="TarjetasCredito" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
-          <Property Name="MinimoComisionarCDP" Type="float" Nullable="false" />
+          <Property Name="MinimoComisionarCDP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Productos">
           <Key>
@@ -83,7 +83,7 @@
           </Key>
           <Property Name="IdProducto" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="ComisionGenera" Type="float" Nullable="false" />
+          <Property Name="ComisionGenera" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="EsDolar" Type="int" Nullable="false" />
           <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
@@ -236,19 +236,19 @@
           <EntitySet Name="ColocacionCredito" EntityType="Modelo.ColocacionCredito" />
           <EntitySet Name="ColocacionProducto" EntityType="Modelo.ColocacionProducto" />
           <EntitySet Name="Ejecutivos" EntityType="Modelo.Ejecutivos" />
-          <EntitySet Name="MetasIDP" EntityType="Modelo.MetasIDP" />
           <EntitySet Name="Productos" EntityType="Modelo.Productos" />
           <EntitySet Name="Sucursal" EntityType="Modelo.Sucursal" />
-          <AssociationSet Name="FK_Categorias_Metas" Association="Modelo.FK_Categorias_Metas">
-            <End Role="MetasIDP" EntitySet="MetasIDP" />
-            <End Role="Categorias" EntitySet="Categorias" />
-          </AssociationSet>
+          <EntitySet Name="TipoCredito" EntityType="Modelo.TipoCredito" />
           <AssociationSet Name="FK_Sucursal_Categorias" Association="Modelo.FK_Sucursal_Categorias">
             <End Role="Categorias" EntitySet="Categorias" />
             <End Role="Sucursal" EntitySet="Sucursal" />
           </AssociationSet>
           <AssociationSet Name="FK_ColocacionCredito_Ejecutivos" Association="Modelo.FK_ColocacionCredito_Ejecutivos">
             <End Role="Ejecutivos" EntitySet="Ejecutivos" />
+            <End Role="ColocacionCredito" EntitySet="ColocacionCredito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ColocacionCredito_TipoCredito" Association="Modelo.FK_ColocacionCredito_TipoCredito">
+            <End Role="TipoCredito" EntitySet="TipoCredito" />
             <End Role="ColocacionCredito" EntitySet="ColocacionCredito" />
           </AssociationSet>
           <AssociationSet Name="FK_ColocacionProducto_Ejecutivos" Association="Modelo.FK_ColocacionProducto_Ejecutivos">
@@ -263,10 +263,10 @@
             <End Role="Sucursal" EntitySet="Sucursal" />
             <End Role="Ejecutivos" EntitySet="Ejecutivos" />
           </AssociationSet>
-          <EntitySet Name="TipoCredito" EntityType="Modelo.TipoCredito" />
-          <AssociationSet Name="FK_ColocacionCredito_TipoCredito" Association="Modelo.FK_ColocacionCredito_TipoCredito">
-            <End Role="TipoCredito" EntitySet="TipoCredito" />
-            <End Role="ColocacionCredito" EntitySet="ColocacionCredito" />
+          <EntitySet Name="MetasIDP" EntityType="Modelo.MetasIDP" />
+          <AssociationSet Name="FK_Categorias_Metas" Association="Modelo.FK_Categorias_Metas">
+            <End Role="MetasIDP" EntitySet="MetasIDP" />
+            <End Role="Categorias" EntitySet="Categorias" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Categorias">
@@ -291,12 +291,12 @@
           <Property Name="FechaAfiliacion" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="NumeroOperacion" Type="Int32" Nullable="false" />
           <Property Name="Sucursal" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MontoDesembolsado" Type="Double" Nullable="false" />
+          <Property Name="MontoDesembolsado" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="PlazoMeses" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="TipoCredito" Type="Int32" Nullable="false" />
           <Property Name="Ejecutivo" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
-        </EntityType>
+          </EntityType>
         <EntityType Name="ColocacionProducto">
           <Key>
             <PropertyRef Name="IdColocacionProducto" />
@@ -309,7 +309,7 @@
           <Property Name="Producto" Type="Int32" Nullable="false" />
           <Property Name="Ejecutivo" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
-          </EntityType>
+        </EntityType>
         <EntityType Name="Ejecutivos">
           <Key>
             <PropertyRef Name="Cedula" />
@@ -329,25 +329,13 @@
           <Property Name="MetaAparte" Type="Int32" Nullable="false" />
           <Property Name="Salario" Type="Int32" Nullable="false" />
           </EntityType>
-        <EntityType Name="MetasIDP">
-          <Key>
-            <PropertyRef Name="IdMeta" />
-          </Key>
-          <Property Name="IdMeta" Type="Int32" Nullable="false" />
-          <Property Name="Creditos" Type="Double" Nullable="false" />
-          <Property Name="OtrosProductos" Type="Int32" Nullable="false" />
-          <Property Name="TarjetasCredito" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="MinimoComisionarCDP" Type="Double" Nullable="false" />
-        </EntityType>
         <EntityType Name="Productos">
           <Key>
             <PropertyRef Name="IdProducto" />
           </Key>
           <Property Name="IdProducto" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ComisionGenera" Type="Double" Nullable="false" />
+          <Property Name="ComisionGenera" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="EsDolar" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
@@ -359,19 +347,16 @@
           <Property Name="NombreSucursal" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Categoria" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
+          </EntityType>
+        <EntityType Name="TipoCredito">
+          <Key>
+            <PropertyRef Name="IdCredito" />
+          </Key>
+          <Property Name="IdCredito" Type="Int32" Nullable="false" />
+          <Property Name="NombreDeCredito" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ComisionDirefente" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Categorias_Metas">
-          <End Type="Modelo.MetasIDP" Role="MetasIDP" Multiplicity="1" />
-          <End Type="Modelo.Categorias" Role="Categorias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MetasIDP">
-              <PropertyRef Name="IdMeta" />
-            </Principal>
-            <Dependent Role="Categorias">
-              <PropertyRef Name="Meta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Sucursal_Categorias">
           <End Type="Modelo.Categorias" Role="Categorias" Multiplicity="1" />
           <End Type="Modelo.Sucursal" Role="Sucursal" Multiplicity="*" />
@@ -393,6 +378,18 @@
             </Principal>
             <Dependent Role="ColocacionCredito">
               <PropertyRef Name="Ejecutivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ColocacionCredito_TipoCredito">
+          <End Type="Modelo.TipoCredito" Role="TipoCredito" Multiplicity="1" />
+          <End Type="Modelo.ColocacionCredito" Role="ColocacionCredito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCredito">
+              <PropertyRef Name="IdCredito" />
+            </Principal>
+            <Dependent Role="ColocacionCredito">
+              <PropertyRef Name="TipoCredito" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -432,24 +429,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="TipoCredito">
+        <EntityType Name="MetasIDP">
           <Key>
-            <PropertyRef Name="IdCredito" />
+            <PropertyRef Name="IdMeta" />
           </Key>
-          <Property Name="IdCredito" Type="Int32" Nullable="false" />
-          <Property Name="NombreDeCredito" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ComisionDirefente" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="IdMeta" Type="Int32" Nullable="false" />
+          <Property Name="Creditos" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OtrosProductos" Type="Int32" Nullable="false" />
+          <Property Name="TarjetasCredito" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="MinimoComisionarCDP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
-        <Association Name="FK_ColocacionCredito_TipoCredito">
-          <End Type="Modelo.TipoCredito" Role="TipoCredito" Multiplicity="1" />
-          <End Type="Modelo.ColocacionCredito" Role="ColocacionCredito" Multiplicity="*" />
+        <Association Name="FK_Categorias_Metas">
+          <End Type="Modelo.MetasIDP" Role="MetasIDP" Multiplicity="1" />
+          <End Type="Modelo.Categorias" Role="Categorias" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TipoCredito">
-              <PropertyRef Name="IdCredito" />
+            <Principal Role="MetasIDP">
+              <PropertyRef Name="IdMeta" />
             </Principal>
-            <Dependent Role="ColocacionCredito">
-              <PropertyRef Name="TipoCredito" />
+            <Dependent Role="Categorias">
+              <PropertyRef Name="Meta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -523,19 +523,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MetasIDP">
-            <EntityTypeMapping TypeName="Modelo.MetasIDP">
-              <MappingFragment StoreEntitySet="MetasIDP">
-                <ScalarProperty Name="MinimoComisionarCDP" ColumnName="MinimoComisionarCDP" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="TarjetasCredito" ColumnName="TarjetasCredito" />
-                <ScalarProperty Name="OtrosProductos" ColumnName="OtrosProductos" />
-                <ScalarProperty Name="Creditos" ColumnName="Creditos" />
-                <ScalarProperty Name="IdMeta" ColumnName="IdMeta" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Productos">
             <EntityTypeMapping TypeName="Modelo.Productos">
               <MappingFragment StoreEntitySet="Productos">
@@ -564,6 +551,19 @@
                 <ScalarProperty Name="ComisionDirefente" ColumnName="ComisionDirefente" />
                 <ScalarProperty Name="NombreDeCredito" ColumnName="NombreDeCredito" />
                 <ScalarProperty Name="IdCredito" ColumnName="IdCredito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetasIDP">
+            <EntityTypeMapping TypeName="Modelo.MetasIDP">
+              <MappingFragment StoreEntitySet="MetasIDP">
+                <ScalarProperty Name="MinimoComisionarCDP" ColumnName="MinimoComisionarCDP" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="TarjetasCredito" ColumnName="TarjetasCredito" />
+                <ScalarProperty Name="OtrosProductos" ColumnName="OtrosProductos" />
+                <ScalarProperty Name="Creditos" ColumnName="Creditos" />
+                <ScalarProperty Name="IdMeta" ColumnName="IdMeta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

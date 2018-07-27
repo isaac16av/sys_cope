@@ -14,12 +14,12 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
     {
 
         IColocacionCreditoRepositorio _repositorioColCred;
-        IEjectutivoRepositorio _repositorioEjecutivo;
+        ITipoCreditoRepositorio _repositorioTipoCred;
 
         public ColocacionCreditoController()
         {
             _repositorioColCred = new MColocacionCreditoRepositorio();
-            _repositorioEjecutivo = new MEjecutivoRepositorio();
+            _repositorioTipoCred = new MTipoCreditoRepositorio();
         }
 
         // GET: Mantenimientos/ColocacionCredito
@@ -32,6 +32,7 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
 
         public ActionResult Registrar()
         {
+            ViewBag.listaTipos = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdCredito", "NombreDeCredito");
             return View();
         }
 
@@ -41,6 +42,7 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
         {
             try
             {
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdCredito", "NombreDeCredito");
                 if (!ModelState.IsValid)
                 {
                     return View();
@@ -89,6 +91,7 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
         {
             try
             {
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdCredito", "NombreDeCredito");
                 var ColCredBuscar = _repositorioColCred.BuscarColocacionCredito(id);
                 var ColCredEditar = Mapper.Map<Models.ColocacionCredito>(ColCredBuscar);
                 return View(ColCredEditar);
@@ -105,6 +108,7 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
         {
             try
             {
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdCredito", "NombreDeCredito");
                 if (!ModelState.IsValid)
                 {
                     return View();

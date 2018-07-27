@@ -39,6 +39,7 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
         {
             try
             {
+                ViewBag.listaProductos = new SelectList(_repositorioProductos.ListarProductos(), "IdProducto", "Nombre");
                 if (!ModelState.IsValid)
                 {
                     return View();
@@ -101,6 +102,7 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
         {
             try
             {
+                ViewBag.listaProductos = new SelectList(_repositorioProductos.ListarProductos(), "IdProducto", "Nombre");
                 if (!ModelState.IsValid)
                 {
                     return View();

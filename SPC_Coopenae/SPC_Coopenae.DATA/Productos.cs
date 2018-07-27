@@ -16,7 +16,7 @@ namespace SPC_Coopenae.DATA
     {
         public int IdProducto { get; set; }
         public string Nombre { get; set; }
-        public double ComisionGenera { get; set; }
+        public decimal ComisionGenera { get; set; }
         public int EsDolar { get; set; }
         public int Estado { get; set; }
     }

@@ -245,6 +245,9 @@
     <Content Include="Areas\Colocaciones\Views\ColocacionCredito\Detalles.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\TipoCredito\Index.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\TipoCredito\Registrar.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\TipoCredito\Detalles.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\TipoCredito\Editar.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\Ejecutivos\ComprobarEjecutivo.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

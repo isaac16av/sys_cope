@@ -115,5 +115,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             }
         }
 
+        public ActionResult ComprobarEjecutivo()
+        {
+            return View();
+        }
+
     }
 }
