@@ -15,10 +15,12 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
 
         IColocacionCreditoRepositorio _repositorioColCred;
         ITipoCreditoRepositorio _repositorioTipoCred;
+        IEjectutivoRepositorio _repositorioEjecutivo;
 
         public ColocacionCreditoController()
         {
             _repositorioColCred = new MColocacionCreditoRepositorio();
+            _repositorioEjecutivo = new MEjecutivoRepositorio();
             _repositorioTipoCred = new MTipoCreditoRepositorio();
         }
 
@@ -122,6 +124,27 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
             {
 
                 return RedirectToAction("Index");
+            }
+        }
+
+
+        public JsonResult ValidarEjecutivo(int Ejecutivo)
+        {
+            try
+            {
+                var EjecutivoBuscar = _repositorioEjecutivo.BuscarEjecutivo(Ejecutivo);
+                if (EjecutivoBuscar == null)
+                {
+                    return Json(false, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(true, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
             }
         }
 

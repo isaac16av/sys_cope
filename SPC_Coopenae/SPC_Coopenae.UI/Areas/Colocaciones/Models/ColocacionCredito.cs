@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SPC_Coopenae.UI.Areas.Colocaciones.Models
 {
@@ -15,9 +16,11 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Models
         public System.DateTime FechaAfiliacion { get; set; }
         public int NumeroOperacion { get; set; }
         public string Sucursal { get; set; }
-        public double MontoDesembolsado { get; set; }
+        public decimal MontoDesembolsado { get; set; }
         public string PlazoMeses { get; set; }
         public int TipoCredito { get; set; }
+
+        [Remote("ValidarEjecutivo", "ColocacionCredito", "", ErrorMessage = "Cédula no registrada")]
         public int Ejecutivo { get; set; }
         public int Estado { get; set; }
     }
