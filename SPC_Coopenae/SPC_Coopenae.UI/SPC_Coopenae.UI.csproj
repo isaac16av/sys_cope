@@ -310,11 +310,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SPC_Coopenae.DAL\SPC_Coopenae.DAL.csproj">
-      <Project>{71097459-340c-4fe5-9636-b77e184da757}</Project>
+      <Project>{60064abf-b152-4c7c-b15f-d0b2a50f8430}</Project>
       <Name>SPC_Coopenae.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\SPC_Coopenae.DATA\SPC_Coopenae.DATA.csproj">
-      <Project>{04426405-777e-4817-b4d4-182bde0ee889}</Project>
+      <Project>{b3f95e5f-bc5a-4331-88a1-068faed52d26}</Project>
       <Name>SPC_Coopenae.DATA</Name>
     </ProjectReference>
   </ItemGroup>

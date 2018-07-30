@@ -17,7 +17,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public MetasIDP BuscarMeta(int id)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.MetasIDP.Find(id);
             }
@@ -25,7 +25,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void EliminarMeta(int id)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 var eMeta = dbc.MetasIDP.Find(id);
                 eMeta.Estado = 0;
@@ -35,7 +35,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void InsertarMeta(MetasIDP meta)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 var iMeta = dbc.MetasIDP.Add(meta);
                 dbc.SaveChanges();
@@ -44,7 +44,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public List<MetasIDP> ListarMetasIDP()
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.MetasIDP.Where(x => x.Estado == 1).ToList();
             }

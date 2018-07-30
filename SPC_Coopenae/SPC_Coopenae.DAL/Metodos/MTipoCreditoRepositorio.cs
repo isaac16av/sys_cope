@@ -13,7 +13,7 @@ namespace SPC_Coopenae.DAL.Metodos
     {
         public void ActualizarTipoCredito(TipoCredito tipoCredito)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 dbc.Entry(tipoCredito).State = EntityState.Modified;
                 dbc.SaveChanges();
@@ -22,7 +22,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public TipoCredito BuscarTipoCredito(int id)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.TipoCredito.Find(id);
             }
@@ -30,7 +30,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void EliminarTipoCredito(int id)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 var aEliminar = dbc.TipoCredito.Find(id);
                 aEliminar.Estado = 0;
@@ -40,7 +40,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void InsertarTipoCredito(TipoCredito tipoCredito)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 dbc.TipoCredito.Add(tipoCredito);
                 dbc.SaveChanges();
@@ -49,7 +49,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public List<TipoCredito> ListarTipoCredito()
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.TipoCredito.Where(x => x.Estado == 1).ToList();
             }

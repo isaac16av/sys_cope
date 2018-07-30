@@ -13,7 +13,7 @@ namespace SPC_Coopenae.DAL.Metodos
     {
         public void ActualizarColocacionCredito(ColocacionCredito colCred)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 dbc.Entry(colCred).State = EntityState.Modified;
 
@@ -24,7 +24,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public ColocacionCredito BuscarColocacionCredito(int id)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.ColocacionCredito.Find(id);
             }
@@ -32,7 +32,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void EliminarColocacionCredito(int id)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 var eColCred = dbc.ColocacionCredito.Find(id);
                 dbc.ColocacionCredito.Remove(eColCred);
@@ -43,7 +43,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void InsertarColocacionCredito(ColocacionCredito colCred)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 dbc.ColocacionCredito.Add(colCred);
 
@@ -53,7 +53,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public List<ColocacionCredito> ListarColocacionCredito()
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.ColocacionCredito.ToList();
             }

@@ -12,7 +12,7 @@ namespace SPC_Coopenae.DAL.Metodos
     {
         public void ActualizarColocacionProducto(ColocacionProducto colocacion)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 var aActualizar = dbc.ColocacionProducto.Find(colocacion.IdColocacionProducto);
                 aActualizar.Fecha = colocacion.Fecha;
@@ -29,7 +29,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public ColocacionProducto BuscarColocacionProducto(int id)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.ColocacionProducto.Find(id);
             }
@@ -37,7 +37,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void EliminarColocacionProducto(int id)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 ColocacionProducto colocacion = dbc.ColocacionProducto.Find(id);
                 dbc.ColocacionProducto.Remove(colocacion);
@@ -47,7 +47,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void InsertarColocacionProducto(ColocacionProducto colocacion)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 dbc.ColocacionProducto.Add(colocacion);
                 dbc.SaveChanges();
@@ -56,7 +56,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public List<ColocacionProducto> ListarColocacionesProducto()
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.ColocacionProducto.ToList();
             }
@@ -64,7 +64,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public List<ColocacionProducto> ListarColocacionesProductoPorEjecutivo(int cedula)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.ColocacionProducto.Where(x => x.Cedula == cedula).ToList();
             }
