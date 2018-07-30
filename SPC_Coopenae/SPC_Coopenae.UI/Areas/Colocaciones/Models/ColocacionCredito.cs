@@ -20,7 +20,7 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Models
         public string PlazoMeses { get; set; }
         public int TipoCredito { get; set; }
 
-        [Remote("ValidarEjecutivo", "ColocacionCredito", "", ErrorMessage = "Cédula no registrada")]
+        [Remote("ValidarEjecutivo", "ValidaEjecutivo", "", ErrorMessage = "Cédula no registrada")]
         public int Ejecutivo { get; set; }
         public int Estado { get; set; }
     }

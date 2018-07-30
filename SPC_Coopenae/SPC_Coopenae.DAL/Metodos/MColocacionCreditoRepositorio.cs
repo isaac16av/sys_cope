@@ -2,6 +2,7 @@
 using SPC_Coopenae.DATA;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,18 +15,7 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new ConexionBD())
             {
-                var aColCred = dbc.ColocacionCredito.Find(colCred);
-                aColCred.FechaFormalizacion = colCred.FechaFormalizacion;
-                aColCred.Cedula = colCred.Cedula;
-                aColCred.CentroTrabajo = colCred.CentroTrabajo;
-                aColCred.Sector = colCred.Sector;
-                aColCred.FechaAfiliacion = colCred.FechaAfiliacion;
-                aColCred.NumeroOperacion = colCred.NumeroOperacion;
-                aColCred.Sucursal = colCred.Sucursal;
-                aColCred.MontoDesembolsado = colCred.MontoDesembolsado;
-                aColCred.PlazoMeses = colCred.PlazoMeses;
-                aColCred.TipoCredito = colCred.TipoCredito;
-                aColCred.Ejecutivo = colCred.Ejecutivo;
+                dbc.Entry(colCred).State = EntityState.Modified;
 
                 dbc.SaveChanges();
 

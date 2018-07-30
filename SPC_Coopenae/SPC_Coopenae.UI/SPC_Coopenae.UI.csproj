@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Colocaciones\ColocacionesAreaRegistration.cs" />
+    <Compile Include="Areas\Colocaciones\Controllers\ValidaEjecutivoController.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\CategoriasController.cs" />
     <Compile Include="Areas\Colocaciones\Controllers\ColocacionCreditoController.cs" />
     <Compile Include="Areas\Colocaciones\Controllers\ColocacionProductoController.cs" />

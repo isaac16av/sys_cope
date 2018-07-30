@@ -15,12 +15,10 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
 
         IColocacionCreditoRepositorio _repositorioColCred;
         ITipoCreditoRepositorio _repositorioTipoCred;
-        IEjectutivoRepositorio _repositorioEjecutivo;
 
         public ColocacionCreditoController()
         {
             _repositorioColCred = new MColocacionCreditoRepositorio();
-            _repositorioEjecutivo = new MEjecutivoRepositorio();
             _repositorioTipoCred = new MTipoCreditoRepositorio();
         }
 
@@ -34,8 +32,17 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
 
         public ActionResult Registrar()
         {
-            ViewBag.listaTipos = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdCredito", "NombreDeCredito");
-            return View();
+            try
+            {
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdCredito", "NombreDeCredito");
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Ocurrió un error", ex);
+                return View();
+            }
+
         }
 
 
@@ -53,9 +60,9 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
                 _repositorioColCred.InsertarColocacionCredito(col);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                ModelState.AddModelError("Ocurrió un error", ex);
                 return View();
             }
         }
@@ -67,9 +74,9 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
                 _repositorioColCred.EliminarColocacionCredito(id);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                ModelState.AddModelError("Ocurrió un error", ex);
                 return View();
             }
         }
@@ -82,10 +89,10 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
                 var colCredDetallar = Mapper.Map<Models.ColocacionCredito>(colCredBuscar);
                 return View(colCredDetallar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return RedirectToAction("Index");
+                ModelState.AddModelError("Ocurrió un error", ex);
+                return View();
             }
         }
 
@@ -98,10 +105,10 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
                 var ColCredEditar = Mapper.Map<Models.ColocacionCredito>(ColCredBuscar);
                 return View(ColCredEditar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return RedirectToAction("Index");
+                ModelState.AddModelError("Ocurrió un error", ex);
+                return View();
             }
         }
 
@@ -120,31 +127,10 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
                 return RedirectToAction("Index");
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return RedirectToAction("Index");
-            }
-        }
-
-
-        public JsonResult ValidarEjecutivo(int Ejecutivo)
-        {
-            try
-            {
-                var EjecutivoBuscar = _repositorioEjecutivo.BuscarEjecutivo(Ejecutivo);
-                if (EjecutivoBuscar == null)
-                {
-                    return Json(false, JsonRequestBehavior.AllowGet);
-                }
-                else
-                {
-                    return Json(true, JsonRequestBehavior.AllowGet);
-                }
-            }
-            catch (Exception)
-            {
-                return Json(false, JsonRequestBehavior.AllowGet);
+                ModelState.AddModelError("Ocurrió un error", ex);
+                return View();
             }
         }
 
