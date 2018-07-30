@@ -2,10 +2,12 @@ namespace SPC_Coopenae.DATA
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Ejecutivos
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Cedula { get; set; }
         public string Nombre { get; set; }
         public string Apellidos { get; set; }

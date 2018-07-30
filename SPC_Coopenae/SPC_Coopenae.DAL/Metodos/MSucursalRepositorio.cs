@@ -2,6 +2,7 @@
 using SPC_Coopenae.DATA;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,7 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                var sActualizar = dbc.Sucursal.Find(sucursalP.IdSucursal);
-                sActualizar.NombreSucursal = sucursalP.NombreSucursal;
-                sActualizar.Categoria = sucursalP.Categoria;
+                dbc.Entry(sucursalP).State = EntityState.Modified;
 
                 dbc.SaveChanges();
             }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,13 @@ namespace SPC_Coopenae.DAL
         {
         }
 
+        //EF "pluraliza" los nombres de los campos, con esto lo deja de hacer, si lo hace, no encunetra las tablas de la BD
         protected override void OnModelCreating(DbModelBuilder dbModelBuilder)
         {
             dbModelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
+        //Agregar las tablas que tenga la BD
         public DbSet<Categorias> Categorias { get; set; }
         public DbSet<ColocacionCredito> ColocacionCredito { get; set; }
         public DbSet<ColocacionProducto> ColocacionProducto { get; set; }

@@ -4,7 +4,6 @@ namespace SPC_Coopenae.DATA
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("Categorias")]
     public class Categorias
     {
         [Key]

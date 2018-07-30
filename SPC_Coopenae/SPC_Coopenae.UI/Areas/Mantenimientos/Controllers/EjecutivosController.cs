@@ -39,6 +39,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.listaSucursales = new SelectList(_repositorioSucursal.ListarSucursal(), "IdSucursal", "NombreSucursal");
                 if (!ModelState.IsValid)
                 {
                     return View();
@@ -47,8 +48,9 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorioEjecutivo.InsertarEjecutivo(EjecutivoRegistrar);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }
