@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{71097459-340C-4FE5-9636-B77E184DA757}</ProjectGuid>
+    <ProjectGuid>{60064ABF-B152-4C7C-B15F-D0B2A50F8430}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SPC_Coopenae.DAL</RootNamespace>
@@ -39,8 +39,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConexionBD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ConexionBD.settings</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\ICategoriaRepositorio.cs" />
     <Compile Include="Interfaces\IColocacionCreditoRepositorio.cs" />
     <Compile Include="Interfaces\IColocacionProductoRepositorio.cs" />
@@ -65,48 +68,22 @@
     <Compile Include="Metodos\MProductosRepositorio.cs" />
     <Compile Include="Metodos\MSucursalRepositorio.cs" />
     <Compile Include="Metodos\MTipoCreditoRepositorio.cs" />
-    <Compile Include="ModelosBD.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelosBD.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelosBD.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelosBD.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SPC_BD.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SPC_Coopenae.DATA\SPC_Coopenae.DATA.csproj">
-      <Project>{04426405-777e-4817-b4d4-182bde0ee889}</Project>
-      <Name>SPC_Coopenae.DATA</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="ModelosBD.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelosBD.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="ModelosBD.edmx.diagram">
-      <DependentUpon>ModelosBD.edmx</DependentUpon>
+    <None Include="App.config" />
+    <None Include="ConexionBD.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ConexionBD.Designer.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelosBD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelosBD.Context.cs</LastGenOutput>
-      <DependentUpon>ModelosBD.edmx</DependentUpon>
-      <CustomToolNamespace>SPC_Coopenae.DATA</CustomToolNamespace>
-    </Content>
+    <ProjectReference Include="..\SPC_Coopenae.DATA\SPC_Coopenae.DATA.csproj">
+      <Project>{B3F95E5F-BC5A-4331-88A1-068FAED52D26}</Project>
+      <Name>SPC_Coopenae.DATA</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

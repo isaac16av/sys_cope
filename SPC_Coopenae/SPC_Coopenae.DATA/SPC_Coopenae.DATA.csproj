@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{04426405-777E-4817-B4D4-182BDE0EE889}</ProjectGuid>
+    <ProjectGuid>{B3F95E5F-BC5A-4331-88A1-068FAED52D26}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SPC_Coopenae.DATA</RootNamespace>
@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,45 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Categorias.cs">
-      <DependentUpon>ModelosBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ColocacionCredito.cs">
-      <DependentUpon>ModelosBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ColocacionProducto.cs">
-      <DependentUpon>ModelosBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Ejecutivos.cs">
-      <DependentUpon>ModelosBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MetasIDP.cs">
-      <DependentUpon>ModelosBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelosBD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelosBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Productos.cs">
-      <DependentUpon>ModelosBD.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Categorias.cs" />
+    <Compile Include="ColocacionCredito.cs" />
+    <Compile Include="ColocacionProducto.cs" />
+    <Compile Include="Ejecutivos.cs" />
+    <Compile Include="MetasIDP.cs" />
+    <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sucursal.cs">
-      <DependentUpon>ModelosBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TipoCredito.cs">
-      <DependentUpon>ModelosBD.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ModelosBD.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelosBD.cs</LastGenOutput>
-    </Content>
+    <Compile Include="Sucursal.cs" />
+    <Compile Include="TipoCredito.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

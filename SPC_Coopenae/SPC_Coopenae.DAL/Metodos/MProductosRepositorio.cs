@@ -13,7 +13,7 @@ namespace SPC_Coopenae.DAL.Metodos
     {
         public void ActualizarProductos(Productos productos)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 dbc.Entry(productos).State = EntityState.Modified;
                 dbc.SaveChanges();
@@ -22,7 +22,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public Productos BuscarProductos(int id)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.Productos.Find(id);
             }
@@ -30,7 +30,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void EliminarProductos(int id)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 var aEliminar = dbc.Productos.Find(id);
                 aEliminar.Estado = 0;
@@ -40,7 +40,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void InsertarProductos(Productos productos)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 dbc.Productos.Add(productos);
                 dbc.SaveChanges();
@@ -49,7 +49,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public List<Productos> ListarProductos()
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.Productos.Where(x => x.Estado == 1).ToList();
             }

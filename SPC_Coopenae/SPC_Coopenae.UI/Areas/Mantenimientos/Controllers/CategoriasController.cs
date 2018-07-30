@@ -44,8 +44,9 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorioCategoria.InsertarCategoria(CategoriaRegistrar);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }

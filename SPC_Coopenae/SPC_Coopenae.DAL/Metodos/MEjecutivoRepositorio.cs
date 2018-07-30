@@ -13,7 +13,7 @@ namespace SPC_Coopenae.DAL.Metodos
     {
         public void ActualizarEjecutivo(Ejecutivos ejecutivoP)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 dbc.Entry(ejecutivoP).State = EntityState.Modified;
                 
@@ -24,7 +24,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public Ejecutivos BuscarEjecutivo(int cedula)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 return dbc.Ejecutivos.Find(cedula);
             }
@@ -32,7 +32,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void EliminarEjecutivo(int cedula)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 var aEliminar = dbc.Ejecutivos.Find(cedula);
                 aEliminar.Estado = 0;
@@ -42,7 +42,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void InsertarEjecutivo(Ejecutivos ejecutivo)
         {
-            using (var dbc = new ConexionBD())
+            using (var dbc = new SPC_BD())
             {
                 dbc.Ejecutivos.Add(ejecutivo);
                 dbc.SaveChanges();
@@ -51,7 +51,7 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public List<Ejecutivos> ListarEjecutivos()
         {
-            using (var dbc  = new ConexionBD())
+            using (var dbc  = new SPC_BD())
             {
                 return dbc.Ejecutivos.Where(x => x.Estado == 1).ToList();
             }
