@@ -7,7 +7,6 @@ namespace SPC_Coopenae.DATA
     public class Sucursal
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int IdSucursal { get; set; }
         public string NombreSucursal { get; set; }
         public int Categoria { get; set; }
