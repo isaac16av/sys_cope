@@ -25,9 +25,18 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
         // GET: Mantenimientos/ColocacionCredito
         public ActionResult Index()
         {
-            var listarColCred = _repositorioColCred.ListarColocacionCredito();
-            var ColCredListado = Mapper.Map<List<Models.ColocacionCredito>>(listarColCred);
-            return View(ColCredListado);
+            try
+            {
+                var listarColCred = _repositorioColCred.ListarColocacionCredito();
+                var ColCredListado = Mapper.Map<List<Models.ColocacionCredito>>(listarColCred);
+                return View(ColCredListado);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+            
         }
 
         public ActionResult Registrar()

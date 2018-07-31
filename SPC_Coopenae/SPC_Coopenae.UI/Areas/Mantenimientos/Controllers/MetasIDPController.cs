@@ -22,9 +22,18 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Index()
         {
-            var metas = _repositorio.ListarMetasIDP();
-            var metasMostrar = Mapper.Map<List<Models.MetasIDP>>(metas);
-            return View(metasMostrar);
+            try
+            {
+                var metas = _repositorio.ListarMetasIDP();
+                var metasMostrar = Mapper.Map<List<Models.MetasIDP>>(metas);
+                return View(metasMostrar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+            
         }
 
         public ActionResult Registrar()

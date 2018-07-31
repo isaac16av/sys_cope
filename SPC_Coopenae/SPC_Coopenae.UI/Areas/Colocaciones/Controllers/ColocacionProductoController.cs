@@ -23,9 +23,18 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
 
         public ActionResult Index()
         {
-            var ListadoColocacionessBD = _repositorioColProd.ListarColocacionesProducto();
-            var ColocacionesMostrar = Mapper.Map<List<Models.ColocacionProducto>>(ListadoColocacionessBD);
-            return View(ColocacionesMostrar);
+            try
+            {
+                var ListadoColocacionessBD = _repositorioColProd.ListarColocacionesProducto();
+                var ColocacionesMostrar = Mapper.Map<List<Models.ColocacionProducto>>(ListadoColocacionessBD);
+                return View(ColocacionesMostrar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+            
         }
 
         public ActionResult Registrar()

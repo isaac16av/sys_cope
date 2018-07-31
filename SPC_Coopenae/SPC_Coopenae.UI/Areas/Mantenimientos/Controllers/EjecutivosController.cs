@@ -23,9 +23,18 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Index()
         {
-            var ListadoEjecutivosBD = _repositorioEjecutivo.ListarEjecutivos();
-            var EjecutivosMostrar = Mapper.Map<List<Models.Ejecutivos>>(ListadoEjecutivosBD);
-            return View(EjecutivosMostrar);
+            try
+            {
+                var ListadoEjecutivosBD = _repositorioEjecutivo.ListarEjecutivos();
+                var EjecutivosMostrar = Mapper.Map<List<Models.Ejecutivos>>(ListadoEjecutivosBD);
+                return View(EjecutivosMostrar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+            
         }
 
         public ActionResult Registrar()

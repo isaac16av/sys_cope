@@ -21,9 +21,18 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Index()
         {
-            var ListadoSucusalesBD = _repositorio.ListarSucursal();
-            var SucursalesMostrar = Mapper.Map<List<Models.Sucursal>>(ListadoSucusalesBD);
-            return View(SucursalesMostrar);
+            try
+            {
+                var ListadoSucusalesBD = _repositorio.ListarSucursal();
+                var SucursalesMostrar = Mapper.Map<List<Models.Sucursal>>(ListadoSucusalesBD);
+                return View(SucursalesMostrar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+            
         }
 
         public ActionResult Registrar()

@@ -21,9 +21,18 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Index()
         {
-            var ListadoProductosBD = _repositorioProductos.ListarProductos();
-            var ProductosMostrar = Mapper.Map<List<Models.Productos>>(ListadoProductosBD);
-            return View(ProductosMostrar);
+            try
+            {
+                var ListadoProductosBD = _repositorioProductos.ListarProductos();
+                var ProductosMostrar = Mapper.Map<List<Models.Productos>>(ListadoProductosBD);
+                return View(ProductosMostrar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+            
         }
 
         public ActionResult Registrar()

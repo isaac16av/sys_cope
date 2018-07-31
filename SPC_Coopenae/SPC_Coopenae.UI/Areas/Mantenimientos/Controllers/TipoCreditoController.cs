@@ -20,9 +20,18 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Index()
         {
-            var TipoCreditosBD = _repositorioTipoCredito.ListarTipoCredito();
-            var TipoCreditosMostrar = Mapper.Map<List<Models.TipoCredito>>(TipoCreditosBD);
-            return View(TipoCreditosMostrar);
+            try
+            {
+                var TipoCreditosBD = _repositorioTipoCredito.ListarTipoCredito();
+                var TipoCreditosMostrar = Mapper.Map<List<Models.TipoCredito>>(TipoCreditosBD);
+                return View(TipoCreditosMostrar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+            
         }
 
         public ActionResult Registrar()
