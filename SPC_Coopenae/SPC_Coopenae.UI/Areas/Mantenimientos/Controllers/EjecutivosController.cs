@@ -71,11 +71,12 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorioEjecutivo.EliminarEjecutivo(id);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
-            
+
         }
 
         public ActionResult Detalles(int id)
@@ -86,9 +87,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 var EjecutivoDetallar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
                 return View(EjecutivoDetallar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -101,9 +103,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 var EjecutivoEditar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
                 return View(EjecutivoEditar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -120,9 +123,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorioEjecutivo.ActualizarEjecutivo(EjecutivoEditarBD);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 

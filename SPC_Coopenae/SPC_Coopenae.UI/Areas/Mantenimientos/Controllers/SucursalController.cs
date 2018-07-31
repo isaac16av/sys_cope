@@ -53,8 +53,9 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorio.InsertarSucursal(SucursalRegistrar);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }
@@ -66,9 +67,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorio.EliminarSucursal(id);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
 
         }
@@ -81,9 +83,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 var SucursalDetallar = Mapper.Map<Models.Sucursal>(SucursalBuscar);
                 return View(SucursalDetallar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -95,9 +98,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 var SucursalEditar = Mapper.Map<Models.Sucursal>(SucursalBuscar);
                 return View(SucursalEditar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -114,9 +118,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorio.ActualizarSucursal(SucursalEditarBD);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 

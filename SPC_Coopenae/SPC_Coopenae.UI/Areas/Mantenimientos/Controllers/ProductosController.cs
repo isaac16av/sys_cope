@@ -53,8 +53,9 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorioProductos.InsertarProductos(ProductoRegistrar);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }
@@ -66,9 +67,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorioProductos.EliminarProductos(id);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
 
         }
@@ -81,9 +83,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 var ProductoDetallar = Mapper.Map<Models.Productos>(ProductoBuscar);
                 return View(ProductoDetallar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -95,9 +98,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 var ProductoEditar = Mapper.Map<Models.Productos>(ProductoBuscar);
                 return View(ProductoEditar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -114,9 +118,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorioProductos.ActualizarProductos(ProductoEditarBD);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
