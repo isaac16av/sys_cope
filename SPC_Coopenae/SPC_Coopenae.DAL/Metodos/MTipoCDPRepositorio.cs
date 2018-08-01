@@ -9,53 +9,52 @@ using System.Threading.Tasks;
 
 namespace SPC_Coopenae.DAL.Metodos
 {
-    public class MColocacionProductoRepositorio : IColocacionProductoRepositorio
+    public class MTipoCDPRepositorio : ITipoCDPRepositorio
     {
-        public void ActualizarColocacionProducto(ColocacionProducto colocacion)
+        public void ActualizarTipoCDP(TipoCDP tipocdp)
         {
             using (var dbc = new SPC_BD())
             {
-                dbc.Entry(colocacion).State = EntityState.Modified;
+                dbc.Entry(tipocdp).State = EntityState.Modified;
 
                 dbc.SaveChanges();
 
             }
         }
 
-        public ColocacionProducto BuscarColocacionProducto(int id)
+        public TipoCDP BuscarTipoCDP(int id)
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.ColocacionProducto.Find(id);
+                return dbc.TipoCDP.Find(id);
             }
         }
 
-        public void EliminarColocacionProducto(int id)
+        public void EliminarTipoCDP(int id)
         {
             using (var dbc = new SPC_BD())
             {
-                ColocacionProducto colocacion = dbc.ColocacionProducto.Find(id);
-                dbc.ColocacionProducto.Remove(colocacion);
+                TipoCDP colocacion = dbc.TipoCDP.Find(id);
+                dbc.TipoCDP.Remove(colocacion);
                 dbc.SaveChanges();
             }
         }
 
-        public void InsertarColocacionProducto(ColocacionProducto colocacion)
+        public void InsertarTipoCDP(TipoCDP tipocdp)
         {
             using (var dbc = new SPC_BD())
             {
-                dbc.ColocacionProducto.Add(colocacion);
+                dbc.TipoCDP.Add(tipocdp);
                 dbc.SaveChanges();
             }
         }
 
-        public List<ColocacionProducto> ListarColocacionesProducto()
+        public List<TipoCDP> ListarTipoCDP()
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.ColocacionProducto.ToList();
+                return dbc.TipoCDP.ToList();
             }
         }
-
     }
 }

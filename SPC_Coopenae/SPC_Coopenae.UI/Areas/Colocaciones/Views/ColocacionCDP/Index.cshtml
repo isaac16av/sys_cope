@@ -1,0 +1,124 @@
+﻿@model IEnumerable<SPC_Coopenae.UI.Areas.Colocaciones.Models.ColocacionCDP>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Registrar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdColocacionCDP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroTitulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CentroTrabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaEmision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sucursal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Periocidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontoCDP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlazoMeses)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TasaOtorgada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SobreTasa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ejecutivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoCDP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdColocacionCDP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroTitulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CentroTrabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaEmision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sucursal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Periocidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoCDP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlazoMeses)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TasaOtorgada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SobreTasa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ejecutivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoCDP)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id = item.IdColocacionCDP }) |
+            @Html.ActionLink("Detalles", "Detalles", new { id = item.IdColocacionCDP }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdColocacionCDP })
+        </td>
+    </tr>
+}
+
+</table>
