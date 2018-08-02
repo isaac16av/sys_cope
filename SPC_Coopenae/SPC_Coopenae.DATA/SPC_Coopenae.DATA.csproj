@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categorias.cs" />
+    <Compile Include="ColocacionCDP.cs" />
     <Compile Include="ColocacionCredito.cs" />
     <Compile Include="ColocacionProducto.cs" />
     <Compile Include="Ejecutivos.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sucursal.cs" />
+    <Compile Include="TipoCDP.cs" />
     <Compile Include="TipoCredito.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

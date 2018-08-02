@@ -32,6 +32,8 @@ namespace SPC_Coopenae.DAL
         public DbSet<Productos> Productos { get; set; }
         public DbSet<Sucursal> Sucursal { get; set; }
         public DbSet<TipoCredito> TipoCredito { get; set; }
+        public DbSet<ColocacionCDP> ColocacionCDP { get; set; }
+        public DbSet<TipoCDP> TipoCDP { get; set; }
 
     }
 
