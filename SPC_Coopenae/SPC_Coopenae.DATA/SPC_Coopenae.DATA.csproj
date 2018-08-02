@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Afiliaciones.cs" />
     <Compile Include="Categorias.cs" />
     <Compile Include="ColocacionCDP.cs" />
     <Compile Include="ColocacionCredito.cs" />
     <Compile Include="ColocacionProducto.cs" />
+    <Compile Include="ComisionAfiliacion.cs" />
     <Compile Include="Ejecutivos.cs" />
     <Compile Include="MetasIDP.cs" />
     <Compile Include="Productos.cs" />
