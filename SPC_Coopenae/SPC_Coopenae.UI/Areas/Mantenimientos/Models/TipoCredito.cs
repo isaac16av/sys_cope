@@ -14,7 +14,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
         public string NombreDeCredito { get; set; }
         [Display(Name = "Comisión diferente")]
         public decimal ComisionDirefente { get; set; }
-        [Display(Name = "Estado")]
         public int Estado { get; set; }
     }
 }
