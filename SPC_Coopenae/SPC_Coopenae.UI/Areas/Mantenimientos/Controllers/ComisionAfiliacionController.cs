@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using SPC_Coopenae.DAL.Interfaces;
 using SPC_Coopenae.DAL.Metodos;
+using SPC_Coopenae.DATA;
+using SPC_Coopenae.UI.Areas.Mantenimientos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,52 +11,47 @@ using System.Web.Mvc;
 
 namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 {
-    public class EjecutivosController : Controller
+    public class ComisionAfiliacionController : Controller
     {
+        IComisionAfiliacionRepositorio _repositorioComA;
 
-        IEjectutivoRepositorio _repositorioEjecutivo;
-        ISucursalRepositorio _repositorioSucursal;
-
-        public EjecutivosController()
+        public ComisionAfiliacionController()
         {
-            _repositorioEjecutivo = new MEjecutivoRepositorio();
-            _repositorioSucursal = new MSucursalRepositorio();
+            _repositorioComA = new MComisionAfiliacionRepositorio();
         }
 
         public ActionResult Index()
         {
             try
             {
-                var ListadoEjecutivosBD = _repositorioEjecutivo.ListarEjecutivos();
-                var EjecutivosMostrar = Mapper.Map<List<Models.Ejecutivos>>(ListadoEjecutivosBD);
-                return View(EjecutivosMostrar);
+                var listadoComisionAfiliacion = _repositorioComA.ListarComisionAfiliacion();
+                var ComisionAfiliacionMostrar = Mapper.Map<List<Models.ComisionAfiliacion>>(listadoComisionAfiliacion);
+                return View(ComisionAfiliacionMostrar);
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
-            
+           
         }
 
         public ActionResult Registrar()
         {
-            ViewBag.listaSucursales = new SelectList(_repositorioSucursal.ListarSucursal(), "IdSucursal", "NombreSucursal");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Registrar(Models.Ejecutivos ejecutivoP)
+        public ActionResult Registrar(Models.ComisionAfiliacion comA)
         {
             try
             {
-                ViewBag.listaSucursales = new SelectList(_repositorioSucursal.ListarSucursal(), "IdSucursal", "NombreSucursal");
                 if (!ModelState.IsValid)
                 {
                     return View();
                 }
-                var EjecutivoRegistrar = Mapper.Map<DATA.Ejecutivos>(ejecutivoP);
-                _repositorioEjecutivo.InsertarEjecutivo(EjecutivoRegistrar);
+                var comisionAfiliacionRegistrar = Mapper.Map<DATA.ComisionAfiliacion>(comA);
+                _repositorioComA.InsertarComisionAfiliacion(comisionAfiliacionRegistrar);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -68,7 +65,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                _repositorioEjecutivo.EliminarEjecutivo(id);
+                _repositorioComA.EliminarComisionAfiliacion(id);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -76,16 +73,17 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
-
+ 
         }
+
 
         public ActionResult Detalles(int id)
         {
             try
             {
-                var EjecutivoBuscar = _repositorioEjecutivo.BuscarEjecutivo(id);
-                var EjecutivoDetallar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
-                return View(EjecutivoDetallar);
+                var comisionAfiliacionBuscar = _repositorioComA.BuscarComisionAfiliacion(id);
+                var comisionAfiliacionDetallar = Mapper.Map<Models.ComisionAfiliacion>(comisionAfiliacionBuscar);
+                return View(comisionAfiliacionDetallar);
             }
             catch (Exception ex)
             {
@@ -93,25 +91,26 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 return View();
             }
         }
+
 
         public ActionResult Editar(int id)
         {
             try
             {
-                ViewBag.listaSucursales = new SelectList(_repositorioSucursal.ListarSucursal(), "IdSucursal", "NombreSucursal");
-                var EjecutivoBuscar = _repositorioEjecutivo.BuscarEjecutivo(id);
-                var EjecutivoEditar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
-                return View(EjecutivoEditar);
+                var comisionAfiliacionBuscar = _repositorioComA.BuscarComisionAfiliacion(id);
+                var comisionAfiliacionEditar = Mapper.Map<Models.ComisionAfiliacion>(comisionAfiliacionBuscar);
+                return View(comisionAfiliacionEditar);
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
+
         }
 
         [HttpPost]
-        public ActionResult Editar(Models.Ejecutivos ejecutivoP)
+        public ActionResult Editar(Models.ComisionAfiliacion comA)
         {
             try
             {
@@ -119,8 +118,8 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 {
                     return View();
                 }
-                var EjecutivoEditarBD = Mapper.Map<DATA.Ejecutivos>(ejecutivoP);
-                _repositorioEjecutivo.ActualizarEjecutivo(EjecutivoEditarBD);
+                var comisionAfiliacionEditarBD = Mapper.Map<DATA.ComisionAfiliacion>(comA);
+                _repositorioComA.ActualizarComisionAfiliacion(comisionAfiliacionEditarBD);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -129,6 +128,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 return View();
             }
         }
-
+        
     }
+
 }

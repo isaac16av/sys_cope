@@ -20,9 +20,18 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Index()
         {
-            var TipoCreditosBD = _repositorioTipoCredito.ListarTipoCredito();
-            var TipoCreditosMostrar = Mapper.Map<List<Models.TipoCredito>>(TipoCreditosBD);
-            return View(TipoCreditosMostrar);
+            try
+            {
+                var TipoCreditosBD = _repositorioTipoCredito.ListarTipoCredito();
+                var TipoCreditosMostrar = Mapper.Map<List<Models.TipoCredito>>(TipoCreditosBD);
+                return View(TipoCreditosMostrar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+            
         }
 
         public ActionResult Registrar()
@@ -43,8 +52,9 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorioTipoCredito.InsertarTipoCredito(TipoCreditoRegistrar);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }
@@ -56,9 +66,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorioTipoCredito.EliminarTipoCredito(id);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -70,9 +81,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 var TipoCreditoMostrar = Mapper.Map<Models.TipoCredito>(TipoCreditoBuscar);
                 return View(TipoCreditoMostrar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -84,9 +96,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 var TipoCreditoEditar = Mapper.Map<Models.TipoCredito>(TipoCreditoBuscar);
                 return View(TipoCreditoEditar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -103,8 +116,9 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorioTipoCredito.ActualizarTipoCredito(TipoCreditoEditarBD);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }

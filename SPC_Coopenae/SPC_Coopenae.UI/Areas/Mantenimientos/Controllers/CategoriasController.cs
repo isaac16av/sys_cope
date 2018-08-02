@@ -20,9 +20,18 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Index()
         {
-            var ListadoCategoriasBD = _repositorioCategoria.ListarCategorias();
-            var CategoriasMostrar = Mapper.Map<List<Models.Categorias>>(ListadoCategoriasBD);
-            return View(CategoriasMostrar);
+            try
+            {
+                var ListadoCategoriasBD = _repositorioCategoria.ListarCategorias();
+                var CategoriasMostrar = Mapper.Map<List<Models.Categorias>>(ListadoCategoriasBD);
+                return View(CategoriasMostrar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+            
         }
 
 
@@ -58,9 +67,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorioCategoria.EliminarCategoria(id);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
 
         }
@@ -73,9 +83,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 var CategoriaDetallar = Mapper.Map<Models.Categorias>(CategoriaBuscar);
                 return View(CategoriaDetallar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 

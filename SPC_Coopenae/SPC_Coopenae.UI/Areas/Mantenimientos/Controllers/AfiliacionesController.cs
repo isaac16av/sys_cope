@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SPC_Coopenae.DAL.Interfaces;
 using SPC_Coopenae.DAL.Metodos;
+using SPC_Coopenae.DATA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +10,26 @@ using System.Web.Mvc;
 
 namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 {
-    public class EjecutivosController : Controller
+    public class AfiliacionesController : Controller
     {
-
+        IAfiliacionRepositorio _repositorioAfiliacion;
         IEjectutivoRepositorio _repositorioEjecutivo;
-        ISucursalRepositorio _repositorioSucursal;
+        IComisionAfiliacionRepositorio _repositorioComA;
 
-        public EjecutivosController()
+        public AfiliacionesController()
         {
+            _repositorioAfiliacion = new MAfiliacionRepositorio();
             _repositorioEjecutivo = new MEjecutivoRepositorio();
-            _repositorioSucursal = new MSucursalRepositorio();
+            _repositorioComA = new MComisionAfiliacionRepositorio();
         }
 
         public ActionResult Index()
         {
             try
             {
-                var ListadoEjecutivosBD = _repositorioEjecutivo.ListarEjecutivos();
-                var EjecutivosMostrar = Mapper.Map<List<Models.Ejecutivos>>(ListadoEjecutivosBD);
-                return View(EjecutivosMostrar);
+                var listadoAfiliacionesBD = _repositorioAfiliacion.ListarAfiliaciones();
+                var afiliacionesMostrar = Mapper.Map<List<Models.Afiliaciones>>(listadoAfiliacionesBD);
+                return View(afiliacionesMostrar);
             }
             catch (Exception ex)
             {
@@ -39,22 +41,22 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Registrar()
         {
-            ViewBag.listaSucursales = new SelectList(_repositorioSucursal.ListarSucursal(), "IdSucursal", "NombreSucursal");
+            ViewBag.listaEjecutivos = new SelectList(_repositorioAfiliacion.ListarAfiliaciones(), "Cedula", "Nombre");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Registrar(Models.Ejecutivos ejecutivoP)
+        public ActionResult Registrar(Models.Afiliaciones a)
         {
             try
             {
-                ViewBag.listaSucursales = new SelectList(_repositorioSucursal.ListarSucursal(), "IdSucursal", "NombreSucursal");
+                ViewBag.listaEjecutivos = new SelectList(_repositorioAfiliacion.ListarAfiliaciones(), "Cedula", "Nombre");
                 if (!ModelState.IsValid)
                 {
                     return View();
                 }
-                var EjecutivoRegistrar = Mapper.Map<DATA.Ejecutivos>(ejecutivoP);
-                _repositorioEjecutivo.InsertarEjecutivo(EjecutivoRegistrar);
+                var AfiliacionRegistrar = Mapper.Map<DATA.Afiliaciones>(a);
+                _repositorioAfiliacion.InsertarAfiliacion(AfiliacionRegistrar);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -68,7 +70,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                _repositorioEjecutivo.EliminarEjecutivo(id);
+                _repositorioAfiliacion.BuscarAfiliacion(id);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -76,16 +78,15 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
-
         }
 
         public ActionResult Detalles(int id)
         {
             try
             {
-                var EjecutivoBuscar = _repositorioEjecutivo.BuscarEjecutivo(id);
-                var EjecutivoDetallar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
-                return View(EjecutivoDetallar);
+                var AfiliacionBuscar = _repositorioAfiliacion.BuscarAfiliacion(id);
+                var AfiliacionDetallar = Mapper.Map<Models.Afiliaciones>(AfiliacionBuscar);
+                return View(AfiliacionDetallar);
             }
             catch (Exception ex)
             {
@@ -98,10 +99,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                ViewBag.listaSucursales = new SelectList(_repositorioSucursal.ListarSucursal(), "IdSucursal", "NombreSucursal");
-                var EjecutivoBuscar = _repositorioEjecutivo.BuscarEjecutivo(id);
-                var EjecutivoEditar = Mapper.Map<Models.Ejecutivos>(EjecutivoBuscar);
-                return View(EjecutivoEditar);
+                ViewBag.listaEjecutivos = new SelectList(_repositorioAfiliacion.ListarAfiliaciones(), "IdAfiliacion", "Nombre");
+                var AfiliacionBuscar = _repositorioAfiliacion.BuscarAfiliacion(id);
+                var AfiliacionEditar = Mapper.Map<Models.Afiliaciones>(AfiliacionBuscar);
+                return View(AfiliacionEditar);
             }
             catch (Exception ex)
             {
@@ -109,9 +110,8 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 return View();
             }
         }
-
         [HttpPost]
-        public ActionResult Editar(Models.Ejecutivos ejecutivoP)
+        public ActionResult Editar(Models.Afiliaciones a)
         {
             try
             {
@@ -119,9 +119,11 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 {
                     return View();
                 }
-                var EjecutivoEditarBD = Mapper.Map<DATA.Ejecutivos>(ejecutivoP);
-                _repositorioEjecutivo.ActualizarEjecutivo(EjecutivoEditarBD);
+
+                var afiliacionEditarBD = Mapper.Map<DATA.Afiliaciones>(a);
+                _repositorioAfiliacion.ActualizarAfiliacion(afiliacionEditarBD);
                 return RedirectToAction("Index");
+                
             }
             catch (Exception ex)
             {
@@ -129,6 +131,5 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 return View();
             }
         }
-
     }
 }

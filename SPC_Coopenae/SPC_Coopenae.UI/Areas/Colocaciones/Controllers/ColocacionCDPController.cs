@@ -1,49 +1,46 @@
-﻿using System;
+﻿using AutoMapper;
+using SPC_Coopenae.DAL.Interfaces;
+using SPC_Coopenae.DAL.Metodos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AutoMapper;
-using SPC_Coopenae.DAL.Interfaces;
-using SPC_Coopenae.DAL.Metodos;
-using SPC_Coopenae.DATA;
 
 namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
 {
-    public class ColocacionCreditoController : Controller
+    public class ColocacionCDPController : Controller
     {
 
-        IColocacionCreditoRepositorio _repositorioColCred;
-        ITipoCreditoRepositorio _repositorioTipoCred;
+        IColocacionCDPRepositorio _repositorioCDP;
+        ITipoCDPRepositorio _repositorioTipoCDP;
 
-        public ColocacionCreditoController()
+        public ColocacionCDPController()
         {
-            _repositorioColCred = new MColocacionCreditoRepositorio();
-            _repositorioTipoCred = new MTipoCreditoRepositorio();
+            _repositorioCDP = new MColocacionCDPRepositorio();
+            _repositorioTipoCDP = new MTipoCDPRepositorio();
         }
 
-        // GET: Mantenimientos/ColocacionCredito
         public ActionResult Index()
         {
             try
             {
-                var listarColCred = _repositorioColCred.ListarColocacionCredito();
-                var ColCredListado = Mapper.Map<List<Models.ColocacionCredito>>(listarColCred);
-                return View(ColCredListado);
+                var ListaCDPsBD = _repositorioCDP.ListarCDP();
+                var ListaMostrarCDPs = Mapper.Map<List<Models.ColocacionCDP>>(ListaCDPsBD);
+                return View(ListaMostrarCDPs);
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
-            
         }
 
         public ActionResult Registrar()
         {
             try
             {
-                ViewBag.listaTipos = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdCredito", "NombreDeCredito");
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
                 return View();
             }
             catch (Exception ex)
@@ -56,17 +53,17 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
 
 
         [HttpPost]
-        public ActionResult Registrar(Models.ColocacionCredito colCred)
+        public ActionResult Registrar(Models.ColocacionCDP colocacionCDP)
         {
             try
             {
-                ViewBag.listaTipos = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdCredito", "NombreDeCredito");
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
                 if (!ModelState.IsValid)
                 {
                     return View();
                 }
-                var col = Mapper.Map<DATA.ColocacionCredito>(colCred);
-                _repositorioColCred.InsertarColocacionCredito(col);
+                var colocacion = Mapper.Map<DATA.ColocacionCDP>(colocacionCDP);
+                _repositorioCDP.InsertarCDP(colocacion);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -80,7 +77,7 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
         {
             try
             {
-                _repositorioColCred.EliminarColocacionCredito(id);
+                _repositorioCDP.EliminarCDP(id);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -94,9 +91,9 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
         {
             try
             {
-                var colCredBuscar = _repositorioColCred.BuscarColocacionCredito(id);
-                var colCredDetallar = Mapper.Map<Models.ColocacionCredito>(colCredBuscar);
-                return View(colCredDetallar);
+                var colCDPBuscar = _repositorioCDP.BuscarCDP(id);
+                var colCDPDetallar = Mapper.Map<Models.ColocacionCDP>(colCDPBuscar);
+                return View(colCDPDetallar);
             }
             catch (Exception ex)
             {
@@ -109,10 +106,10 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
         {
             try
             {
-                ViewBag.listaTipos = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdCredito", "NombreDeCredito");
-                var ColCredBuscar = _repositorioColCred.BuscarColocacionCredito(id);
-                var ColCredEditar = Mapper.Map<Models.ColocacionCredito>(ColCredBuscar);
-                return View(ColCredEditar);
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
+                var ColCDPBuscar = _repositorioCDP.BuscarCDP(id);
+                var ColCDPEditar = Mapper.Map<Models.ColocacionCDP>(ColCDPBuscar);
+                return View(ColCDPEditar);
             }
             catch (Exception ex)
             {
@@ -122,17 +119,17 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
         }
 
         [HttpPost]
-        public ActionResult Editar(ColocacionCredito colCred)
+        public ActionResult Editar(Models.ColocacionCDP colCDP)
         {
             try
             {
-                ViewBag.listaTipos = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdCredito", "NombreDeCredito");
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
                 if (!ModelState.IsValid)
                 {
                     return View();
                 }
-                var ColCredEditar = Mapper.Map<DATA.ColocacionCredito>(colCred);
-                _repositorioColCred.ActualizarColocacionCredito(ColCredEditar);
+                var ColCDPEditar = Mapper.Map<DATA.ColocacionCDP>(colCDP);
+                _repositorioCDP.ActualizarCDP(ColCDPEditar);
                 return RedirectToAction("Index");
 
             }

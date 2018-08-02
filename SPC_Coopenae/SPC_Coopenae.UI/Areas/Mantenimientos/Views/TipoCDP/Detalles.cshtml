@@ -1,0 +1,59 @@
+﻿@model SPC_Coopenae.UI.Areas.Mantenimientos.Models.TipoCDP
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>TipoCDP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdTipoCDP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdTipoCDP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Moneda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Moneda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comision)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comision)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.IdTipoCDP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

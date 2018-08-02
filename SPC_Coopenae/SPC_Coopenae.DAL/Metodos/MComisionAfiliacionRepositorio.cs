@@ -9,53 +9,53 @@ using System.Threading.Tasks;
 
 namespace SPC_Coopenae.DAL.Metodos
 {
-    public class MColocacionProductoRepositorio : IColocacionProductoRepositorio
+    public class MComisionAfiliacionRepositorio : IComisionAfiliacionRepositorio
     {
-        public void ActualizarColocacionProducto(ColocacionProducto colocacion)
+        public void ActualizarComisionAfiliacion(ComisionAfiliacion comA)
         {
             using (var dbc = new SPC_BD())
             {
-                dbc.Entry(colocacion).State = EntityState.Modified;
+                dbc.Entry(comA).State = EntityState.Modified;
 
-                dbc.SaveChanges();
-
-            }
-        }
-
-        public ColocacionProducto BuscarColocacionProducto(int id)
-        {
-            using (var dbc = new SPC_BD())
-            {
-                return dbc.ColocacionProducto.Find(id);
-            }
-        }
-
-        public void EliminarColocacionProducto(int id)
-        {
-            using (var dbc = new SPC_BD())
-            {
-                ColocacionProducto colocacion = dbc.ColocacionProducto.Find(id);
-                dbc.ColocacionProducto.Remove(colocacion);
                 dbc.SaveChanges();
             }
         }
 
-        public void InsertarColocacionProducto(ColocacionProducto colocacion)
+        public ComisionAfiliacion BuscarComisionAfiliacion(int id)
         {
             using (var dbc = new SPC_BD())
             {
-                dbc.ColocacionProducto.Add(colocacion);
+                return dbc.ComisionAfiliacion.Find(id);
+            }
+        }
+
+        public void EliminarComisionAfiliacion(int id)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                var eComisionAfiliacion = dbc.ComisionAfiliacion.Find(id);
+                dbc.ComisionAfiliacion.Remove(eComisionAfiliacion);
+
                 dbc.SaveChanges();
             }
         }
 
-        public List<ColocacionProducto> ListarColocacionesProducto()
+        public void InsertarComisionAfiliacion(ComisionAfiliacion comA)
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.ColocacionProducto.ToList();
+                dbc.ComisionAfiliacion.Add(comA);
+
+                dbc.SaveChanges();
             }
         }
 
+        public List<ComisionAfiliacion> ListarComisionAfiliacion()
+        {
+            using (var dbc = new SPC_BD())
+            {
+                return dbc.ComisionAfiliacion.ToList();
+            }
+        }
     }
 }

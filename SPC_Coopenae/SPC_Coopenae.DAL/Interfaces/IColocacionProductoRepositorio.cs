@@ -11,7 +11,6 @@ namespace SPC_Coopenae.DAL.Interfaces
     {
 
         List<ColocacionProducto> ListarColocacionesProducto();
-        List<ColocacionProducto> ListarColocacionesProductoPorEjecutivo(int cedula);
         ColocacionProducto BuscarColocacionProducto(int id);
         void InsertarColocacionProducto(ColocacionProducto colocacion);
         void ActualizarColocacionProducto(ColocacionProducto colocacion);

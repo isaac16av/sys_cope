@@ -22,9 +22,18 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Index()
         {
-            var metas = _repositorio.ListarMetasIDP();
-            var metasMostrar = Mapper.Map<List<Models.MetasIDP>>(metas);
-            return View(metasMostrar);
+            try
+            {
+                var metas = _repositorio.ListarMetasIDP();
+                var metasMostrar = Mapper.Map<List<Models.MetasIDP>>(metas);
+                return View(metasMostrar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+            
         }
 
         public ActionResult Registrar()
@@ -46,8 +55,9 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 return RedirectToAction("Index");
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }
@@ -59,9 +69,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorio.EliminarMeta(id);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
 
         }
@@ -74,9 +85,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 var MetaDetallar = Mapper.Map<Models.MetasIDP>(MetaBuscar);
                 return View(MetaDetallar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -88,9 +100,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 var MetaEditar = Mapper.Map<Models.MetasIDP>(MetaBuscar);
                 return View(MetaEditar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -107,9 +120,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 _repositorio.ActualizarMeta(MetaEditarBD);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 

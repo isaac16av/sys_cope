@@ -23,9 +23,18 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
 
         public ActionResult Index()
         {
-            var ListadoColocacionessBD = _repositorioColProd.ListarColocacionesProducto();
-            var ColocacionesMostrar = Mapper.Map<List<Models.ColocacionProducto>>(ListadoColocacionessBD);
-            return View(ColocacionesMostrar);
+            try
+            {
+                var ListadoColocacionessBD = _repositorioColProd.ListarColocacionesProducto();
+                var ColocacionesMostrar = Mapper.Map<List<Models.ColocacionProducto>>(ListadoColocacionessBD);
+                return View(ColocacionesMostrar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+            
         }
 
         public ActionResult Registrar()
@@ -48,8 +57,9 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
                 _repositorioColProd.InsertarColocacionProducto(ColocacionRegistrar);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }
@@ -61,9 +71,10 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
                 _repositorioColProd.EliminarColocacionProducto(id);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
 
         }
@@ -76,9 +87,10 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
                 var ColocacionDetallar = Mapper.Map<Models.ColocacionProducto>(ColocacionBuscar);
                 return View(ColocacionDetallar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -91,9 +103,10 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
                 var ColocacionEditar = Mapper.Map<Models.ColocacionProducto>(ColocacionBuscar);
                 return View(ColocacionEditar);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 
@@ -111,9 +124,10 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
                 _repositorioColProd.ActualizarColocacionProducto(ColocacionEditarBD);
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
             }
         }
 

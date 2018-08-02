@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SPC_Coopenae.UI.Areas.Mantenimientos.Models.ComisionAfiliacion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdComisionAfiliacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comision)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdComisionAfiliacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comision)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Editar", new {  id=item.IdComisionAfiliacion  }) |
+            @Html.ActionLink("Details", "Detalles", new { id = item.IdComisionAfiliacion }) |
+            @Html.ActionLink("Delete", "Eliminar", new { id = item.IdComisionAfiliacion })
+        </td>
+    </tr>
+}
+
+</table>
