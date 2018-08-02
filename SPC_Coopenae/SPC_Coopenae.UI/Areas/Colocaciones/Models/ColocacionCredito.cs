@@ -18,17 +18,17 @@ namespace SPC_Coopenae.UI.Areas.Colocaciones.Models
         public int Cedula { get; set; }
         [Required(ErrorMessage = "El campo centro de trabajo es requerido")]
         public string CentroTrabajo { get; set; }
-        [Required(ErrorMessage = "El campo Sector es requerido")]
+        [Required(ErrorMessage = "El campo sector es requerido")]
         public string Sector { get; set; }
-        [DataType(DataType.DateTime)]
+        
         public System.DateTime FechaAfiliacion { get; set; }
         [Display(Name = "Número de operación")]
         public int NumeroOperacion { get; set; }
-        [Required(ErrorMessage = "El campo Sucursal es requerido")]
+        [Required(ErrorMessage = "El campo sucursal es requerido")]
         public string Sucursal { get; set; }
-        [Display(Name = "Monto desembolsado")]
+        [Display(Name = "monto desembolsado")]
         public decimal MontoDesembolsado { get; set; }
-        [Required(ErrorMessage = "El campo Plazo de meses es requerido")]
+        [Required(ErrorMessage = "El campo plazo de meses es requerido")]
         public string PlazoMeses { get; set; }
         [Display(Name = "Tipo de crédito")]
         public int TipoCredito { get; set; }
