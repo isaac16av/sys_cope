@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Interfaces\IAfiliacionRepositorio.cs" />
     <Compile Include="Interfaces\ICategoriaRepositorio.cs" />
+    <Compile Include="Interfaces\IColocacionCDPRepositorio.cs" />
     <Compile Include="Interfaces\IColocacionCreditoRepositorio.cs" />
     <Compile Include="Interfaces\IColocacionProductoRepositorio.cs" />
     <Compile Include="Interfaces\IComisionAfiliacionRepositorio.cs" />
@@ -61,9 +62,11 @@
     <Compile Include="Interfaces\IMetaRepositorio.cs" />
     <Compile Include="Interfaces\IProductosRepositorio.cs" />
     <Compile Include="Interfaces\ISucursalRepositorio.cs" />
+    <Compile Include="Interfaces\ITipoCDPRepositorio.cs" />
     <Compile Include="Interfaces\ITipoCreditoRepositorio.cs" />
     <Compile Include="Metodos\MAfiliacionRepositorio.cs" />
     <Compile Include="Metodos\MCategoriaRepositorio.cs" />
+    <Compile Include="Metodos\MColocacionCDPRepositorio.cs" />
     <Compile Include="Metodos\MColocacionCreditoRepositorio.cs" />
     <Compile Include="Metodos\MColocacionProductoRepositorio.cs" />
     <Compile Include="Metodos\MComisionAfiliacionRepositorio.cs" />
@@ -71,6 +74,7 @@
     <Compile Include="Metodos\MMetaRepositorio.cs" />
     <Compile Include="Metodos\MProductosRepositorio.cs" />
     <Compile Include="Metodos\MSucursalRepositorio.cs" />
+    <Compile Include="Metodos\MTipoCDPRepositorio.cs" />
     <Compile Include="Metodos\MTipoCreditoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SPC_BD.cs" />

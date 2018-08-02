@@ -42,6 +42,10 @@ namespace SPC_Coopenae
                 cfg.CreateMap<UI.Areas.Mantenimientos.Models.ComisionAfiliacion, DATA.ComisionAfiliacion>();
                 cfg.CreateMap<DATA.ComisionAfiliacion, UI.Areas.Mantenimientos.Models.ComisionAfiliacion>();
 
+                cfg.CreateMap<UI.Areas.Colocaciones.Models.ColocacionCDP, DATA.ColocacionCDP>();
+                cfg.CreateMap<DATA.ColocacionCDP, UI.Areas.Colocaciones.Models.ColocacionCDP>();
+
+
             });
         }
     }
