@@ -8,19 +8,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
+namespace SPC_Coopenae.UI.Areas.Colocaciones.Controllers
 {
     public class AfiliacionesController : Controller
     {
         IAfiliacionRepositorio _repositorioAfiliacion;
-        IEjectutivoRepositorio _repositorioEjecutivo;
-        IComisionAfiliacionRepositorio _repositorioComA;
+        IComisionAfiliacionRepositorio _repositorioComision;
 
         public AfiliacionesController()
         {
             _repositorioAfiliacion = new MAfiliacionRepositorio();
-            _repositorioEjecutivo = new MEjecutivoRepositorio();
-            _repositorioComA = new MComisionAfiliacionRepositorio();
+            _repositorioComision = new MComisionAfiliacionRepositorio();
         }
 
         public ActionResult Index()
@@ -41,7 +39,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Registrar()
         {
-            ViewBag.listaEjecutivos = new SelectList(_repositorioAfiliacion.ListarAfiliaciones(), "Cedula", "Nombre");
+            ViewBag.listaComisiones = new SelectList(_repositorioComision.ListarComisionAfiliacion(), "IdComisionAfiliacion", "Comision");
             return View();
         }
 
@@ -50,7 +48,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                ViewBag.listaEjecutivos = new SelectList(_repositorioAfiliacion.ListarAfiliaciones(), "Cedula", "Nombre");
+                ViewBag.listaComisiones = new SelectList(_repositorioComision.ListarComisionAfiliacion(), "IdComisionAfiliacion", "Comision");
                 if (!ModelState.IsValid)
                 {
                     return View();
@@ -99,7 +97,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                ViewBag.listaEjecutivos = new SelectList(_repositorioAfiliacion.ListarAfiliaciones(), "IdAfiliacion", "Nombre");
+                ViewBag.listaComisiones = new SelectList(_repositorioComision.ListarComisionAfiliacion(), "IdComisionAfiliacion", "Comision");
                 var AfiliacionBuscar = _repositorioAfiliacion.BuscarAfiliacion(id);
                 var AfiliacionEditar = Mapper.Map<Models.Afiliaciones>(AfiliacionBuscar);
                 return View(AfiliacionEditar);
@@ -115,6 +113,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.listaComisiones = new SelectList(_repositorioComision.ListarComisionAfiliacion(), "IdComisionAfiliacion", "Comision");
                 if (!ModelState.IsValid)
                 {
                     return View();

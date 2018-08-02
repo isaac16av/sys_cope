@@ -160,7 +160,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Colocaciones\ColocacionesAreaRegistration.cs" />
     <Compile Include="Areas\Colocaciones\Controllers\ValidaEjecutivoController.cs" />
-    <Compile Include="Areas\Mantenimientos\Controllers\AfiliacionesController.cs" />
+    <Compile Include="Areas\Colocaciones\Controllers\AfiliacionesController.cs" />
     <Compile Include="Areas\Colocaciones\Controllers\ColocacionCDPController.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\CategoriasController.cs" />
     <Compile Include="Areas\Colocaciones\Controllers\ColocacionCreditoController.cs" />
@@ -173,7 +173,7 @@
     <Compile Include="Areas\Mantenimientos\Controllers\TipoCDPController.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\TipoCreditoController.cs" />
     <Compile Include="Areas\Mantenimientos\MantenimientosAreaRegistration.cs" />
-    <Compile Include="Areas\Mantenimientos\Models\Afiliaciones.cs" />
+    <Compile Include="Areas\Colocaciones\Models\Afiliaciones.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Categorias.cs" />
     <Compile Include="Areas\Colocaciones\Models\ColocacionCredito.cs" />
     <Compile Include="Areas\Colocaciones\Models\ColocacionProducto.cs" />
@@ -256,14 +256,12 @@
     <Content Include="Areas\Mantenimientos\Views\TipoCredito\Registrar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\TipoCredito\Detalles.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\TipoCredito\Editar.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\Afiliaciones\Index.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\Afiliaciones\Registrar.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\Afiliaciones\Eliminar.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\Afiliaciones\Detalles.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\Afiliaciones\Editar.cshtml" />
+    <Content Include="Areas\Colocaciones\Views\Afiliaciones\Index.cshtml" />
+    <Content Include="Areas\Colocaciones\Views\Afiliaciones\Registrar.cshtml" />
+    <Content Include="Areas\Colocaciones\Views\Afiliaciones\Detalles.cshtml" />
+    <Content Include="Areas\Colocaciones\Views\Afiliaciones\Editar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\ComisionAfiliacion\Index.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\ComisionAfiliacion\Registrar.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\ComisionAfiliacion\Eliminar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\ComisionAfiliacion\Detalles.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\ComisionAfiliacion\Editar.cshtml" />
     <Content Include="Areas\Colocaciones\Views\ColocacionCDP\Index.cshtml" />

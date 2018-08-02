@@ -34,7 +34,7 @@ namespace SPC_Coopenae.DAL.Metodos
             using (var dbc = new SPC_BD())
             {
                 var eAfiliacion = dbc.Afiliaciones.Find(id);
-                eAfiliacion.Estado = 0;
+                dbc.Afiliaciones.Remove(eAfiliacion);
                 dbc.SaveChanges();
             }
         }
