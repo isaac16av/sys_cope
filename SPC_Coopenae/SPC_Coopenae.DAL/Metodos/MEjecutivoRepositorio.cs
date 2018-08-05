@@ -11,7 +11,7 @@ namespace SPC_Coopenae.DAL.Metodos
 {
     public class MEjecutivoRepositorio : IEjectutivoRepositorio
     {
-        public void ActualizarEjecutivo(Ejecutivos ejecutivoP)
+        public void ActualizarEjecutivo(Ejecutivo ejecutivoP)
         {
             using (var dbc = new SPC_BD())
             {
@@ -22,11 +22,11 @@ namespace SPC_Coopenae.DAL.Metodos
             }
         }
 
-        public Ejecutivos BuscarEjecutivo(int cedula)
+        public Ejecutivo BuscarEjecutivo(int cedula)
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.Ejecutivos.Find(cedula);
+                return dbc.Ejecutivo.Find(cedula);
             }
         }
 
@@ -34,26 +34,26 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                var aEliminar = dbc.Ejecutivos.Find(cedula);
-                aEliminar.Estado = 0;
+                var aEliminar = dbc.Ejecutivo.Find(cedula);
+                aEliminar.Estado = false;
                 dbc.SaveChanges();
             }
         }
 
-        public void InsertarEjecutivo(Ejecutivos ejecutivo)
+        public void InsertarEjecutivo(Ejecutivo ejecutivo)
         {
             using (var dbc = new SPC_BD())
             {
-                dbc.Ejecutivos.Add(ejecutivo);
+                dbc.Ejecutivo.Add(ejecutivo);
                 dbc.SaveChanges();
             }
         }
 
-        public List<Ejecutivos> ListarEjecutivos()
+        public List<Ejecutivo> ListarEjecutivos()
         {
             using (var dbc  = new SPC_BD())
             {
-                return dbc.Ejecutivos.Where(x => x.Estado == 1).ToList();
+                return dbc.Ejecutivo.Where(x => x.Estado == true).ToList();
             }
         }
     }

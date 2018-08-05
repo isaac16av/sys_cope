@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace SPC_Coopenae.DAL.Interfaces
 {
-    public interface IProductosRepositorio
+    public interface IProductoRepositorio
     {
-        List<Productos> ListarProductos();
-        Productos BuscarProductos(int id);
-        void InsertarProductos(Productos productos);
-        void ActualizarProductos(Productos productos);
-        void EliminarProductos(int id);
+        List<Producto> ListarProducto();
+        Producto BuscarProducto(int id);
+        void InsertarProducto(Producto producto);
+        void ActualizarProducto(Producto producto);
+        void EliminarProducto(int id);
 
     }
 }

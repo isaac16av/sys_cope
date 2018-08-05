@@ -12,27 +12,43 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.IdCredito)
+            @Html.DisplayNameFor(model => model.IdTipoCredito)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IdCredito)
+            @Html.DisplayFor(model => model.IdTipoCredito)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NombreDeCredito)
+            @Html.DisplayNameFor(model => model.Nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NombreDeCredito)
+            @Html.DisplayFor(model => model.Nombre)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ComisionDirefente)
+            @Html.DisplayNameFor(model => model.ComisionDistinta)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ComisionDirefente)
+            @Html.DisplayFor(model => model.ComisionDistinta)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.MaximoComision)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaximoComision)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.SumaIDP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SumaIDP)
         </dd>
 
         <dt>
@@ -46,6 +62,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCredito }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTipoCredito }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

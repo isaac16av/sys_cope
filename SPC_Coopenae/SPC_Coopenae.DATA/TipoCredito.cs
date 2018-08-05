@@ -6,9 +6,16 @@ namespace SPC_Coopenae.DATA
     public class TipoCredito
     {
         [Key]
-        public int IdCredito { get; set; }
-        public string NombreDeCredito { get; set; }
-        public decimal ComisionDirefente { get; set; }
-        public int Estado { get; set; }
+        public int IdTipoCredito { get; set; }
+
+        public string Nombre { get; set; }
+
+        public decimal ComisionDistinta { get; set; }
+
+        public decimal MaximoComision { get; set; }
+
+        public bool SumaIDP { get; set; }
+
+        public bool Estado { get; set; }
     }
 }

@@ -9,49 +9,49 @@ using System.Threading.Tasks;
 
 namespace SPC_Coopenae.DAL.Metodos
 {
-    public class MProductosRepositorio : IProductosRepositorio
+    public class MProductoRepositorio : IProductoRepositorio
     {
-        public void ActualizarProductos(Productos productos)
+        public void ActualizarProducto(Producto producto)
         {
             using (var dbc = new SPC_BD())
             {
-                dbc.Entry(productos).State = EntityState.Modified;
+                dbc.Entry(producto).State = EntityState.Modified;
                 dbc.SaveChanges();
             }
         }
 
-        public Productos BuscarProductos(int id)
+        public Producto BuscarProducto(int id)
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.Productos.Find(id);
+                return dbc.Producto.Find(id);
             }
         }
 
-        public void EliminarProductos(int id)
+        public void EliminarProducto(int id)
         {
             using (var dbc = new SPC_BD())
             {
-                var aEliminar = dbc.Productos.Find(id);
-                aEliminar.Estado = 0;
+                var aEliminar = dbc.Producto.Find(id);
+                aEliminar.Estado = false;
                 dbc.SaveChanges();
             }
         }
 
-        public void InsertarProductos(Productos productos)
+        public void InsertarProducto(Producto producto)
         {
             using (var dbc = new SPC_BD())
             {
-                dbc.Productos.Add(productos);
+                dbc.Producto.Add(producto);
                 dbc.SaveChanges();
             }
         }
 
-        public List<Productos> ListarProductos()
+        public List<Producto> ListarProducto()
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.Productos.Where(x => x.Estado == 1).ToList();
+                return dbc.Producto.Where(x => x.Estado == true).ToList();
             }
         }
     }

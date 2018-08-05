@@ -13,13 +13,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IdCredito)
+            @Html.DisplayNameFor(model => model.IdTipoCredito)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NombreDeCredito)
+            @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ComisionDirefente)
+            @Html.DisplayNameFor(model => model.ComisionDistinta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaximoComision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaximoComision)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Estado)
@@ -30,21 +36,27 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.IdCredito)
+            @Html.DisplayFor(modelItem => item.IdTipoCredito)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NombreDeCredito)
+            @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ComisionDirefente)
+            @Html.DisplayFor(modelItem => item.ComisionDistinta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaximoComision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SumaIDP)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Editar", "Editar", new { id=item.IdTipoCredito }) |
+            @Html.ActionLink("Detalles", "Detalles", new { id = item.IdTipoCredito }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdTipoCredito })
         </td>
     </tr>
 }

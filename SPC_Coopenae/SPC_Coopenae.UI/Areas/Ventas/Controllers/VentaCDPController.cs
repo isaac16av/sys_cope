@@ -1,0 +1,144 @@
+﻿using AutoMapper;
+using SPC_Coopenae.DAL.Interfaces;
+using SPC_Coopenae.DAL.Metodos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
+{
+    public class VentaCDPController : Controller
+    {
+
+        IVentaCDPRepositorio _repositorioCDP;
+        ITipoCDPRepositorio _repositorioTipoCDP;
+
+        public VentaCDPController()
+        {
+            _repositorioCDP = new MVentaCDPRepositorio();
+            _repositorioTipoCDP = new MTipoCDPRepositorio();
+        }
+
+        public ActionResult Index()
+        {
+            try
+            {
+                var ListaCDPsBD = _repositorioCDP.ListarCDP();
+                var ListaMostrarCDPs = Mapper.Map<List<Models.VentaCDP>>(ListaCDPsBD);
+                return View(ListaMostrarCDPs);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+        }
+
+        public ActionResult Registrar()
+        {
+            try
+            {
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Ocurrió un error", ex);
+                return View();
+            }
+
+        }
+
+
+        [HttpPost]
+        public ActionResult Registrar(Models.VentaCDP ventaCDP)
+        {
+            try
+            {
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+                var venta = Mapper.Map<DATA.VentaCDP>(ventaCDP);
+                _repositorioCDP.InsertarCDP(venta);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Ocurrió un error", ex);
+                return View();
+            }
+        }
+
+        public ActionResult Eliminar(int id)
+        {
+            try
+            {
+                _repositorioCDP.EliminarCDP(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Ocurrió un error", ex);
+                return View();
+            }
+        }
+
+        public ActionResult Detalles(int id)
+        {
+            try
+            {
+                var colCDPBuscar = _repositorioCDP.BuscarCDP(id);
+                var colCDPDetallar = Mapper.Map<Models.VentaCDP>(colCDPBuscar);
+                return View(colCDPDetallar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Ocurrió un error", ex);
+                return View();
+            }
+        }
+
+        public ActionResult Editar(int id)
+        {
+            try
+            {
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
+                var VentaCDPBuscar = _repositorioCDP.BuscarCDP(id);
+                var VentaCDPEditar = Mapper.Map<Models.VentaCDP>(VentaCDPBuscar);
+                return View(VentaCDPEditar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Ocurrió un error", ex);
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Editar(Models.VentaCDP colCDP)
+        {
+            try
+            {
+                ViewBag.listaTipos = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+                var VentaCDPEditar = Mapper.Map<DATA.VentaCDP>(colCDP);
+                _repositorioCDP.ActualizarCDP(VentaCDPEditar);
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("Ocurrió un error", ex);
+                return View();
+            }
+        }
+
+    }
+}

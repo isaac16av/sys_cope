@@ -24,18 +24,29 @@ namespace SPC_Coopenae.DAL
         }
 
         //Agregar las tablas que tenga la BD
-        public DbSet<Categorias> Categorias { get; set; }
-        public DbSet<ColocacionCredito> ColocacionCredito { get; set; }
-        public DbSet<ColocacionProducto> ColocacionProducto { get; set; }
-        public DbSet<Ejecutivos> Ejecutivos { get; set; }
-        public DbSet<MetasIDP> MetasIDP { get; set; }
-        public DbSet<Productos> Productos { get; set; }
-        public DbSet<Sucursal> Sucursal { get; set; }
+        public DbSet<Ejecutivo> Ejecutivo { get; set; }
+        public DbSet<Meta> Meta { get; set; }
+        public DbSet<Producto> Producto { get; set; }
         public DbSet<TipoCredito> TipoCredito { get; set; }
-        public DbSet<Afiliaciones> Afiliaciones { get; set; }
-        public DbSet<ComisionAfiliacion> ComisionAfiliacion { get; set; }
-        public DbSet<ColocacionCDP> ColocacionCDP { get; set; }
         public DbSet<TipoCDP> TipoCDP { get; set; }
+        public DbSet<UnidadNegocio> UnidadNegocio { get; set; }
+        public DbSet<VentaCDP> VentaCDP { get; set; }
+        public DbSet<VentaCredito> VentaCredito { get; set; }
+        public DbSet<VentaProducto> VentaProducto { get; set; }
+
+        /* ----------- Falta -----------
+         * DetalleEscala
+         * DetallInicio
+         * Escala
+         * MetaCDP
+         * MetaCredito
+         * MetaTipoProductoDetalle
+         * Salario
+         * TipoCambio
+         * MetaTipoProducto
+         * TipoProducto
+         * */
+
 
     }
 
