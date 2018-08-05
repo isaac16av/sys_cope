@@ -9,10 +9,10 @@ namespace SPC_Coopenae.DAL.Interfaces
 {
     public interface IEjectutivoRepositorio
     {
-        List<Ejecutivos> ListarEjecutivos();
-        Ejecutivos BuscarEjecutivo(int cedula);
-        void InsertarEjecutivo(Ejecutivos ejecutivo);
-        void ActualizarEjecutivo(Ejecutivos ejecutivo);
+        List<Ejecutivo> ListarEjecutivos();
+        Ejecutivo BuscarEjecutivo(int cedula);
+        void InsertarEjecutivo(Ejecutivo ejecutivo);
+        void ActualizarEjecutivo(Ejecutivo ejecutivo);
         void EliminarEjecutivo(int cedula);
 
     }

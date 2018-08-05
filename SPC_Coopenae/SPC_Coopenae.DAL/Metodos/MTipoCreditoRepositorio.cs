@@ -33,7 +33,7 @@ namespace SPC_Coopenae.DAL.Metodos
             using (var dbc = new SPC_BD())
             {
                 var aEliminar = dbc.TipoCredito.Find(id);
-                aEliminar.Estado = 0;
+                aEliminar.Estado = false;
                 dbc.SaveChanges();
             }
         }
@@ -51,7 +51,7 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.TipoCredito.Where(x => x.Estado == 1).ToList();
+                return dbc.TipoCredito.Where(x => x.Estado == true).ToList();
             }
         }
     }

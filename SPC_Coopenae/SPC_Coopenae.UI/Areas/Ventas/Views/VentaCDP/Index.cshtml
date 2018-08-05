@@ -1,0 +1,106 @@
+﻿@model IEnumerable<SPC_Coopenae.UI.Areas.Ventas.Models.VentaCDP>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdVentaCDP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ejecutivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CentroTrabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlazoMeses)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Periocidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tasa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SobreTasa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoCDP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdVentaCDP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ejecutivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CentroTrabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlazoMeses)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Periocidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tasa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SobreTasa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoCDP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdVentaCDP }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IdVentaCDP }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IdVentaCDP })
+        </td>
+    </tr>
+}
+
+</table>

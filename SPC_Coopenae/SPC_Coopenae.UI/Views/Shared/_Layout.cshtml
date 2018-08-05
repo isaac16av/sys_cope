@@ -23,21 +23,18 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mantenimientos<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Ejecutivos", "Index", "Ejecutivos", new { area = "Mantenimientos" }, new { })</li>
-                            <li>@Html.ActionLink("Sucursal", "Index", "Sucursal", new { area = "Mantenimientos" }, new { })</li>
-                            <li>@Html.ActionLink("Categorias", "Index", "Categorias", new { area = "Mantenimientos" }, new { })</li>
+                            <li>@Html.ActionLink("Ejecutivo", "Index", "Ejecutivo", new { area = "Mantenimientos" }, new { })</li>
+                            <li>@Html.ActionLink("UnidadNegocio", "Index", "UnidadNegocio", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("Creditos", "Index", "TipoCredito", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("TipoCDP", "Index", "TipoCDP", new { area = "Mantenimientos" }, new { })</li>
-                            <li>@Html.ActionLink("ComisionAfiliacion", "Index", "ComisionAfiliacion", new { area = "Mantenimientos" }, new { })</li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Colocaciones<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ventas<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("ColocacionProducto", "Index", "ColocacionProducto", new { area = "Colocaciones" }, new { })</li>
-                            <li>@Html.ActionLink("ColocacionCredito", "Index", "ColocacionCredito", new { area = "Colocaciones" }, new { })</li>
-                            <li>@Html.ActionLink("ColocacionCDP", "Index", "ColocacionCDP", new { area = "Colocaciones" }, new { })</li>
-                            <li>@Html.ActionLink("Afiliaciones", "Index", "Afiliaciones", new { area = "Colocaciones" }, new { })</li>
+                            <li>@Html.ActionLink("VentaProducto", "Index", "VentaProducto", new { area = "Ventas" }, new { })</li>
+                            <li>@Html.ActionLink("VentaCredito", "Index", "VentaCredito", new { area = "Ventas" }, new { })</li>
+                            <li>@Html.ActionLink("VentaCDP", "Index", "VentaCDP", new { area = "Ventas" }, new { })</li>
                         </ul>
                     </li>
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { }) </li>

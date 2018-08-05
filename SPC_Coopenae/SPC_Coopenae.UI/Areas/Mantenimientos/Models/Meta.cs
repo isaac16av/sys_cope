@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+
+namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
+{
+    public class Meta
+    {
+        [Display(Name = "Id de meta")]
+        public int IdMeta { get; set; }
+
+        [Display(Name = "Descripción")]
+        public string Descripcion { get; set; }
+
+        public bool Estado { get; set; }
+
+        public int Escala { get; set; }
+
+        public int Salario { get; set; }
+
+    }
+}

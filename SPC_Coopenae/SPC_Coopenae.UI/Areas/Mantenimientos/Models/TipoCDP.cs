@@ -13,9 +13,11 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
 
         public string Moneda { get; set; }
 
-        public decimal Comision { get; set; }
+        public decimal ComisionMaxima { get; set; }
 
-        public int Estado { get; set; }
+        public int PlazoMesesMaximo { get; set; }
+
+        public bool Estado { get; set; }
 
     }
 }

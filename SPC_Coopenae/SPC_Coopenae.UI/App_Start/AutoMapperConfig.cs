@@ -12,38 +12,29 @@ namespace SPC_Coopenae
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Ejecutivos, DATA.Ejecutivos>();
-                cfg.CreateMap<DATA.Ejecutivos, UI.Areas.Mantenimientos.Models.Ejecutivos>();
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Ejecutivo, DATA.Ejecutivo>();
+                cfg.CreateMap<DATA.Ejecutivo, UI.Areas.Mantenimientos.Models.Ejecutivo>();
 
-                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Sucursal, DATA.Sucursal>();
-                cfg.CreateMap<DATA.Sucursal, UI.Areas.Mantenimientos.Models.Sucursal>();
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.UnidadNegocio, DATA.UnidadNegocio>();
+                cfg.CreateMap<DATA.UnidadNegocio, UI.Areas.Mantenimientos.Models.UnidadNegocio>();
 
-                cfg.CreateMap<UI.Areas.Mantenimientos.Models.MetasIDP, DATA.MetasIDP>();
-                cfg.CreateMap<DATA.MetasIDP, UI.Areas.Mantenimientos.Models.MetasIDP>();
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Meta, DATA.Meta>();
+                cfg.CreateMap<DATA.Meta, UI.Areas.Mantenimientos.Models.Meta>();
+
+                cfg.CreateMap<UI.Areas.Ventas.Models.VentaCredito, DATA.VentaCredito>();
+                cfg.CreateMap<DATA.VentaCredito, UI.Areas.Ventas.Models.VentaCredito>();
               
-                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Categorias, DATA.Categorias>();
-                cfg.CreateMap<DATA.Categorias, UI.Areas.Mantenimientos.Models.Categorias>();
+                cfg.CreateMap<UI.Areas.Ventas.Models.VentaProducto, DATA.VentaProducto>();
+                cfg.CreateMap<DATA.VentaProducto, UI.Areas.Ventas.Models.VentaProducto>();
 
-                cfg.CreateMap<UI.Areas.Colocaciones.Models.ColocacionCredito, DATA.ColocacionCredito>();
-                cfg.CreateMap<DATA.ColocacionCredito, UI.Areas.Colocaciones.Models.ColocacionCredito>();
-              
-                cfg.CreateMap<UI.Areas.Colocaciones.Models.ColocacionProducto, DATA.ColocacionProducto>();
-                cfg.CreateMap<DATA.ColocacionProducto, UI.Areas.Colocaciones.Models.ColocacionProducto>();
-
-                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Productos, DATA.Productos>();
-                cfg.CreateMap<DATA.Productos, UI.Areas.Mantenimientos.Models.Productos>();
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Producto, DATA.Producto>();
+                cfg.CreateMap<DATA.Producto, UI.Areas.Mantenimientos.Models.Producto>();
                 
                 cfg.CreateMap<UI.Areas.Mantenimientos.Models.TipoCredito, DATA.TipoCredito>();
                 cfg.CreateMap<DATA.TipoCredito, UI.Areas.Mantenimientos.Models.TipoCredito>();
 
-                cfg.CreateMap<UI.Areas.Colocaciones.Models.Afiliaciones, DATA.Afiliaciones>();
-                cfg.CreateMap<DATA.Afiliaciones, UI.Areas.Colocaciones.Models.Afiliaciones>();
-
-                cfg.CreateMap<UI.Areas.Mantenimientos.Models.ComisionAfiliacion, DATA.ComisionAfiliacion>();
-                cfg.CreateMap<DATA.ComisionAfiliacion, UI.Areas.Mantenimientos.Models.ComisionAfiliacion>();
-
-                cfg.CreateMap<UI.Areas.Colocaciones.Models.ColocacionCDP, DATA.ColocacionCDP>();
-                cfg.CreateMap<DATA.ColocacionCDP, UI.Areas.Colocaciones.Models.ColocacionCDP>();
+                cfg.CreateMap<UI.Areas.Ventas.Models.VentaCDP, DATA.VentaCDP>();
+                cfg.CreateMap<DATA.VentaCDP, UI.Areas.Ventas.Models.VentaCDP>();
 
 
             });

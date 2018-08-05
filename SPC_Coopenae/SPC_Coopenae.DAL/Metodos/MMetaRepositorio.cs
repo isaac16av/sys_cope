@@ -2,6 +2,7 @@
 using SPC_Coopenae.DATA;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,16 +11,22 @@ namespace SPC_Coopenae.DAL.Metodos
 {
     public class MMetaRepositorio : IMetaRepositorio
     {
-        public void ActualizarMeta(MetasIDP meta)
-        {
-          //pendiente
-        }
-
-        public MetasIDP BuscarMeta(int id)
+        public void ActualizarMeta(Meta meta)
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.MetasIDP.Find(id);
+                dbc.Entry(meta).State = EntityState.Modified;
+
+                dbc.SaveChanges();
+
+            }
+        }
+
+        public Meta BuscarMeta(int id)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                return dbc.Meta.Find(id);
             }
         }
 
@@ -27,26 +34,26 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                var eMeta = dbc.MetasIDP.Find(id);
-                eMeta.Estado = 0;
+                var eMeta = dbc.Meta.Find(id);
+                eMeta.Estado = false;
                 dbc.SaveChanges();
             }
         }
 
-        public void InsertarMeta(MetasIDP meta)
+        public void InsertarMeta(Meta meta)
         {
             using (var dbc = new SPC_BD())
             {
-                var iMeta = dbc.MetasIDP.Add(meta);
+                var iMeta = dbc.Meta.Add(meta);
                 dbc.SaveChanges();
             }
         }
 
-        public List<MetasIDP> ListarMetasIDP()
+        public List<Meta> ListarMetas()
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.MetasIDP.Where(x => x.Estado == 1).ToList();
+                return dbc.Meta.Where(x => x.Estado == true).ToList();
             }
         }
     }
