@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SPC_Coopenae.DAL.Metodos
 {
-    public class MTipoCambio : ITipoCambio
+    public class MTipoCambioRepositorio : ITipoCambioRepositorio
     {
         public List<TipoCambio> ListarTipoCambio()
         {

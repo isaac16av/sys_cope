@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SPC_Coopenae.DAL.Interfaces
 {
-    public interface ITipoCambio
+    public interface ITipoCambioRepositorio
     {
         List<TipoCambio> ListarTipoCambio();
     }
