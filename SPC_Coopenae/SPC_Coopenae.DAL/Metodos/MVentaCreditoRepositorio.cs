@@ -58,5 +58,7 @@ namespace SPC_Coopenae.DAL.Metodos
                 return dbc.VentaCredito.ToList();
             }
         }
+
+
     }
 }

@@ -10,7 +10,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
     {
         public int IdUnidad { get; set; }
 
-        public char Nombre { get; set; }
+        public string Nombre { get; set; }
 
         public bool Estado { get; set; }
 

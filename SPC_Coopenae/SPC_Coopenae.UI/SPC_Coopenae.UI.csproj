@@ -157,6 +157,7 @@
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\ParametrosConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Ventas\VentasAreaRegistration.cs" />
     <Compile Include="Areas\Ventas\Controllers\ValidaEjecutivoController.cs" />
@@ -286,8 +287,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -316,6 +315,10 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SPC_Coopenae.BLL\SPC_Coopenae.BLL.csproj">
+      <Project>{04d270de-bd5b-4451-9c27-a012887f58f9}</Project>
+      <Name>SPC_Coopenae.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SPC_Coopenae.DAL\SPC_Coopenae.DAL.csproj">
       <Project>{60064abf-b152-4c7c-b15f-d0b2a50f8430}</Project>
       <Name>SPC_Coopenae.DAL</Name>

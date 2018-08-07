@@ -52,6 +52,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>ConexionBD.settings</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ITipoCambio.cs" />
     <Compile Include="Interfaces\IVentaCDPRepositorio.cs" />
     <Compile Include="Interfaces\IVentaCreditoRepositorio.cs" />
     <Compile Include="Interfaces\IVentaProductoRepositorio.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Interfaces\IUnidadNegocioRepositorio.cs" />
     <Compile Include="Interfaces\ITipoCDPRepositorio.cs" />
     <Compile Include="Interfaces\ITipoCreditoRepositorio.cs" />
+    <Compile Include="Metodos\MTipoCambio.cs" />
     <Compile Include="Metodos\MVentaCDPRepositorio.cs" />
     <Compile Include="Metodos\MVentaCreditoRepositorio.cs" />
     <Compile Include="Metodos\MVentaProductoRepositorio.cs" />

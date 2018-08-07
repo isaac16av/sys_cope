@@ -17,6 +17,7 @@ namespace SPC_Coopenae.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutoMapperConfig.Configure();
+            ParametrosConfig.IniciarParametros();
         }
     }
 }

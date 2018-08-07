@@ -16,7 +16,7 @@ namespace SPC_Coopenae.DAL.Metodos
             using (var dbc = new SPC_BD())
             {
                 dbc.Entry(ejecutivoP).State = EntityState.Modified;
-                
+
                 dbc.SaveChanges();
 
             }

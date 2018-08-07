@@ -9,7 +9,7 @@ namespace SPC_Coopenae.DATA
         [Key]
         public int IdUnidad { get; set; }
 
-        public char Nombre { get; set; }
+        public string Nombre { get; set; }
 
         public bool Estado { get; set; }
 
