@@ -1,0 +1,57 @@
+﻿@model SPC_Coopenae.UI.Areas.Mantenimientos.Models.DetalleEscala
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>DetalleEscala</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdDetalleEscala)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdDetalleEscala)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Escala)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Escala)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PCTMinimo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PCTMinimo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PCTMaximo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PCTMaximo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PCTComision)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PCTComision)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Regresar", "Index")
+</p>
