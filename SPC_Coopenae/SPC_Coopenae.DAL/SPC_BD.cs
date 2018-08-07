@@ -34,17 +34,20 @@ namespace SPC_Coopenae.DAL
         public DbSet<VentaCredito> VentaCredito { get; set; }
         public DbSet<VentaProducto> VentaProducto { get; set; }
         public DbSet<TipoCambio> TipoCambio { get; set; }
+        public DbSet<MetaCDP> MetaCDP { get; set; }
+        public DbSet<TipoProducto> TipoProducto { get; set; }
+        public DbSet<MetaCredito> MetaCredito { get; set; }
 
         /* ----------- Falta -----------
          * DetalleEscala
          * DetallInicio
          * Escala
-         * MetaCDP -- Allan
-         * MetaCredito -- Allan
+         * MetaCDP -- Allan (DATA, .DAL -> Interfaces y metodos).
+         * MetaCredito -- Allan (DATA, .DAL -> Interfaces y metodos)
          * MetaTipoProductoDetalle
          * Salario
          * MetaTipoProducto
-         * TipoProducto -- Allan
+         * TipoProducto -- Allan (DATA, .DAL -> Interfaces y metodos).
          * */
 
 

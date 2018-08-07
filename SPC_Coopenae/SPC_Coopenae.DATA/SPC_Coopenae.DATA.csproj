@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MetaCDP.cs" />
+    <Compile Include="MetaCredito.cs" />
     <Compile Include="TipoCambio.cs" />
+    <Compile Include="TipoProducto.cs" />
     <Compile Include="VentaCDP.cs" />
     <Compile Include="VentaCredito.cs" />
     <Compile Include="VentaProducto.cs" />

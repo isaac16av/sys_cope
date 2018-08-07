@@ -17,7 +17,7 @@ namespace SPC_Coopenae.BLL
         {
             try
             {
-                ITipoCambio _tipoCambioBD;
+                ITipoCambioRepositorio _tipoCambioBD;
                 _tipoCambioBD = new MTipoCambio();
 
                 var listaTiposCambio = _tipoCambioBD.ListarTipoCambio();
