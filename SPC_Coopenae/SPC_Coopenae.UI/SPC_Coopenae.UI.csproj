@@ -159,6 +159,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\ParametrosConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Mantenimientos\Controllers\DetalleEscalaController.cs" />
+    <Compile Include="Areas\Mantenimientos\Controllers\EscalaController.cs" />
+    <Compile Include="Areas\Mantenimientos\Models\DetalleEscala.cs" />
+    <Compile Include="Areas\Mantenimientos\Models\Escala.cs" />
     <Compile Include="Areas\Ventas\VentasAreaRegistration.cs" />
     <Compile Include="Areas\Ventas\Controllers\ValidaEjecutivoController.cs" />
     <Compile Include="Areas\Ventas\Controllers\VentaCDPController.cs" />
@@ -200,6 +204,7 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Otros\GuardarEscala.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -256,6 +261,11 @@
     <Content Include="Areas\Ventas\Views\VentaProducto\Registrar.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaProducto\Detalles.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaProducto\Editar.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\Escala\Index.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\Escala\Registrar.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\Escala\Detalles.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\DetalleEscala\Detalles.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\Escala\Prueba.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
