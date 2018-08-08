@@ -56,6 +56,9 @@
     <Compile Include="Interfaces\IMetaCreditoRepositorio.cs" />
     <Compile Include="Interfaces\ITipoCambioRepositorio.cs" />
     <Compile Include="Interfaces\ITipoProductoRepositorio.cs" />
+    <Compile Include="Interfaces\IDetalleEscalaRepositorio.cs" />
+    <Compile Include="Interfaces\IEscalaRepositorio.cs" />
+    <Compile Include="Interfaces\ITipoCambio.cs" />
     <Compile Include="Interfaces\IVentaCDPRepositorio.cs" />
     <Compile Include="Interfaces\IVentaCreditoRepositorio.cs" />
     <Compile Include="Interfaces\IVentaProductoRepositorio.cs" />
@@ -69,6 +72,9 @@
     <Compile Include="Metodos\MMetaCreditoRepositorio.cs" />
     <Compile Include="Metodos\MTipoCambioRepositorio.cs" />
     <Compile Include="Metodos\MTipoProducto.cs" />
+    <Compile Include="Metodos\MDetalleEscalaRepositorio.cs" />
+    <Compile Include="Metodos\MEscalaRepositorio.cs" />
+    <Compile Include="Metodos\MTipoCambio.cs" />
     <Compile Include="Metodos\MVentaCDPRepositorio.cs" />
     <Compile Include="Metodos\MVentaCreditoRepositorio.cs" />
     <Compile Include="Metodos\MVentaProductoRepositorio.cs" />

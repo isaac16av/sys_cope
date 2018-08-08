@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="MetaCDP.cs" />
     <Compile Include="MetaCredito.cs" />
+    <Compile Include="DetalleEscala.cs" />
+    <Compile Include="Escala.cs" />
     <Compile Include="TipoCambio.cs" />
     <Compile Include="TipoProducto.cs" />
     <Compile Include="VentaCDP.cs" />

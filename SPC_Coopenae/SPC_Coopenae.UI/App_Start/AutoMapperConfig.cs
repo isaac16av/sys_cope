@@ -38,6 +38,9 @@ namespace SPC_Coopenae
 
                 cfg.CreateMap<UI.Areas.Mantenimientos.Models.TipoProducto, DATA.TipoProducto>();
                 cfg.CreateMap<DATA.TipoProducto, UI.Areas.Mantenimientos.Models.TipoProducto>();
+
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Escala, DATA.Escala>();
+                cfg.CreateMap<DATA.Escala, UI.Areas.Mantenimientos.Models.Escala>();
             });
         }
     }
