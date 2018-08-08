@@ -21,6 +21,11 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             _repositorioDetalleE = new MDetalleEscalaRepositorio();
         }
 
+        public ActionResult Prueba()
+        {
+            return View();
+        }
+
         // GET: Mantenimientos/Escala
         public ActionResult Index()
         {
@@ -47,9 +52,8 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registrar(Models.Escala esc)
+        public ActionResult Registrar(string descripcion, DetalleEscala[] detalles)
         {
-            
             try
             {
                 if (!ModelState.IsValid)
@@ -58,9 +62,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 }
                 DetalleEscala detalle = null;
 
-                var escalaRegistrar = Mapper.Map<DATA.Escala>(esc);
-                
-                int id = _repositorio.InsertarEscala(escalaRegistrar);
+
 
 
                 return RedirectToAction("Index");
