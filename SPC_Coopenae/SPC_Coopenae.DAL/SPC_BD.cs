@@ -36,17 +36,20 @@ namespace SPC_Coopenae.DAL
         public DbSet<TipoCambio> TipoCambio { get; set; }
         public DbSet<Escala> Escala { get; set; }
         public DbSet<DetalleEscala> DetalleEscala { get; set; }
+        public DbSet<DetalleInicio> DetalleInicio { get; set; }
+        public DbSet<Salario> Salario { get; set; }
+        public DbSet<MetaTipoProducto> MetaTipoProducto { get; set; }
 
 
 
         /* ----------- Falta -----------
          * DetalleEscala x
-         * DetallInicio
+         * DetalleInicio x
          * Escala x
          * MetaCDP -- Allan
          * MetaCredito -- Allan
          * MetaTipoProductoDetalle
-         * Salario
+         * Salario x
          * MetaTipoProducto
          * TipoProducto -- Allan
          * */

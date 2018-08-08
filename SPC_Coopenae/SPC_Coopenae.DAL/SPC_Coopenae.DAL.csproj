@@ -53,7 +53,10 @@
       <DependentUpon>ConexionBD.settings</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IDetalleEscalaRepositorio.cs" />
+    <Compile Include="Interfaces\IDetalleInicioRepositorio.cs" />
     <Compile Include="Interfaces\IEscalaRepositorio.cs" />
+    <Compile Include="Interfaces\IMetaTipoProductoRepositorio.cs" />
+    <Compile Include="Interfaces\ISalarioRepositorio.cs" />
     <Compile Include="Interfaces\ITipoCambio.cs" />
     <Compile Include="Interfaces\IVentaCDPRepositorio.cs" />
     <Compile Include="Interfaces\IVentaCreditoRepositorio.cs" />
@@ -65,7 +68,10 @@
     <Compile Include="Interfaces\ITipoCDPRepositorio.cs" />
     <Compile Include="Interfaces\ITipoCreditoRepositorio.cs" />
     <Compile Include="Metodos\MDetalleEscalaRepositorio.cs" />
+    <Compile Include="Metodos\MDetalleInicioRepositorio.cs" />
     <Compile Include="Metodos\MEscalaRepositorio.cs" />
+    <Compile Include="Metodos\MMetaTipoProductoRepositorio.cs" />
+    <Compile Include="Metodos\MSalarioRepositorio.cs" />
     <Compile Include="Metodos\MTipoCambio.cs" />
     <Compile Include="Metodos\MVentaCDPRepositorio.cs" />
     <Compile Include="Metodos\MVentaCreditoRepositorio.cs" />
