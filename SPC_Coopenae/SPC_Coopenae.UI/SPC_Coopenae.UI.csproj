@@ -159,6 +159,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\ParametrosConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Mantenimientos\Controllers\TipoProductoController.cs" />
+    <Compile Include="Areas\Mantenimientos\Models\TipoProducto.cs" />
     <Compile Include="Areas\Ventas\VentasAreaRegistration.cs" />
     <Compile Include="Areas\Ventas\Controllers\ValidaEjecutivoController.cs" />
     <Compile Include="Areas\Ventas\Controllers\VentaCDPController.cs" />
@@ -256,6 +258,10 @@
     <Content Include="Areas\Ventas\Views\VentaProducto\Registrar.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaProducto\Detalles.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaProducto\Editar.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\TipoProducto\Index.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\TipoProducto\Registrar.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\TipoProducto\Detalles.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\TipoProducto\Editar.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

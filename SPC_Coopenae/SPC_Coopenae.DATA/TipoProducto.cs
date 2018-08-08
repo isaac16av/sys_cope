@@ -7,7 +7,6 @@ namespace SPC_Coopenae.DATA
     public class TipoProducto
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int IdTipoProducto { get; set; }
 
         public string Descripcion { get; set; }

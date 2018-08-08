@@ -7,7 +7,7 @@ using SPC_Coopenae.DATA;
 
 namespace SPC_Coopenae.DAL.Interfaces
 {
-    interface ITipoProductoRepositorio
+    public interface ITipoProductoRepositorio
     {
         List<TipoProducto> ListarTipoProducto();
         TipoProducto BuscarTipoProducto(int id);
