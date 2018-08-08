@@ -15,5 +15,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
         public string Descripcion { get; set; }
 
         public bool Estado { get; set; }
+
     }
 }

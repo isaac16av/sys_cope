@@ -40,9 +40,9 @@ namespace SPC_Coopenae.DAL
 
 
         /* ----------- Falta -----------
-         * DetalleEscala
+         * DetalleEscala x
          * DetallInicio
-         * Escala
+         * Escala x
          * MetaCDP -- Allan
          * MetaCredito -- Allan
          * MetaTipoProductoDetalle

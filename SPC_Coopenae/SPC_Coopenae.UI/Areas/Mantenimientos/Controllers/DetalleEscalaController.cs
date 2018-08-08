@@ -24,7 +24,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         }
 
         // GET: Mantenimientos/DetalleEscala
-        public ActionResult Index( int id)
+        public ActionResult Index(int id)
         {
             try
             {

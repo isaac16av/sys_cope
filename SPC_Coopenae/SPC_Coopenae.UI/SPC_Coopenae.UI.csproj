@@ -262,7 +262,6 @@
     <Content Include="Areas\Ventas\Views\VentaProducto\Editar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Escala\Index.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Escala\Registrar.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\Escala\Eliminar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Escala\Detalles.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\DetalleEscala\Detalles.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
