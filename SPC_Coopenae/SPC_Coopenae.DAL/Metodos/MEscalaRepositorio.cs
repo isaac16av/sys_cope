@@ -38,7 +38,6 @@ namespace SPC_Coopenae.DAL.Metodos
 
                 return escala.IdEscala;
 
-
             }
         }
 

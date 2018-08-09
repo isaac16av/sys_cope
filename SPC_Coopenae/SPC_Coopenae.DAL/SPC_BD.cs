@@ -44,22 +44,14 @@ namespace SPC_Coopenae.DAL
 
 
         /* ----------- Falta -----------
-         * DetalleEscala x
          * DetallInicio
-
-         * Escala
-         * MetaCDP -- Allan (DATA, .DAL -> Interfaces y metodos).
-         * MetaCredito -- Allan (DATA, .DAL -> Interfaces y metodos)
-
-         * Escala x
-         * MetaCDP -- Allan
-         * MetaCredito -- Allan
 
          * MetaTipoProductoDetalle
          * Salario
+         
          * MetaTipoProducto
-         * TipoProducto -- Allan (DATA, .DAL -> Interfaces y metodos).
-         * */
+         
+         */
 
 
     }
