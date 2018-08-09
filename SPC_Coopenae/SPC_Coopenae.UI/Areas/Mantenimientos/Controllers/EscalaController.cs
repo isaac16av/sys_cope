@@ -12,26 +12,21 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 {
     public class EscalaController : Controller
     {
-        IEscalaRepositorio _repositorio;
-        IDetalleEscalaRepositorio _repositorioDetalleE;
+        IEscalaRepositorio _repositorioEscala;
+        IDetalleEscalaRepositorio _repositorioDetallesE;
 
         public EscalaController()
         {
-            _repositorio = new MEscalaRepositorio();
-            _repositorioDetalleE = new MDetalleEscalaRepositorio();
+            _repositorioEscala = new MEscalaRepositorio();
+            _repositorioDetallesE = new MDetalleEscalaRepositorio();
         }
 
-        public ActionResult Prueba()
-        {
-            return View();
-        }
 
-        // GET: Mantenimientos/Escala
         public ActionResult Index()
         {
             try
             {
-                var listadoEscala = _repositorio.ListarEscalas();
+                var listadoEscala = _repositorioEscala.ListarEscalas();
                 var escalaMostrar = Mapper.Map<List<Models.Escala>>(listadoEscala);
                 return View(escalaMostrar);
 
@@ -44,8 +39,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         }
 
-        
-
         public ActionResult Registrar()
         {
             return View();
@@ -54,23 +47,39 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         [HttpPost]
         public ActionResult Registrar(string descripcion, DetalleEscala[] detalles)
         {
+            bool devolverError = false;
+            string devolverMensaje = "Ocurrió un error";
             try
             {
-                if (!ModelState.IsValid)
+                devolverError = ValidarEscala(detalles);
+                if (!devolverError)
                 {
-                    return View();
+                    devolverMensaje = "La escala ingresada no es válida";
                 }
-                DetalleEscala detalle = null;
+                else
+                {
+                    var escala = new Models.Escala
+                    {
+                        IdEscala = 0,
+                        Descripcion = descripcion,
+                        Estado = true
+                    };
+                    var EscalaIngresar = Mapper.Map<DATA.Escala>(escala);
+                    int idEscala = _repositorioEscala.InsertarEscala(EscalaIngresar);
 
+                    foreach(var det in detalles)
+                    {
+                        det.Escala = idEscala;
+                        var detalleInsertar = Mapper.Map<DATA.DetalleEscala>(det);
+                        _repositorioDetallesE.InsertarDetalleEscala(detalleInsertar);
+                    }
 
-
-
-                return RedirectToAction("Index");
+                }
+                return Json(new { success = devolverError, responseText = devolverMensaje }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
-                return View();
+                return Json(new { success = false, responseText = "Ocurrió un error: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -78,7 +87,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                _repositorio.EliminarEscala(id);
+                _repositorioEscala.EliminarEscala(id);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -92,7 +101,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                var EscalaBuscar = _repositorio.BuscarEscala(id);
+                var EscalaBuscar = _repositorioEscala.BuscarEscala(id);
                 var EscalaDetallar = Mapper.Map<Models.Escala>(EscalaBuscar);
                 return View(EscalaDetallar);
             }
@@ -103,6 +112,34 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             }
         }
 
-        
+        [NonAction]
+        private bool ValidarEscala(DetalleEscala[] detalles)
+        {
+            int tamanno = detalles.Length;
+            int minimoAnterior = 0;
+            int cuentaActual = 0;
+            for (int i = 0; i < tamanno; i++)
+            {
+                if (i == 0)
+                {
+                    minimoAnterior = detalles[i].PCTMinimo;
+                }
+                else
+                {
+                    cuentaActual += detalles[i].PCTMinimo - minimoAnterior;
+                    if (tamanno == (i + 1))
+                    {
+
+                        cuentaActual += detalles[i].PCTMaximo - detalles[i].PCTMinimo;
+                    }
+                    else
+                    {
+                        minimoAnterior = detalles[i].PCTMinimo;
+                    }
+                }
+            }
+            return cuentaActual == 100 ? true : false;
+        }        
+
     }
 }

@@ -4,14 +4,11 @@
 }
 
 <h2>Registrar</h2>
+<h4>Escala</h4>
+<span class="text-danger" id="mensaje_validacion"></span>
+<hr />
 
 <div class="form-horizontal">
-    <h4>Escala</h4>
-    <hr />
-
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
     <div class="form-group">
         <label class="control-label col-md-2">Descripcion</label>
         <div class="col-md-8">
@@ -42,7 +39,7 @@
     <div class="form-group">
         <label for="comision">% Comision</label>
         <div class="">
-            <input class="form-control" type="number" name="comision" id="txt_comision" style="width: 50%;" />
+            <input class="form-control" type="text" name="comision" id="txt_comision" style="width: 50%;" />
         </div>
     </div>
 
