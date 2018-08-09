@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Detalles</h2>
@@ -10,13 +11,6 @@
     <h4>Escala</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdEscala)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdEscala)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Descripcion)
@@ -33,6 +27,13 @@
         <dd>
             @Html.DisplayFor(model => model.Estado)
         </dd>
+
+        <!--
+            
+            foreach o algo asi
+            lea el viewbag y haga una tabla con los detalles
+        
+            -->
 
     </dl>
 </div>
