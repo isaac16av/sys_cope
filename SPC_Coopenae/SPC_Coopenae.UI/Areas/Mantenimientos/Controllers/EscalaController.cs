@@ -103,7 +103,8 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             {
                 var EscalaBuscar = _repositorioEscala.BuscarEscala(id);
                 var EscalaDetallar = Mapper.Map<Models.Escala>(EscalaBuscar);
-             //   ViewBag.DetallesDeEscala(_repositorioDetallesE.ListarDetalleEscalas(id));
+                var listadoDetalles = _repositorioDetallesE.ListarDetalleEscalas(id);
+                ViewBag.DetallesDeEscala = listadoDetalles;
                 return View(EscalaDetallar);
             }
             catch (Exception ex)
