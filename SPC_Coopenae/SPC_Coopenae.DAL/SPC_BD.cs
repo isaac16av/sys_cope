@@ -39,20 +39,9 @@ namespace SPC_Coopenae.DAL
         public DbSet<MetaCredito> MetaCredito { get; set; }
         public DbSet<Escala> Escala { get; set; }
         public DbSet<DetalleEscala> DetalleEscala { get; set; }
-
-
-
-
-        /* ----------- Falta -----------
-         * DetallInicio
-
-         * MetaTipoProductoDetalle
-         * Salario
-         
-         * MetaTipoProducto
-         
-         */
-
+        public DbSet<DetalleInicio> DetalleInicio { get; set; }
+        public DbSet<Salario> Salario { get; set; }
+        public DbSet<MetaTipoProducto> MetaTipoProducto { get; set; }
 
     }
 
