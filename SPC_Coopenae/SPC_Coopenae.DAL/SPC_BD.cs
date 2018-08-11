@@ -34,26 +34,14 @@ namespace SPC_Coopenae.DAL
         public DbSet<VentaCredito> VentaCredito { get; set; }
         public DbSet<VentaProducto> VentaProducto { get; set; }
         public DbSet<TipoCambio> TipoCambio { get; set; }
+        public DbSet<MetaCDP> MetaCDP { get; set; }
+        public DbSet<TipoProducto> TipoProducto { get; set; }
+        public DbSet<MetaCredito> MetaCredito { get; set; }
         public DbSet<Escala> Escala { get; set; }
         public DbSet<DetalleEscala> DetalleEscala { get; set; }
         public DbSet<DetalleInicio> DetalleInicio { get; set; }
         public DbSet<Salario> Salario { get; set; }
         public DbSet<MetaTipoProducto> MetaTipoProducto { get; set; }
-
-
-
-        /* ----------- Falta -----------
-         * DetalleEscala x
-         * DetalleInicio x
-         * Escala x
-         * MetaCDP -- Allan
-         * MetaCredito -- Allan
-         * MetaTipoProductoDetalle
-         * Salario x
-         * MetaTipoProducto
-         * TipoProducto -- Allan
-         * */
-
 
     }
 

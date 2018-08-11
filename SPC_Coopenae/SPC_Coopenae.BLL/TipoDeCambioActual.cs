@@ -17,8 +17,8 @@ namespace SPC_Coopenae.BLL
         {
             try
             {
-                ITipoCambio _tipoCambioBD;
-                _tipoCambioBD = new MTipoCambio();
+                ITipoCambioRepositorio _tipoCambioBD;
+                _tipoCambioBD = new MTipoCambioRepositorio();
 
                 var listaTiposCambio = _tipoCambioBD.ListarTipoCambio();
                 var fechaActual = DateTime.Now;
