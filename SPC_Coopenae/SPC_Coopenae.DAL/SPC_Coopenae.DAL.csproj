@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Interfaces\IMetaCDPRepositorio.cs" />
     <Compile Include="Interfaces\IMetaCreditoRepositorio.cs" />
+    <Compile Include="Interfaces\IMetaTipoProductoDetalleRepositorio.cs" />
     <Compile Include="Interfaces\ITipoCambioRepositorio.cs" />
     <Compile Include="Interfaces\ITipoProductoRepositorio.cs" />
     <Compile Include="Interfaces\IDetalleEscalaRepositorio.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Interfaces\ITipoCreditoRepositorio.cs" />
     <Compile Include="Metodos\MMetaCDPRepositorio.cs" />
     <Compile Include="Metodos\MMetaCreditoRepositorio.cs" />
+    <Compile Include="Metodos\MMetaTipoProductoDetalleRepositorio.cs" />
     <Compile Include="Metodos\MTipoCambioRepositorio.cs" />
     <Compile Include="Metodos\MTipoProducto.cs" />
     <Compile Include="Metodos\MDetalleEscalaRepositorio.cs" />

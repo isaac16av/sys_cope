@@ -47,6 +47,7 @@
     <Compile Include="DetalleInicio.cs" />
     <Compile Include="Escala.cs" />
     <Compile Include="MetaTipoProducto.cs" />
+    <Compile Include="MetaTipoProductoDetalle.cs" />
     <Compile Include="Salario.cs" />
     <Compile Include="TipoCambio.cs" />
     <Compile Include="TipoProducto.cs" />

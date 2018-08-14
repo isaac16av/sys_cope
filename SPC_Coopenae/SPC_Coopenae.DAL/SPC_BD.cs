@@ -42,6 +42,8 @@ namespace SPC_Coopenae.DAL
         public DbSet<DetalleInicio> DetalleInicio { get; set; }
         public DbSet<Salario> Salario { get; set; }
         public DbSet<MetaTipoProducto> MetaTipoProducto { get; set; }
+        public DbSet<MetaTipoProductoDetalle> MetaTipoProductoDetalle { get; set; }
+
 
     }
 
