@@ -13,7 +13,7 @@ Generación de ordenes de liquidación.
 
 Pre-requesitos 
 
-- Para este proyecto se utiliza como herramienta de dessarrollo Visal Studio, puede utilizarse cualquier versión del año 2017 o posterior, sin embargo se recomienda utilizar la versón Enterprise o posterior.  
+- Para este proyecto se utiliza como herramienta de dessarrollo Visual Studio, puede utilizarse cualquier versión del año 2017 o posterior, sin embargo se recomienda utilizar la versón Enterprise o posterior.  
 
 - Como controlador de versiones se está utilizando GitHub, es necesario descargar una extensión para Visual Studio y la implementación de GitHub, la misma es recomendada por Visual al hacer uso de GitHub.
 
@@ -32,6 +32,8 @@ Despliegue
 - La base de datos debe ser montada con el mismo nombre que indica el script.
 
 - En Visual Studio debe cargar la rama develop, es la rama donde se encuntra la versión mas reciente y modificada. 
+
+- Finalmente correr el proyecto, puede ejecutarse con cualquier navergador, sin embargo se recomienda Google Chrome. 
 
 Integrantes:
 Isaac Alfaro
