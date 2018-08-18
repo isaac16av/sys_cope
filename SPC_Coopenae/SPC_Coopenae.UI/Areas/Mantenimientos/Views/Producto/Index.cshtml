@@ -42,7 +42,7 @@
             @Html.DisplayFor(modelItem => item.Comision)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TipoProducto)
+            @Html.Encode((ViewBag.TipoProducto as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.TipoProducto).Text)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Estado)

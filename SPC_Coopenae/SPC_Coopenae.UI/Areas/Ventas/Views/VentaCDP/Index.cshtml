@@ -60,7 +60,7 @@
             @Html.DisplayFor(modelItem => item.IdVentaCDP)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Ejecutivo)
+            @Html.Encode((ViewBag.Ejecutivo as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.Ejecutivo).Text)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Fecha)
@@ -93,7 +93,8 @@
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TipoCDP)
+            @Html.Encode((ViewBag.TipoCDP as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.TipoCDP).Text)
+            <!--Muestra el nombre en vez del id en la vista-->
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IdVentaCDP }) |

@@ -24,7 +24,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ejecutivo)
+            @Html.Encode((ViewBag.Ejecutivo as SelectList).SingleOrDefault(x => int.Parse(x.Value) == Model.Ejecutivo).Text)
         </dd>
 
         <dt>
@@ -112,12 +112,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TipoCDP)
+            @Html.Encode((ViewBag.TipoCDP as SelectList).SingleOrDefault(x => int.Parse(x.Value) == Model.TipoCDP).Text)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.IdVentaCDP  }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
