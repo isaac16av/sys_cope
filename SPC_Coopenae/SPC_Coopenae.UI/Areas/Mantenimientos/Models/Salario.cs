@@ -20,6 +20,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
         public string Descripcion { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio")]
-        public bool Estado { get; set; }
+        public bool Estado { get; set; } = true;
     }
 }

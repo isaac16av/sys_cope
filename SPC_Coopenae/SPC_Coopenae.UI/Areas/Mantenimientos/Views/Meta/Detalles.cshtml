@@ -28,19 +28,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Escala)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Escala)
+            @Html.Encode((ViewBag.Escala as SelectList).SingleOrDefault(x => int.Parse(x.Value) == Model.Escala).Text)
         </dd>
 
         <dt>

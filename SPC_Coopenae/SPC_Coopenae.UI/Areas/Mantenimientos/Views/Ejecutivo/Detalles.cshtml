@@ -76,19 +76,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.UnidadNegocio)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UnidadNegocio)
+            @Html.Encode((ViewBag.listadoUnidadNegocio as SelectList).SingleOrDefault(x => int.Parse(x.Value) == Model.UnidadNegocio).Text)
         </dd>
 
     </dl>

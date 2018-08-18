@@ -16,7 +16,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
 
         public decimal Comision { get; set; }
 
-        public bool Estado { get; set; }
+        public bool Estado { get; set; } = true;
 
         public int TipoProducto { get; set; }
 

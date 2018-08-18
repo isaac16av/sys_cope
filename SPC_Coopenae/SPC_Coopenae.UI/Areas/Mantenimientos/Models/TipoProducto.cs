@@ -15,6 +15,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
         [Required(ErrorMessage = "El campo moneda es requerido")]
         public string Moneda { get; set; }
 
-        public bool Estado { get; set; }
+        public bool Estado { get; set; } = true;
     }
 }

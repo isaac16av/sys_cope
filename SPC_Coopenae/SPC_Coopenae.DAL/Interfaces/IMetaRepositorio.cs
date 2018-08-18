@@ -14,5 +14,7 @@ namespace SPC_Coopenae.DAL.Interfaces
         void InsertarMeta(Meta meta);
         void ActualizarMeta(Meta meta);
         void EliminarMeta(int id);
+
+      
     }
 }

@@ -64,13 +64,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Telefono)
             </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Correo)
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.UnidadNegocio)
+                @Html.Encode((ViewBag.listadoUnidadNegocio as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.UnidadNegocio).Text)
             </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.FechaNacimiento)
             </td>

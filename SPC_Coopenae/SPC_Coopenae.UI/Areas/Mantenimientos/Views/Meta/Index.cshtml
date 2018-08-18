@@ -41,9 +41,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
+           
         <td>
-            @Html.DisplayFor(modelItem => item.Escala)
-        </td>
+            @Html.Encode((ViewBag.Escala as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.Escala).Text)
+        </td>         
+        
         <td>
             @Html.DisplayFor(modelItem => item.Salario)
         </td>
