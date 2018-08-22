@@ -57,7 +57,7 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Ocurrió un error", ex);
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
 
@@ -80,7 +80,7 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Ocurrió un error", ex);
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }
@@ -94,7 +94,7 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Ocurrió un error", ex);
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }
@@ -116,7 +116,7 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Ocurrió un error", ex);
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }
@@ -132,7 +132,7 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Ocurrió un error", ex);
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }
@@ -154,7 +154,7 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("Ocurrió un error", ex);
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
         }

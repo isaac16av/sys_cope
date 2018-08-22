@@ -81,6 +81,7 @@ namespace SPC_Coopenae.UI.Controllers
                     Reporte reporteMostrar = new Reporte();
                     var reporteTipoCreditosBLL = _reporteBLL.GetReporteTipoCreditos();
                     reporteMostrar.listaTipoCreditos = Mapper.Map<List<ReporteTipoCreditos>>(reporteTipoCreditosBLL);
+                    reporteMostrar.TotalComisionesGeneradas = reporteMostrar.listaTipoCreditos.Sum(x => x.TotalComision ?? 0);
 
                     return View(reporteMostrar);
                 }

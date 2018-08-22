@@ -11,7 +11,7 @@ namespace SPC_Coopenae.UI.Models
 
         public List<ReporteTipoCreditos> listaTipoCreditos { get; set; }
 
-
+        public decimal TotalComisionesGeneradas { get; set; }
 
 
     }

@@ -40,6 +40,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Registrar()
         {
+            ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
             return View();
         }
 
@@ -48,6 +49,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
                 if (!ModelState.IsValid)
                 {
                     return View();
@@ -98,6 +100,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
                 var ProductoBuscar = _repositorioProducto.BuscarProducto(id);
                 var ProductoEditar = Mapper.Map<Models.Producto>(ProductoBuscar);
                 return View(ProductoEditar);
@@ -114,6 +117,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
                 if (!ModelState.IsValid)
                 {
                     return View();
