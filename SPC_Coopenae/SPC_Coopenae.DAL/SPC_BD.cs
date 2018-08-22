@@ -44,7 +44,6 @@ namespace SPC_Coopenae.DAL
         public DbSet<MetaTipoProducto> MetaTipoProducto { get; set; }
         public DbSet<MetaTipoProductoDetalle> MetaTipoProductoDetalle { get; set; }
 
-
     }
 
 }

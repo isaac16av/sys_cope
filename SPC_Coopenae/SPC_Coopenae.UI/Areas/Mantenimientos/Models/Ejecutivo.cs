@@ -9,7 +9,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
     public class Ejecutivo
     {
         [Display(Name = "Cédula")]
-        [MaxLength(10, ErrorMessage = "El número máximo son 10 dígitos")]
         public int Cedula { get; set; }
 
         [Required(ErrorMessage = "El campo código de vendedor es requerido")]

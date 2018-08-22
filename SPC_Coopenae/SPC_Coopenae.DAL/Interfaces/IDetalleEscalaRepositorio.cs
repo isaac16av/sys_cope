@@ -10,7 +10,6 @@ namespace SPC_Coopenae.DAL.Interfaces
     public interface IDetalleEscalaRepositorio
     {
         List<DetalleEscala> ListarDetalleEscalas(int idEscala);
-        DetalleEscala BuscarDetalleEscala(int id);
         void InsertarDetalleEscala(DetalleEscala dEsc);
         
        

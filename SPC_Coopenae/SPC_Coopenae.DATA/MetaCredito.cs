@@ -7,7 +7,6 @@ namespace SPC_Coopenae.DATA
     public class MetaCredito
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int IdMetaCredito { get; set; }
 
         public decimal MetaColocacion { get; set; }
