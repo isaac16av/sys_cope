@@ -15,11 +15,13 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
 
         IVentaCreditoRepositorio _repositorioVentaCred;
         ITipoCreditoRepositorio _repositorioTipoCred;
+        IEjectutivoRepositorio _repositorioEjecutivo;
 
         public VentaCreditoController()
         {
             _repositorioVentaCred = new MVentaCreditoRepositorio();
             _repositorioTipoCred = new MTipoCreditoRepositorio();
+            _repositorioEjecutivo = new MEjecutivoRepositorio();
         }
 
         // GET: Mantenimientos/ColocacionCredito
@@ -27,6 +29,13 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
         {
             try
             {
+                ViewBag.Ejecutivo = ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
+                                                                        select new
+                                                                        {
+                                                                            Id = s.Cedula,
+                                                                            CombinedFields = s.Nombre + " " + s.Apellidos
+                                                                        }), "Id", "CombinedFields");
+                ViewBag.TipoCredito = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdTipoCredito", "Nombre");
                 var listarVentaCred = _repositorioVentaCred.ListarVentaCredito();
                 var VentaCredListado = Mapper.Map<List<Models.VentaCredito>>(listarVentaCred);
                 return View(VentaCredListado);
@@ -94,6 +103,13 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
         {
             try
             {
+                ViewBag.Ejecutivo = ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
+                                                                        select new
+                                                                        {
+                                                                            Id = s.Cedula,
+                                                                            CombinedFields = s.Nombre + " " + s.Apellidos
+                                                                        }), "Id", "CombinedFields");
+                ViewBag.TipoCredito = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdTipoCredito", "Nombre");
                 var ventaCredBuscar = _repositorioVentaCred.BuscarVentaCredito(id);
                 var ventaCredDetallar = Mapper.Map<Models.VentaCredito>(ventaCredBuscar);
                 return View(ventaCredDetallar);

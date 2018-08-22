@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar nueva venta credito", "Create")
 </p>
 <table class="table">
     <tr>
@@ -43,9 +43,6 @@
             @Html.DisplayNameFor(model => model.PlazoMeses)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TipoCredito)
         </th>
         <th></th>
@@ -57,7 +54,7 @@
             @Html.DisplayFor(modelItem => item.IdVentaCredito)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Ejecutivo)
+            @Html.Encode((ViewBag.Ejecutivo as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.Ejecutivo).Text)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Fecha)
@@ -84,15 +81,20 @@
             @Html.DisplayFor(modelItem => item.PlazoMeses)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Estado)
+            @Html.Encode((ViewBag.TipoCredito as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.TipoCredito).Text)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TipoCredito)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.IdVentaCredito }) |
-            @Html.ActionLink("Detalles", "Detalles", new { id = item.IdVentaCredito }) |
-            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdVentaCredito })
+            <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdVentaCredito })">
+                <span class="glyphicon glyphicon-pencil" title="Editar"></span>
+            </a>
+
+            <a class="btn btn-success" href="@Url.Action("Detalles", new { id = item.IdVentaCredito })">
+                <span class="glyphicon glyphicon-list-alt" title="Detalle"></span>
+            </a>
+
+            <a class="btn btn-danger" href="@Url.Action("Eliminar", new { id = item.IdVentaCredito })">
+                <span class="glyphicon glyphicon-trash" title="Eliminar"></span>
+            </a>
         </td>
     </tr>
 }

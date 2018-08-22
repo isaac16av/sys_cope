@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using SPC_Coopenae.DAL;
 using SPC_Coopenae.DAL.Interfaces;
 using SPC_Coopenae.DAL.Metodos;
 using SPC_Coopenae.DATA;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,18 +16,23 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
     {
 
         IMetaRepositorio _repositorio;
+        IEscalaRepositorio _escala;
+    
 
         public MetaController()
         {
             _repositorio = new MMetaRepositorio();
+            _escala = new MEscalaRepositorio();
         }
 
         public ActionResult Index()
         {
             try
             {
+                ViewBag.Escala = new SelectList(_escala.ListarEscalas(), "IdEscala", "Descripcion");
                 var metas = _repositorio.ListarMetas();
                 var metasMostrar = Mapper.Map<List<Models.Meta>>(metas);
+
                 return View(metasMostrar);
             }
             catch (Exception ex)
@@ -33,7 +40,9 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
-            
+
+
+
         }
 
         public ActionResult Registrar()
@@ -81,6 +90,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.Escala = new SelectList(_escala.ListarEscalas(), "IdEscala", "Descripcion");
                 var MetaBuscar = _repositorio.BuscarMeta(id);
                 var MetaDetallar = Mapper.Map<Models.Meta>(MetaBuscar);
                 return View(MetaDetallar);

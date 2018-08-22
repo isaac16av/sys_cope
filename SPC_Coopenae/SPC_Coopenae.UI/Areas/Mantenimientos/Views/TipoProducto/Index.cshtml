@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Registrar")
+    @Html.ActionLink("Registrar nuevo tipo producto", "Registrar")
 </p>
 <table class="table">
     <tr>
@@ -20,9 +20,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Moneda)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
         </th>
         <th></th>
     </tr>
@@ -39,12 +36,17 @@
             @Html.DisplayFor(modelItem => item.Moneda)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Editar", new {  id=item.IdTipoProducto  }) |
-            @Html.ActionLink("Details", "Detalles", new {  id=item.IdTipoProducto   }) |
-            @Html.ActionLink("Delete", "Eliminar", new {  id=item.IdTipoProducto  })
+            <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdTipoProducto })">
+                <span class="glyphicon glyphicon-pencil" title="Editar"></span>
+            </a>
+
+            <a class="btn btn-success" href="@Url.Action("Detalles", new { id = item.IdTipoProducto })">
+                <span class="glyphicon glyphicon-list-alt" title="Detalle"></span>
+            </a>
+
+            <a class="btn btn-danger" href="@Url.Action("Eliminar", new { id = item.IdTipoProducto })">
+                <span class="glyphicon glyphicon-trash" title="Eliminar"></span>
+            </a>
         </td>
     </tr>
 }

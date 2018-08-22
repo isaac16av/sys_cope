@@ -32,16 +32,9 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Meta)
+            @Html.Encode((ViewBag.Meta as SelectList).SingleOrDefault(x => int.Parse(x.Value) == Model.Meta).Text)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
 
     </dl>
 </div>

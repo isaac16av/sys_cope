@@ -36,24 +36,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.TipoProducto)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TipoProducto)
+            @Html.Encode((ViewBag.TipoProducto as SelectList).SingleOrDefault(x => int.Parse(x.Value) == Model.TipoProducto).Text)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.IdProducto }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Editar", new {  id = Model.IdProducto }) |
+    @Html.ActionLink("Regresar a la lista", "Index")
 </p>

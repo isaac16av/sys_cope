@@ -24,7 +24,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ejecutivo)
+            @Html.Encode((ViewBag.Ejecutivo as SelectList).SingleOrDefault(x => int.Parse(x.Value) == Model.Ejecutivo).Text)
         </dd>
 
         <dt>
@@ -102,14 +102,14 @@
         <dt>
             @Html.DisplayNameFor(model => model.TipoCredito)
         </dt>
-
+            
         <dd>
-            @Html.DisplayFor(model => model.TipoCredito)
+            @Html.Encode((ViewBag.TipoCredito as SelectList).SingleOrDefault(x => int.Parse(x.Value) == Model.TipoCredito).Text)
         </dd>
 
     </dl>
 </div>
 <p>
     @Html.ActionLink("Editar", "Editar", new { id = Model.IdVentaCredito }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar a la lista", "Index")
 </p>
