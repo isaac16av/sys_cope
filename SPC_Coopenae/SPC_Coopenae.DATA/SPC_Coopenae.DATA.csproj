@@ -45,6 +45,7 @@
     <Compile Include="MetaCredito.cs" />
     <Compile Include="DetalleEscala.cs" />
     <Compile Include="Escala.cs" />
+    <Compile Include="ObjReportes\ReporteTipoCreditos.cs" />
     <Compile Include="TipoCambio.cs" />
     <Compile Include="TipoProducto.cs" />
     <Compile Include="VentaCDP.cs" />

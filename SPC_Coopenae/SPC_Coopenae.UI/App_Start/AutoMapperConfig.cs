@@ -41,6 +41,9 @@ namespace SPC_Coopenae
 
                 cfg.CreateMap<UI.Areas.Mantenimientos.Models.Escala, DATA.Escala>();
                 cfg.CreateMap<DATA.Escala, UI.Areas.Mantenimientos.Models.Escala>();
+
+                cfg.CreateMap<UI.Models.ObjsReporte.ReporteTipoCreditos, DATA.ObjReportes.ReporteTipoCreditos>();
+                cfg.CreateMap<DATA.ObjReportes.ReporteTipoCreditos, UI.Models.ObjsReporte.ReporteTipoCreditos>();
             });
         }
     }

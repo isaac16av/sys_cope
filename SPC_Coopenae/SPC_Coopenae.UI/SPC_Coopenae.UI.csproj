@@ -161,7 +161,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\TipoProductoController.cs" />
     <Compile Include="Areas\Mantenimientos\Models\TipoProducto.cs" />
-    <Compile Include="Areas\Mantenimientos\Controllers\DetalleEscalaController.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\EscalaController.cs" />
     <Compile Include="Areas\Mantenimientos\Models\DetalleEscala.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Escala.cs" />
@@ -187,9 +186,12 @@
     <Compile Include="Areas\Mantenimientos\Models\TipoCDP.cs" />
     <Compile Include="Areas\Mantenimientos\Models\TipoCredito.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ObjsReporte\ReporteTipoCreditos.cs" />
+    <Compile Include="Models\Reporte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -270,7 +272,6 @@
     <Content Include="Areas\Mantenimientos\Views\Escala\Index.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Escala\Registrar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Escala\Detalles.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\DetalleEscala\Detalles.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -312,11 +313,12 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Reporte\Index.cshtml" />
+    <Content Include="Views\Reporte\EjecutivoMensual.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Ventas\Views\Shared\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

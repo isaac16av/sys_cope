@@ -10,13 +10,6 @@ namespace SPC_Coopenae.DAL.Metodos
 {
     public class MDetalleEscalaRepositorio : IDetalleEscalaRepositorio
     {
-        public DetalleEscala BuscarDetalleEscala(int id)
-        {
-            using (var dbc = new SPC_BD())
-            {
-                return dbc.DetalleEscala.Find(id);
-            }
-        }
 
         public void InsertarDetalleEscala(DetalleEscala dEsc)
         {

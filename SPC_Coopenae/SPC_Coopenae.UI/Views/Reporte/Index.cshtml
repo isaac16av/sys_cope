@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Ingrese la Cédula del ejecutivo</h3>
+
+<br />
+
+@using (Html.BeginForm())
+{
+    <input type="number" name="cedula" id="txt_cedula" class="form-control" />
+    <input type="submit" name="buscar" id="btn_buscar" value="Buscar" class="form-control" />
+
+    if (ViewBag.MensajeError != null)
+    {
+        <h5 class="text-danger">@Html.Raw(ViewBag.MensajeError)</h5>
+    }
+
+}
+

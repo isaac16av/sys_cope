@@ -11,12 +11,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Sistema de Control de Comisiones", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -28,6 +23,10 @@
                             <li>@Html.ActionLink("Creditos", "Index", "TipoCredito", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("TipoCDP", "Index", "TipoCDP", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("TipoProducto ", "Index", "TipoProducto", new { area = "Mantenimientos" }, new { })</li>
+                            <li>@Html.ActionLink("TipoCredito ", "Index", "TipoCredito", new { area = "Mantenimientos" }, new { })</li>
+                            <li>@Html.ActionLink("Escala ", "Index", "Escala", new { area = "Mantenimientos" }, new { })</li>
+                            <li>@Html.ActionLink("Meta ", "Index", "Meta", new { area = "Mantenimientos" }, new { })</li>
+                            <li>@Html.ActionLink("Producto ", "Index", "Producto", new { area = "Mantenimientos" }, new { })</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -38,6 +37,7 @@
                             <li>@Html.ActionLink("VentaCDP", "Index", "VentaCDP", new { area = "Ventas" }, new { })</li>
                         </ul>
                     </li>
+                    <li>@Html.ActionLink("Reportes", "Index", "Reporte", new { area = "" }, new { }) </li>
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { }) </li>
                 </ul>
 

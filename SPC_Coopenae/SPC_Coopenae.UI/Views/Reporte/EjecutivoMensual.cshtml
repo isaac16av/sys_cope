@@ -1,0 +1,68 @@
+﻿@model SPC_Coopenae.UI.Models.Reporte
+
+@{
+    ViewBag.Title = "EjecutivoMensual";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal TotalComisionesCreditos = 0;
+}
+
+<br />
+<h3>Reporte de @ViewBag.NombreEjecutivo</h3>
+<h4>Cédula. @ViewBag.CedulaEjecutivo</h4>
+<h5>@ViewBag.FechaReporte</h5>
+
+
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="text-danger">@Html.Raw(ViewBag.MensajeError)</h5>
+}
+
+<br />
+
+<div class="row">
+    <div class="col-md-8">
+        <h5><b>Reporte de Créditos Colocados</b></h5>
+        <table class="table table-hover table-condensed">
+
+            <tr>
+                <th>Crédito</th>
+                <th>Total Colocado</th>
+                <th>% de Comisión</th>
+                <th>Total Comisionado</th>
+            </tr>
+            @foreach (var ventaCred in Model.listaTipoCreditos)
+            {
+                var ClaseAsignar = "";
+                ClaseAsignar = (ventaCred.SumaColocaciones == 0 ? "danger" : ClaseAsignar);
+                TotalComisionesCreditos += (decimal)ventaCred.SumaColocaciones;
+
+                <tr class="@ClaseAsignar">
+                    <td>
+                        @Html.DisplayFor(x => ventaCred.NombreTipo)
+                    </td>
+                    <td>
+                        ₡@string.Format("{0:0,0.00}", ventaCred.SumaColocaciones)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => ventaCred.PCTComisionGanada)%
+                    </td>
+                    <td>
+                        @{
+                            decimal TotalMostrar = (ventaCred.TotalComision != null ? (decimal)ventaCred.TotalComision : 0);
+                        }
+                        ₡@string.Format("{0:0,0.00}", TotalMostrar)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="info">Total</td>
+                <td class="info">₡@string.Format("{0:0,0.00}", TotalComisionesCreditos)</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
