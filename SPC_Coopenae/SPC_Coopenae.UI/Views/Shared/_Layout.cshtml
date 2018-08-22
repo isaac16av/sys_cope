@@ -8,17 +8,19 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                @Html.ActionLink("Sistema de Control de Comisiones", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mantenimientos<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Ejecutivo", "Index", "Ejecutivo", new { area = "Mantenimientos" }, new { })</li>
+        <div class="navbar navbar-inverse navbar-fixed-top" id="nav" style="background-color:#165B94; font-size:15px; padding-top:10px;">
+            <div class="container">
+                <div class="navbar-header">                
+                    <a href="@Url.Action("Home","Index")">
+                        <img src="@Url.Content("~/Resources/Images/logo4.png")"  alt="Logo">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" style="margin-left:100px">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mantenimientos<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Ejecutivo", "Index", "Ejecutivo", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("UnidadNegocio", "Index", "UnidadNegocio", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("Creditos", "Index", "TipoCredito", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("TipoCDP", "Index", "TipoCDP", new { area = "Mantenimientos" }, new { })</li>
@@ -27,33 +29,32 @@
                             <li>@Html.ActionLink("Escala ", "Index", "Escala", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("Meta ", "Index", "Meta", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("Producto ", "Index", "Producto", new { area = "Mantenimientos" }, new { })</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ventas<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("VentaProducto", "Index", "VentaProducto", new { area = "Ventas" }, new { })</li>
-                            <li>@Html.ActionLink("VentaCredito", "Index", "VentaCredito", new { area = "Ventas" }, new { })</li>
-                            <li>@Html.ActionLink("VentaCDP", "Index", "VentaCDP", new { area = "Ventas" }, new { })</li>
-                        </ul>
-                    </li>
-                    <li>@Html.ActionLink("Reportes", "Index", "Reporte", new { area = "" }, new { }) </li>
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { }) </li>
-                </ul>
-
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ventas<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("VentaProducto", "Index", "VentaProducto", new { area = "Ventas" }, new { })</li>
+                                <li>@Html.ActionLink("VentaCredito", "Index", "VentaCredito", new { area = "Ventas" }, new { })</li>
+                                <li>@Html.ActionLink("VentaCDP", "Index", "VentaCDP", new { area = "Ventas" }, new { })</li>
+                            </ul>
+                        </li>
+                         <li>@Html.ActionLink("Reportes", "Index", "Reporte", new { area = "" }, new { }) </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Footer</p>
-        </footer>
-    </div>
+        <br />
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Footer</p>
+            </footer>
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
 </html>

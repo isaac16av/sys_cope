@@ -24,7 +24,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ejecutivo)
+            @Html.Encode((ViewBag.Ejecutivo as SelectList).SingleOrDefault(x => int.Parse(x.Value) == Model.Ejecutivo).Text)
         </dd>
 
         <dt>
@@ -64,7 +64,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Producto)
+            @Html.Encode((ViewBag.Producto as SelectList).SingleOrDefault(x => int.Parse(x.Value) == Model.Producto).Text)
         </dd>
 
         <dt>
@@ -79,5 +79,5 @@
 </div>
 <p>
     @Html.ActionLink("Editar", "Editar", new { id = Model.IdVentaProducto }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar a la lista", "Index")
 </p>

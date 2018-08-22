@@ -13,16 +13,19 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
     {
 
         IProductoRepositorio _repositorioProducto;
+        ITipoProductoRepositorio _tipoProducto;
 
         public ProductoController()
         {
             _repositorioProducto = new MProductoRepositorio();
+            _tipoProducto = new MTipoProducto();
         }
 
         public ActionResult Index()
         {
             try
             {
+                ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
                 var ListadoProductosBD = _repositorioProducto.ListarProducto();
                 var ProductosMostrar = Mapper.Map<List<Models.Producto>>(ListadoProductosBD);
                 return View(ProductosMostrar);
@@ -79,6 +82,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
                 var ProductoBuscar = _repositorioProducto.BuscarProducto(id);
                 var ProductoDetallar = Mapper.Map<Models.Producto>(ProductoBuscar);
                 return View(ProductoDetallar);

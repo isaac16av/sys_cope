@@ -14,17 +14,26 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
 
         IVentaProductoRepositorio _repositorioVentaProducto;
         IProductoRepositorio _repositorioProductos;
+        IEjectutivoRepositorio _repositorioEjecutivo;
 
         public VentaProductoController()
         {
             _repositorioVentaProducto = new MVentaProductoRepositorio();
             _repositorioProductos = new MProductoRepositorio();
+            _repositorioEjecutivo = new MEjecutivoRepositorio();
         }
 
         public ActionResult Index()
         {
             try
             {
+                ViewBag.Producto = new SelectList(_repositorioProductos.ListarProducto(), "IdProducto","Nombre");
+                ViewBag.Ejecutivo = ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
+                                                                        select new
+                                                                        {
+                                                                            Id = s.Cedula,
+                                                                            CombinedFields = s.Nombre + " " + s.Apellidos
+                                                                        }), "Id", "CombinedFields");
                 var ListadoVentasBD = _repositorioVentaProducto.ListarVentasProducto();
                 var VentasMostrar = Mapper.Map<List<Models.VentaProducto>>(ListadoVentasBD);
                 return View(VentasMostrar);
@@ -83,6 +92,13 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
         {
             try
             {
+                ViewBag.Producto = new SelectList(_repositorioProductos.ListarProducto(), "IdProducto", "Nombre");
+                ViewBag.Ejecutivo = ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
+                                                                        select new
+                                                                        {
+                                                                            Id = s.Cedula,
+                                                                            CombinedFields = s.Nombre + " " + s.Apellidos
+                                                                        }), "Id", "CombinedFields");
                 var VentaBuscar = _repositorioVentaProducto.BuscarVentaProducto(id);
                 var VentaDetallar = Mapper.Map<Models.VentaProducto>(VentaBuscar);
                 return View(VentaDetallar);

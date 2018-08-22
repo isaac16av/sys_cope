@@ -27,5 +27,7 @@ namespace SPC_Coopenae.DAL.Metodos
                 return dbc.DetalleEscala.Where(x => x.Escala == idEscala).ToList();
             }
         }
+
+        
     }
 }

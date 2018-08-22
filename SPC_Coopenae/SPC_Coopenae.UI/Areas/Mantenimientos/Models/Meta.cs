@@ -14,7 +14,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
         [Display(Name = "Descripción")]
         public string Descripcion { get; set; }
 
-        public bool Estado { get; set; }
+        public bool Estado { get; set; } = true;
 
         public int Escala { get; set; }
 

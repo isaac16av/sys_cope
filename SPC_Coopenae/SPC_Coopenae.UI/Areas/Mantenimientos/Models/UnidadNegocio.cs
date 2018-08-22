@@ -12,7 +12,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
 
         public string Nombre { get; set; }
 
-        public bool Estado { get; set; }
+        public bool Estado { get; set; } = true;
 
         public int Meta { get; set; }
 

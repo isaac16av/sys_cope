@@ -17,8 +17,6 @@ namespace SPC_Coopenae.UI
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryvalfx").Include(
-                        "~/Scripts/jqueryValidateFix.js"));
 
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -31,7 +29,7 @@ namespace SPC_Coopenae.UI
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css"));
         }
     }
 }

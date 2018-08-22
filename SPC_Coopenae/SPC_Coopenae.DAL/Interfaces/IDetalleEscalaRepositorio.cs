@@ -11,6 +11,7 @@ namespace SPC_Coopenae.DAL.Interfaces
     {
         List<DetalleEscala> ListarDetalleEscalas(int idEscala);
         void InsertarDetalleEscala(DetalleEscala dEsc);
+        
        
     }
 }

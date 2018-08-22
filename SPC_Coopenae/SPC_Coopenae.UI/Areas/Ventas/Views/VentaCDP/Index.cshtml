@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar nueva Venta CDP", "Create")
 </p>
 <table class="table">
     <tr>
@@ -46,9 +46,6 @@
             @Html.DisplayNameFor(model => model.SobreTasa)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TipoCDP)
         </th>
         <th></th>
@@ -60,7 +57,7 @@
             @Html.DisplayFor(modelItem => item.IdVentaCDP)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Ejecutivo)
+            @Html.Encode((ViewBag.Ejecutivo as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.Ejecutivo).Text)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Fecha)
@@ -90,15 +87,21 @@
             @Html.DisplayFor(modelItem => item.SobreTasa)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Estado)
+            @Html.Encode((ViewBag.TipoCDP as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.TipoCDP).Text)
+            <!--Muestra el nombre en vez del id en la vista-->
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TipoCDP)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdVentaCDP }) |
-            @Html.ActionLink("Details", "Details", new { id = item.IdVentaCDP }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IdVentaCDP })
+            <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdVentaCDP })">
+                <span class="glyphicon glyphicon-pencil" title="Editar"></span>
+            </a>
+
+            <a class="btn btn-success" href="@Url.Action("Detalles", new { id = item.IdVentaCDP })">
+                <span class="glyphicon glyphicon-list-alt" title="Detalle"></span>
+            </a>
+
+            <a class="btn btn-danger" href="@Url.Action("Eliminar", new { id = item.IdVentaCDP })">
+                <span class="glyphicon glyphicon-trash" title="Eliminar"></span>
+            </a>
         </td>
     </tr>
 }

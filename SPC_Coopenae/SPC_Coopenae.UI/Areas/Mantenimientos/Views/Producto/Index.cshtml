@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Registrar")
+    @Html.ActionLink("Registrar nuevo producto", "Registrar")
 </p>
 <table class="table">
     <tr>
@@ -23,9 +23,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TipoProducto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
         </th>
         <th></th>
     </tr>
@@ -42,15 +39,20 @@
             @Html.DisplayFor(modelItem => item.Comision)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TipoProducto)
+            @Html.Encode((ViewBag.TipoProducto as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.TipoProducto).Text)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Editar", new { id=item.IdProducto }) |
-            @Html.ActionLink("Details", "Detalles", new { id = item.IdProducto }) |
-            @Html.ActionLink("Delete", "Eliminar", new { id = item.IdProducto })
+            <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdProducto })">
+                <span class="glyphicon glyphicon-pencil" title="Editar"></span>
+            </a>
+
+            <a class="btn btn-success" href="@Url.Action("Detalles", new { id = item.IdProducto })">
+                <span class="glyphicon glyphicon-list-alt" title="Detalle"></span>
+            </a>
+
+            <a class="btn btn-danger" href="@Url.Action("Eliminar", new { id = item.IdProducto })">
+                <span class="glyphicon glyphicon-trash" title="Eliminar"></span>
+            </a>
         </td>
     </tr>
 }

@@ -14,17 +14,26 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
 
         IVentaCDPRepositorio _repositorioCDP;
         ITipoCDPRepositorio _repositorioTipoCDP;
+        IEjectutivoRepositorio _repositorioEjecutivo;
 
         public VentaCDPController()
         {
             _repositorioCDP = new MVentaCDPRepositorio();
             _repositorioTipoCDP = new MTipoCDPRepositorio();
+            _repositorioEjecutivo = new MEjecutivoRepositorio();
         }
 
         public ActionResult Index()
         {
             try
             {
+                ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
+                                                    select new
+                                                    {
+                                                        Id = s.Cedula,
+                                                        CombinedFields = s.Nombre + " " + s.Apellidos
+                                                    }), "Id", "CombinedFields");
+                ViewBag.TipoCDP = new SelectList(_repositorioEjecutivo.ListarEjecutivos(), "IdTipoCDP", "Nombre");
                 var ListaCDPsBD = _repositorioCDP.ListarCDP();
                 var ListaMostrarCDPs = Mapper.Map<List<Models.VentaCDP>>(ListaCDPsBD);
                 return View(ListaMostrarCDPs);
@@ -91,6 +100,13 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
         {
             try
             {
+                ViewBag.Ejecutivo = ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
+                                                                        select new
+                                                                        {
+                                                                            Id = s.Cedula,
+                                                                            CombinedFields = s.Nombre + " " + s.Apellidos
+                                                                        }), "Id", "CombinedFields");
+                ViewBag.TipoCDP = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
                 var colCDPBuscar = _repositorioCDP.BuscarCDP(id);
                 var colCDPDetallar = Mapper.Map<Models.VentaCDP>(colCDPBuscar);
                 return View(colCDPDetallar);

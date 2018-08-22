@@ -1,5 +1,6 @@
 ﻿@model SPC_Coopenae.UI.Areas.Mantenimientos.Models.Escala
 
+
 @{
     ViewBag.Title = "Detalles";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,23 +21,35 @@
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-
-        <!--
-            
-            foreach o algo asi
-            lea el viewbag y haga una tabla con los detalles
-        
-            -->
-
     </dl>
+ 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Porcentaje Minimo</th>
+                <th>Porcentaje Maximo</th>
+                <th>Porcentaje Comision</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var data in ViewBag.DetallesDeEscala)
+            {
+            <tr>
+                <td>
+                    @data.PCTMinimo
+                </td>
+                <td>
+                    @data.PCTMaximo
+                </td>
+                <td>
+                    @data.PCTComision
+                </td>
+            </tr>
+            }
+            
+        </tbody>
+    </table>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar a la lista", "Index")
 </p>

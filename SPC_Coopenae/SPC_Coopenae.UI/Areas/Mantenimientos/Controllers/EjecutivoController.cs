@@ -25,6 +25,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.listadoUnidadNegocio = new SelectList(_repositorioUnidadNegocio.ListarUnidadNegocio(), "IdUnidad", "Nombre");
                 var ListadoEjecutivosBD = _repositorioEjecutivo.ListarEjecutivos();
                 var EjecutivosMostrar = Mapper.Map<List<Models.Ejecutivo>>(ListadoEjecutivosBD);
                 return View(EjecutivosMostrar);
@@ -83,6 +84,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.listadoUnidadNegocio = new SelectList(_repositorioUnidadNegocio.ListarUnidadNegocio(), "IdUnidad", "Nombre");
                 var EjecutivoBuscar = _repositorioEjecutivo.BuscarEjecutivo(id);
                 var EjecutivoDetallar = Mapper.Map<Models.Ejecutivo>(EjecutivoBuscar);
                 return View(EjecutivoDetallar);

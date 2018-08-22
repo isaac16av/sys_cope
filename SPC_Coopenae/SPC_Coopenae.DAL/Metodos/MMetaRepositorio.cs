@@ -56,5 +56,8 @@ namespace SPC_Coopenae.DAL.Metodos
                 return dbc.Meta.Where(x => x.Estado == true).ToList();
             }
         }
+
+      
+
     }
 }

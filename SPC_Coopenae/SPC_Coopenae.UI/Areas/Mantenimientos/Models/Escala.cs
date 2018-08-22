@@ -14,7 +14,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
         [Required(ErrorMessage = "El campo es requerido")]
         public string Descripcion { get; set; }
 
-        public bool Estado { get; set; }
+        public bool Estado { get; set; } = true;
 
     }
 }

@@ -17,7 +17,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
 
         public int PlazoMesesMaximo { get; set; }
 
-        public bool Estado { get; set; }
+        public bool Estado { get; set; } = true;
 
     }
 }

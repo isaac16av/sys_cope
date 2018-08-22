@@ -13,16 +13,19 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
     {
 
         IUnidadNegocioRepositorio _repositorioUnidadNegocio;
+        IMetaRepositorio _meta;
 
         public UnidadNegocioController()
         {
             _repositorioUnidadNegocio = new MUnidadNegocioRepositorio();
+            _meta = new MMetaRepositorio();
         }
 
         public ActionResult Index()
         {
             try
             {
+                ViewBag.Meta = new SelectList(_meta.ListarMetas(), "IdMeta", "Descripcion");
                 var ListadoUnidadesBD = _repositorioUnidadNegocio.ListarUnidadNegocio();
                 var UnidadNegocioesMostrar = Mapper.Map<List<Models.UnidadNegocio>>(ListadoUnidadesBD);
                 return View(UnidadNegocioesMostrar);
@@ -79,8 +82,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.Meta = new SelectList(_meta.ListarMetas(), "IdMeta", "Descripcion");
                 var UnidadNegocioBuscar = _repositorioUnidadNegocio.BuscarUnidadNegocio(id);
                 var UnidadNegocioDetallar = Mapper.Map<Models.UnidadNegocio>(UnidadNegocioBuscar);
+
                 return View(UnidadNegocioDetallar);
             }
             catch (Exception ex)

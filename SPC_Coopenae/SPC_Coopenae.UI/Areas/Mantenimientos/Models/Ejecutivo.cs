@@ -31,9 +31,10 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
 
         public DateTime FechaContratacion { get; set; }
 
-        public bool Estado { get; set; }
-        [Display(Name = "Unidad De Negocio")]
 
+        public bool Estado { get; set; } = true;
+
+        [Display(Name = "Unidad De Negocio")]
         public int UnidadNegocio { get; set; }
 
     }

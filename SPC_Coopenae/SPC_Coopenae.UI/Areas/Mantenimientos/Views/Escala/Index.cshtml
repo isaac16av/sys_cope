@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Registrar")
+    @Html.ActionLink("Registrar", "Registrar")
 </p>
 <table class="table">
     <tr>
@@ -26,8 +26,13 @@
         </td>
 
         <td>
-            @Html.ActionLink("Detalles", "Detalles", new {  id=item.IdEscala  }) |
-            @Html.ActionLink("Eliminar", "Eliminar", new {  id=item.IdEscala })
+            <a class="btn btn-success" href="@Url.Action("Detalles", new { id = item.IdEscala })">
+                <span class="glyphicon glyphicon-list-alt" title="Detalle"></span>
+            </a>
+
+            <a class="btn btn-danger" href="@Url.Action("Eliminar", new { id = item.IdEscala })">
+                <span class="glyphicon glyphicon-trash" title="Eliminar"></span>
+            </a>
         </td>
     </tr>
 }
