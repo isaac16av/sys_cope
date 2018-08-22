@@ -7,17 +7,12 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body style=" background-color:#E8E7B6;">
-        <div class="navbar navbar-default navbar-fixed-top" style="background-color:#165B94; font-size:15px; padding-top:10px;">
+<body>
+        <div class="navbar navbar-inverse navbar-fixed-top" id="nav" style="background-color:#165B94; font-size:15px; padding-top:10px;">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="@Url.Action("Index","Home")">
-                        <img href="" src="@Url.Content("~/Resources/Images/logo2.png")" width="70px" height="60px">
+                <div class="navbar-header">                
+                    <a href="@Url.Action("Home","Index")">
+                        <img src="@Url.Content("~/Resources/Images/logo4.png")"  alt="Logo">
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">

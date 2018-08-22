@@ -81,9 +81,18 @@
             </td>
 
             <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.Cedula }) |
-                @Html.ActionLink("Detalles", "Detalles", new { id = item.Cedula }) |
-                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Cedula })
+                <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.Cedula })">
+                    <span class="glyphicon glyphicon-pencil" title="Editar"></span>
+                </a>
+
+                <a class="btn btn-success" href="@Url.Action("Detalles", new { id = item.Cedula })">
+                    <span class="glyphicon glyphicon-list-alt" title="Detalle"></span>
+                </a> 
+
+                <a class="btn btn-danger" href="@Url.Action("Eliminar", new { id = item.Cedula })">
+                    <span class="glyphicon glyphicon-trash" title="Eliminar"></span>
+                </a>
+
             </td>
         </tr>
     }
