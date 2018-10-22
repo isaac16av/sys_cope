@@ -6,8 +6,6 @@ using SPC_Coopenae.UI.Models;
 using SPC_Coopenae.UI.Models.ObjsReporte;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SPC_Coopenae.UI.Controllers
@@ -23,7 +21,6 @@ namespace SPC_Coopenae.UI.Controllers
             _repositorioEjecutivo = new MEjecutivoRepositorio();
         }
 
-
         public ActionResult Index()
         {
             if (TempData["MensajeError"] != null)
@@ -34,69 +31,73 @@ namespace SPC_Coopenae.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(int? cedula)
+        public ActionResult Index(int cedula, string fecha)
+        {
+            return RedirectToAction("Mensual", new { id = cedula, fecha = fecha });
+        }
+
+        public ActionResult Mensual(int? id, string fecha)
         {
             try
             {
-                if (cedula != null)
-                {
-                    var EjecutivoReportar = _repositorioEjecutivo.BuscarEjecutivo(cedula.Value);
-                    if (EjecutivoReportar == null)
-                    {
-                        ViewBag.MensajeError = "La cédula " + cedula + " no pertenece a ningún ejecutivo";
-                        return View();
-                    }
-                    return RedirectToAction("EjecutivoMensual", new { id = cedula });
-                }
-                else
-                {
-                    ViewBag.MensajeError = "Error. Debe ingresar la cédula del ejecutivo.";
-                    return View();
-                }
-            }
-            catch (Exception ex)
-            {
-                ViewBag.MensajeError = "Ocurrió un error. " + ex.Message;
-                return View();
-            }
-        }
-
-        public ActionResult EjecutivoMensual(int? id)
-        {
-            ViewBag.MensajeError = null;
-            if (id != null)
-            {
-                try
+                if (id != null && fecha != null)
                 {
                     int cedula = id.Value;
                     var EjecutivoReportar = _repositorioEjecutivo.BuscarEjecutivo(cedula);
 
-                    ViewBag.CedulaEjecutivo = EjecutivoReportar.Cedula;
-                    ViewBag.NombreEjecutivo = EjecutivoReportar.Nombre + " " + EjecutivoReportar.Apellidos;
+                    if (EjecutivoReportar == null)
+                    {
+                        TempData["MensajeError"] = "No se encontró la cédula " + cedula;
+                        return RedirectToAction("Index");
+                    }
 
-                    _reporteBLL = new ReporteGeneral(cedula, DateTime.Now);
-                    _reporteBLL.IniciarReporte();
-                    ViewBag.FechaReporte = "Para el mes de " + _reporteBLL.fecha.ToString("MMM") + " del " + _reporteBLL.fecha.Year;
+                    DateTime FechaReporte = Convert.ToDateTime(fecha);
 
-                    Reporte reporteMostrar = new Reporte();
-                    var reporteTipoCreditosBLL = _reporteBLL.GetReporteTipoCreditos();
-                    reporteMostrar.listaTipoCreditos = Mapper.Map<List<ReporteTipoCreditos>>(reporteTipoCreditosBLL);
-                    reporteMostrar.TotalComisionesGeneradas = reporteMostrar.listaTipoCreditos.Sum(x => x.TotalComision ?? 0);
+                    Reporte reporteMostrar = GenerarReporte(cedula, FechaReporte);
+                    reporteMostrar.Cedula = EjecutivoReportar.Cedula;
+                    reporteMostrar.Nombre = EjecutivoReportar.Nombre + " " + EjecutivoReportar.Apellidos;
+                    reporteMostrar.Fecha = FechaReporte;
 
                     return View(reporteMostrar);
                 }
-                catch (Exception ex)
+                else
                 {
-                    ViewBag.MensajeError = "Ocurrió un error. " + ex.Message;
-                    return View();
+                    TempData["MensajeError"] = "Debe ingresar los datos que se solicitan.";
+                    return RedirectToAction("Index");
                 }
+
             }
-            else
+            catch (Exception ex)
             {
-                TempData["MensajeError"] = "Error. Debe ingresar la cédula del ejecutivo.";
+                TempData["MensajeError"] = "Ocurrió un error. " + ex.Message;
                 return RedirectToAction("Index");
             }
 
+        }
+
+        [NonAction]
+        public bool ValidarEjecutivo(int cedula)
+        {
+            var EjecutivoReportar = _repositorioEjecutivo.BuscarEjecutivo(cedula);
+            if (EjecutivoReportar == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        [NonAction]
+        private Reporte GenerarReporte(int Reporte, DateTime fechaReporte)
+        {
+            _reporteBLL = new ReporteGeneral(Reporte, fechaReporte);
+            _reporteBLL.IniciarReporte();
+
+            Reporte reporteVista = new Reporte();
+
+            var reporteTipoCreditosBLL = _reporteBLL.GetReporteTipoCreditos();
+            reporteVista.listaTipoCreditos = Mapper.Map<List<ReporteTipoCreditos>>(reporteTipoCreditosBLL);
+
+            return reporteVista;
         }
 
     }

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SPC_Coopenae.UI.Models.ObjsReporte.ReporteTipoCreditos>
+
+
+<table class="table table-hover table-condensed">
+
+    <tr>
+        <th>Crédito</th>
+        <th class="text-right">Total Colocado</th>
+        <th class="text-right">% de Comisión</th>
+        <th class="text-right">Total Comisionado</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        var ClaseAsignar = "";
+        ClaseAsignar = (item.SumaColocaciones == 0 ? "danger" : ClaseAsignar);
+
+        <tr class="@ClaseAsignar text-right">
+            <td class="text-left">
+                @Html.DisplayFor(x => item.NombreTipo)
+            </td>
+            <td>
+                ₡@string.Format("{0:0,0.00}", item.SumaColocaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.PCTComisionGanada)%
+            </td>
+            <td>
+                @{
+                    decimal TotalMostrar = (item.TotalComision != null ? (decimal)item.TotalComision : 0);
+                }
+                ₡@string.Format("{0:0,0.00}", TotalMostrar)
+            </td>
+        </tr>
+    }
+    <tr class="text-right">
+        <td></td>
+        <td></td>
+        <td class="info">Total</td>
+        <td class="info">₡@string.Format("{0:0,0.00}", Model.Sum(x => x.TotalComision ?? 0))</td>
+    </tr>
+</table>
