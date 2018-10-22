@@ -1,0 +1,20 @@
+﻿@model SPC_Coopenae.UI.Models.Reporte
+
+@{
+    ViewBag.Title = "EjecutivoMensual";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h3>Reporte de @Model.Nombre</h3>
+<h4>Cédula. @Model.Cedula</h4>
+<h5>Para el mes de @Model.Fecha.ToString("MMM") del @Model.Fecha.Year</h5>
+
+<br />
+
+<div class="row">
+    <div class="col-md-8">
+        <h5><b>Reporte de Créditos Colocados</b></h5>
+        @Html.Partial("_TipoCreditos", Model.listaTipoCreditos)
+    </div>
+</div>

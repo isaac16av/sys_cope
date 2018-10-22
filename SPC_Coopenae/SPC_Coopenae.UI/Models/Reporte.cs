@@ -9,10 +9,13 @@ namespace SPC_Coopenae.UI.Models
     public class Reporte
     {
 
+        public int Cedula { get; set; }
+
+        public string Nombre { get; set; }
+
+        public DateTime Fecha { get; set; }
+
         public List<ReporteTipoCreditos> listaTipoCreditos { get; set; }
-
-        public decimal TotalComisionesGeneradas { get; set; }
-
 
     }
 }

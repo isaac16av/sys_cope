@@ -38,7 +38,7 @@ namespace SPC_Coopenae.DAL.Metodos.Reportes
                         ventaCred.Ejecutivo == cedulaP &&
                         ventaCred.Fecha.Month == fechaP.Month &&
                         ventaCred.Fecha.Year == fechaP.Year
-                        select ventaCred.Monto).Sum();
+                        select ventaCred.Monto).DefaultIfEmpty(0).Sum();
             }
         }
 

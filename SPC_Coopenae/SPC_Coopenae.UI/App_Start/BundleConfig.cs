@@ -8,15 +8,23 @@ namespace SPC_Coopenae.UI
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            //registra jquery
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            //registra los scripts encargados de guardar las escalas
             bundles.Add(new ScriptBundle("~/bundles/escalas").Include(
                         "~/Scripts/Otros/GuardarEscala.js"));
 
+            //registra los sripts de validacion de mvc
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
+                        "~/Scripts/Otros/bootstrap-datepicker.min.js",
+                        "~/Scripts/Otros/bootstrap-datepicker.es.min.js",
+                        "~/Scripts/Otros/fechapicker.js"
+                ));
 
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
