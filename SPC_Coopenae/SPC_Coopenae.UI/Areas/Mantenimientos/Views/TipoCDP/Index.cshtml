@@ -31,6 +31,9 @@
     </tr>
 
 @foreach (var item in Model) {
+
+    var tipoMoneda = (item.Moneda == "d") ? "$ - Dólares" : "₡ - Colones";
+
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.IdTipoCDP)
@@ -39,7 +42,7 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Moneda)
+            @tipoMoneda
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ComisionMaxima)

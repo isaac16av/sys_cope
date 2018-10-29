@@ -29,7 +29,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Moneda, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Moneda, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Moneda,
+              new SelectList(
+                    new List<Object>
+                        {
+                            new { value = 'd', text = "$ - Dólares"},
+                            new {value = 'c', text = "₡ - Colones"}
+                        },
+                    "value",
+                    "text"
+              ),
+           new {@class = "form-control"})
                 @Html.ValidationMessageFor(model => model.Moneda, "", new { @class = "text-danger" })
             </div>
         </div>
