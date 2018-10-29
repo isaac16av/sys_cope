@@ -94,6 +94,7 @@
     <Compile Include="Metodos\MUnidadNegocioRepositorio.cs" />
     <Compile Include="Metodos\MTipoCDPRepositorio.cs" />
     <Compile Include="Metodos\MTipoCreditoRepositorio.cs" />
+    <Compile Include="Metodos\Reportes\MReporteProductosRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SPC_BD.cs" />
   </ItemGroup>

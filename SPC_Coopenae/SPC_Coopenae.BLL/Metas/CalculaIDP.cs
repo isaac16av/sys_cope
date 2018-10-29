@@ -16,9 +16,6 @@ namespace SPC_Coopenae.BLL.Metas
         public MetaCredito metaCred { get; set; }
         public decimal CreditoIDP;
 
-        public MetaCDP metaCDP { get; set; }
-
-
         public void FijarIDPCred(decimal montoColocado)
         {
             if (metaCred != null)
@@ -31,6 +28,11 @@ namespace SPC_Coopenae.BLL.Metas
             {
                 return;
             }
+        }
+
+        public void FijarIdpProductos()
+        {
+
         }
 
         private void SumarIDps()
