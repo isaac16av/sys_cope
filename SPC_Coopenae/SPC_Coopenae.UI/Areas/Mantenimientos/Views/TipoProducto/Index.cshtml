@@ -25,6 +25,8 @@
     </tr>
 
 @foreach (var item in Model) {
+
+    var tipoMoneda = (item.Moneda == "d") ? "$" : "₡";
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.IdTipoProducto)
@@ -33,7 +35,7 @@
             @Html.DisplayFor(modelItem => item.Descripcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Moneda)
+            @tipoMoneda
         </td>
         <td>
             <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdTipoProducto })">

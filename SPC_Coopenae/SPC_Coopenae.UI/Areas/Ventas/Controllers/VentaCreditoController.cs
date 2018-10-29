@@ -29,12 +29,13 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
         {
             try
             {
-                ViewBag.Ejecutivo = ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
+                 ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
                                                                         select new
                                                                         {
                                                                             Id = s.Cedula,
                                                                             CombinedFields = s.Nombre + " " + s.Apellidos
                                                                         }), "Id", "CombinedFields");
+
                 ViewBag.TipoCredito = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdTipoCredito", "Nombre");
                 var listarVentaCred = _repositorioVentaCred.ListarVentaCredito();
                 var VentaCredListado = Mapper.Map<List<Models.VentaCredito>>(listarVentaCred);
