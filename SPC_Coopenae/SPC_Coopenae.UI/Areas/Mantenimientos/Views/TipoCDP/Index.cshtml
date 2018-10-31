@@ -27,12 +27,14 @@
         <th>
             @Html.DisplayNameFor(model => model.PlazoMesesMaximo)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDPNecesario)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
 
-    var tipoMoneda = (item.Moneda == "d") ? "$ - Dólares" : "₡ - Colones";
+    var tipoMoneda = (item.Moneda == "d") ? "$ - Dólares" : (item.Moneda == "c") ? "₡ - Colones" : "Error";
 
     <tr>
         <td>
@@ -49,6 +51,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PlazoMesesMaximo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDPNecesario)
         </td>
         <td>
             <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdTipoCDP })">

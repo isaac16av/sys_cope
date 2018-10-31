@@ -15,5 +15,7 @@ namespace SPC_Coopenae.DATA
 
         public bool Estado { get; set; }
 
+        public decimal IDPNecesario { get; set; }
+
     }
 }
