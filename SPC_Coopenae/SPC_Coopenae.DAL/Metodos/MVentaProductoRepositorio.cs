@@ -57,5 +57,18 @@ namespace SPC_Coopenae.DAL.Metodos
             }
         }
 
+        public List<VentaProducto> BuscarListaVentaProductos(int cedula, DateTime fecha)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                return (from ventaProductos in dbc.VentaProducto
+                        where ventaProductos.Ejecutivo == cedula &&
+                        ventaProductos.Fecha.Month == fecha.Month &&
+                        ventaProductos.Fecha.Year == fecha.Year
+                        select ventaProductos).ToList();
+            }
+            
+        }
+
     }
 }
