@@ -13,9 +13,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IdTipoCDP)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
@@ -37,9 +34,6 @@
     var tipoMoneda = (item.Moneda == "d") ? "$ - Dólares" : (item.Moneda == "c") ? "₡ - Colones" : "Error";
 
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdTipoCDP)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
