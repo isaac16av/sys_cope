@@ -33,9 +33,42 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
                                                         Id = s.Cedula,
                                                         CombinedFields = s.Nombre + " " + s.Apellidos
                                                     }), "Id", "CombinedFields");
-                ViewBag.TipoCDP = new SelectList(_repositorioEjecutivo.ListarEjecutivos(), "IdTipoCDP", "Nombre");
+                ViewBag.TipoCDP = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
                 var ListaCDPsBD = _repositorioCDP.ListarCDP();
                 var ListaMostrarCDPs = Mapper.Map<List<Models.VentaCDP>>(ListaCDPsBD);
+                return View(ListaMostrarCDPs);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Index(int cedula, DateTime fecha)
+        {
+            try
+            {
+                ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
+                                                    select new
+                                                    {
+                                                        Id = s.Cedula,
+                                                        CombinedFields = s.Nombre + " " + s.Apellidos
+                                                    }), "Id", "CombinedFields");
+                ViewBag.TipoCDP = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
+                var ListaCDPsBD = _repositorioCDP.BuscarListarCDP(cedula, fecha);
+                if (ListaCDPsBD.Any())
+                {
+                    ViewBag.MensajeBusqueda = "<div class='alert alert-success'>Usted está buscando con la cedula del ejecutivo: " + cedula + " y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
+                }
+                else
+                {
+                    ViewBag.MensajeBusqueda = "<div class='alert alert-danger'>No se muestran datos con la cedula: " + cedula + " y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
+                }
+               
+                var ListaMostrarCDPs = Mapper.Map<List<Models.VentaCDP>>(ListaCDPsBD);
+                
                 return View(ListaMostrarCDPs);
             }
             catch (Exception ex)

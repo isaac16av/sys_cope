@@ -14,5 +14,6 @@ namespace SPC_Coopenae.DAL.Interfaces
         void InsertarVentaCredito(VentaCredito venta);
         void ActualizarVentaCredito(VentaCredito venta);
         void EliminarVentaCredito(int id);
+        List<VentaCredito> BuscarListaCreditos(int cedula, DateTime fecha);
     }
 }

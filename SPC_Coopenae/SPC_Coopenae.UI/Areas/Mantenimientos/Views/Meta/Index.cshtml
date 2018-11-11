@@ -5,16 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Listado de Metas</h2>
 
 <p>
     @Html.ActionLink("Registrar nueva meta", "Registrar")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdMeta)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Descripcion)
         </th>
@@ -29,9 +27,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdMeta)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Descripcion)
         </td>        

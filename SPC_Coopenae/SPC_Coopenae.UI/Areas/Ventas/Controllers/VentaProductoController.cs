@@ -46,6 +46,40 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
             
         }
 
+        [HttpPost]
+        public ActionResult Index(int cedula, DateTime fecha)
+        {
+            try
+            {
+                ViewBag.Producto = new SelectList(_repositorioProductos.ListarProducto(), "IdProducto", "Nombre");
+                ViewBag.Ejecutivo = ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
+                                                                        select new
+                                                                        {
+                                                                            Id = s.Cedula,
+                                                                            CombinedFields = s.Nombre + " " + s.Apellidos
+                                                                        }), "Id", "CombinedFields");
+                var ListadoVentasBD = _repositorioVentaProducto.BuscarListaVentaProductos(cedula, fecha);
+
+                if (ListadoVentasBD.Any())
+                {
+                    ViewBag.MensajeBusqueda = "<div class='alert alert-success'>Usted está buscando con la cedula del ejecutivo: " + cedula + " y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
+                }
+                else
+                {
+                    ViewBag.MensajeBusqueda = "<div class='alert alert-danger'>No se muestran datos con la cedula: " + cedula + " y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
+                }
+
+                var VentasMostrar = Mapper.Map<List<Models.VentaProducto>>(ListadoVentasBD);
+                return View(VentasMostrar);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+
+        }
+
         public ActionResult Registrar()
         {
             ViewBag.listaProductos = new SelectList(_repositorioProductos.ListarProducto(), "IdProducto", "Nombre");

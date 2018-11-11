@@ -15,6 +15,7 @@ namespace SPC_Coopenae.DAL.Interfaces
         void InsertarVentaProducto(VentaProducto venta);
         void ActualizarVentaProducto(VentaProducto venta);
         void EliminarVentaProducto(int id);
+        List<VentaProducto> BuscarListaVentaProductos(int cedula, DateTime fecha);
 
     }
 }

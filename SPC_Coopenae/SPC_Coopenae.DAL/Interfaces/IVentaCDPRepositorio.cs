@@ -14,5 +14,6 @@ namespace SPC_Coopenae.DAL.Interfaces
         void InsertarCDP(VentaCDP cdp);
         void ActualizarCDP(VentaCDP cdp);
         void EliminarCDP(int id);
+        List<VentaCDP> BuscarListarCDP(int ejecutivo, DateTime fecha);
     }
 }

@@ -8,17 +8,10 @@
 <h2>Detalles</h2>
 
 <div>
+
     <h4>TipoProducto</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdTipoProducto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdTipoProducto)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Descripcion)
         </dt>
@@ -32,7 +25,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Moneda)
+            @ViewBag.tipoMoneda
         </dd>
 
     </dl>
