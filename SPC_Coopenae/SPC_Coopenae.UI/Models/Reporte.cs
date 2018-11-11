@@ -15,7 +15,19 @@ namespace SPC_Coopenae.UI.Models
 
         public DateTime Fecha { get; set; }
 
-        public List<ReporteTipoCreditos> listaTipoCreditos { get; set; }
+        public decimal TipoCambio { get; set; }
+
+        public List<RTipoCreditos> listaTipoCreditos { get; set; }
+
+        public decimal? TotalComisionCreditos { get; set; }
+
+        public List<RProductos> listaProductos { get; set; }
+
+        public decimal TotalComisionProductos { get; set; }
+
+
+
+        public decimal TotalComisionesGanadas { get; set; }
 
     }
 }

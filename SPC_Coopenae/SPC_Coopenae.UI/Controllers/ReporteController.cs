@@ -6,6 +6,7 @@ using SPC_Coopenae.UI.Models;
 using SPC_Coopenae.UI.Models.ObjsReporte;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace SPC_Coopenae.UI.Controllers
@@ -87,15 +88,24 @@ namespace SPC_Coopenae.UI.Controllers
         }
 
         [NonAction]
-        private Reporte GenerarReporte(int Reporte, DateTime fechaReporte)
+        private Reporte GenerarReporte(int cedulaReporte, DateTime fechaReporte)
         {
-            _reporteBLL = new ReporteGeneral(Reporte, fechaReporte);
+            _reporteBLL = new ReporteGeneral(cedulaReporte, fechaReporte);
             _reporteBLL.IniciarReporte();
 
             Reporte reporteVista = new Reporte();
 
+            reporteVista.TipoCambio = _reporteBLL.GetTipoCambio();
+
             var reporteTipoCreditosBLL = _reporteBLL.GetReporteTipoCreditos();
-            reporteVista.listaTipoCreditos = Mapper.Map<List<ReporteTipoCreditos>>(reporteTipoCreditosBLL);
+            reporteVista.listaTipoCreditos = Mapper.Map<List<RTipoCreditos>>(reporteTipoCreditosBLL);
+            reporteVista.TotalComisionCreditos = reporteVista.listaTipoCreditos.Sum(x => x.TotalComision);
+
+            var reporteProductos = _reporteBLL.GetReporteProductos();
+            reporteVista.listaProductos = Mapper.Map<List<RProductos>>(reporteProductos);
+            reporteVista.TotalComisionProductos = reporteVista.listaProductos.Sum(x => x.TotalComision);
+
+            reporteVista.TotalComisionesGanadas = reporteVista.TotalComisionCreditos.Value + reporteVista.TotalComisionProductos;
 
             return reporteVista;
         }

@@ -23,10 +23,12 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Ejecutivos", "Index", "Ejecutivo", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("Unidades de Negocio", "Index", "UnidadNegocio", new { area = "Mantenimientos" }, new { })</li>
+                            <li role="separator" class="divider"></li>
                             <li>@Html.ActionLink("Tipos de CDPs", "Index", "TipoCDP", new { area = "Mantenimientos" }, new { })</li>
+                            <li>@Html.ActionLink("Tipos de Creditos", "Index", "TipoCredito", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("Tipos de Productos", "Index", "TipoProducto", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("Productos", "Index", "Producto", new { area = "Mantenimientos" }, new { })</li>
-                            <li>@Html.ActionLink("Tipos de Creditos", "Index", "TipoCredito", new { area = "Mantenimientos" }, new { })</li>
+                            <li role="separator" class="divider"></li>
                             <li>@Html.ActionLink("Escalas", "Index", "Escala", new { area = "Mantenimientos" }, new { })</li>
                             <li>@Html.ActionLink("Metas", "Index", "Meta", new { area = "Mantenimientos" }, new { })</li>
                         </ul>
@@ -39,7 +41,9 @@
                             <li>@Html.ActionLink("Ventas de CDPs", "Index", "VentaCDP", new { area = "Ventas" }, new { })</li>
                         </ul>
                     </li>
+                    <!--           <li><a href="#">Tipo de Cambio</a></li>        -->
                     <li>@Html.ActionLink("Reportes", "Index", "Reporte", new { area = "" }, new { }) </li>
+
                 </ul>
             </div>
         </div>
@@ -47,10 +51,6 @@
     <br />
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Footer</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

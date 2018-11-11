@@ -62,7 +62,6 @@
     <Compile Include="Interfaces\IEscalaRepositorio.cs" />
     <Compile Include="Interfaces\IMetaTipoProductoRepositorio.cs" />
     <Compile Include="Interfaces\ISalarioRepositorio.cs" />
-    <Compile Include="Interfaces\ITipoCambio.cs" />
     <Compile Include="Interfaces\IVentaCDPRepositorio.cs" />
     <Compile Include="Interfaces\IVentaCreditoRepositorio.cs" />
     <Compile Include="Interfaces\IVentaProductoRepositorio.cs" />
@@ -84,7 +83,6 @@
     <Compile Include="Metodos\MEscalaRepositorio.cs" />
     <Compile Include="Metodos\MMetaTipoProductoRepositorio.cs" />
     <Compile Include="Metodos\MSalarioRepositorio.cs" />
-    <Compile Include="Metodos\MTipoCambio.cs" />
     <Compile Include="Metodos\MVentaCDPRepositorio.cs" />
     <Compile Include="Metodos\MVentaCreditoRepositorio.cs" />
     <Compile Include="Metodos\MVentaProductoRepositorio.cs" />

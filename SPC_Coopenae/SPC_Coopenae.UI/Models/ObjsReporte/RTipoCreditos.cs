@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace SPC_Coopenae.DATA.ObjReportes
+namespace SPC_Coopenae.UI.Models.ObjsReporte
 {
-    public class ReporteTipoCreditos
+    public class RTipoCreditos
     {
         public string NombreTipo { get; set; }
         public decimal? MaxComision { get; set; }
         public decimal? SumaColocaciones { get; set; }
         public decimal? PCTComisionGanada { get; set; }
-        public decimal? TotalComision { get; set; }
+        public decimal TotalComision { get; set; }
     }
 }
