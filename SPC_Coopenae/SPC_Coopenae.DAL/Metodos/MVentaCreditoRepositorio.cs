@@ -59,6 +59,20 @@ namespace SPC_Coopenae.DAL.Metodos
             }
         }
 
+        public List<VentaCredito> BuscarListaCreditos(int ejecutivo, DateTime fecha)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                return (from creditos in dbc.VentaCredito
+                        where creditos.Ejecutivo == ejecutivo &&
+                        creditos.Fecha.Month == fecha.Month &&
+                        creditos.Fecha.Year == fecha.Year
+                        select creditos).ToList();
+            }
+        }
+
+
+
 
     }
 }

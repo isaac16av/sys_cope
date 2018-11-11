@@ -54,5 +54,17 @@ namespace SPC_Coopenae.DAL.Metodos
                 return dbc.VentaCDP.ToList();
             }
         }
+
+        public List<VentaCDP> BuscarListarCDP(int ejecutivo, DateTime fecha)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                return (from ventaCDP in dbc.VentaCDP
+                        where ventaCDP.Ejecutivo == ejecutivo &&
+                        ventaCDP.Fecha.Month == fecha.Month &&
+                        ventaCDP.Fecha.Year == fecha.Year
+                        select ventaCDP).ToList();
+            }
+        }
     }
 }

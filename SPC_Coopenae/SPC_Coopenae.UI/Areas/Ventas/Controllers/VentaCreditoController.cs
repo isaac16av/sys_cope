@@ -29,12 +29,13 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
         {
             try
             {
-                ViewBag.Ejecutivo = ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
+                 ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
                                                                         select new
                                                                         {
                                                                             Id = s.Cedula,
                                                                             CombinedFields = s.Nombre + " " + s.Apellidos
                                                                         }), "Id", "CombinedFields");
+
                 ViewBag.TipoCredito = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdTipoCredito", "Nombre");
                 var listarVentaCred = _repositorioVentaCred.ListarVentaCredito();
                 var VentaCredListado = Mapper.Map<List<Models.VentaCredito>>(listarVentaCred);
@@ -47,6 +48,43 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
             }
             
         }
+
+        [HttpPost]
+        public ActionResult Index(int cedula, DateTime fecha)
+        {
+            try
+            {
+                ViewBag.Ejecutivo = new SelectList((from s in _repositorioEjecutivo.ListarEjecutivos()
+                                                    select new
+                                                    {
+                                                        Id = s.Cedula,
+                                                        CombinedFields = s.Nombre + " " + s.Apellidos
+                                                    }), "Id", "CombinedFields");
+
+                ViewBag.TipoCredito = new SelectList(_repositorioTipoCred.ListarTipoCredito(), "IdTipoCredito", "Nombre");
+                var listarVentaCred = _repositorioVentaCred.BuscarListaCreditos(cedula, fecha);
+
+                if (listarVentaCred.Any())
+                {
+                    ViewBag.MensajeBusqueda = "<div class='alert alert-success'>Usted está buscando con la cedula del ejecutivo: " + cedula + " y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
+                }
+                else
+                {
+                    ViewBag.MensajeBusqueda = "<div class='alert alert-danger'>No se muestran datos con la cedula: " + cedula + " y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
+                }
+
+                var VentaCredListado = Mapper.Map<List<Models.VentaCredito>>(listarVentaCred);
+                return View(VentaCredListado);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
+                return View();
+            }
+
+        }
+
+
 
         public ActionResult Registrar()
         {

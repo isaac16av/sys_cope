@@ -19,5 +19,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
 
         public bool Estado { get; set; } = true;
 
+        public decimal IDPNecesario { get; set; }
+
     }
 }

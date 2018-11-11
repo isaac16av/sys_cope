@@ -11,14 +11,7 @@
     <h4>TipoCDP</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdTipoCDP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdTipoCDP)
-        </dd>
-
+       
         <dt>
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
@@ -32,7 +25,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Moneda)
+            @ViewBag.tipoMoneda
         </dd>
 
         <dt>

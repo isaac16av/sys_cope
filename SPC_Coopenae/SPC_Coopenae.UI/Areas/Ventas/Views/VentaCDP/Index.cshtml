@@ -5,16 +5,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Listado de VentasCDP</h2>
+<hr />
+@using (Html.BeginForm())
+{
+    <div class="form-inline">
+
+        <div class="form-group">
+            <input type="number" class="form-control" id="cedula" name="cedula" placeholder="Ejecutivo" required>
+        </div>
+
+        <div class="form-group" id="contenedor-fecha">
+            <input type="text" class="form-control" id="fecha" name="fecha" placeholder="Fecha" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Buscar</button>
+
+    </div>
+}
+    <br />
+
+    @Html.Raw(ViewBag.MensajeBusqueda)
+
+    <br />
+
 
 <p>
     @Html.ActionLink("Registrar nueva Venta CDP", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdVentaCDP)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Ejecutivo)
         </th>
@@ -51,59 +71,65 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdVentaCDP)
-        </td>
-        <td>
-            @Html.Encode((ViewBag.Ejecutivo as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.Ejecutivo).Text)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cedula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CentroTrabajo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Monto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlazoMeses)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Periocidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tasa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SobreTasa)
-        </td>
-        <td>
-            @Html.Encode((ViewBag.TipoCDP as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.TipoCDP).Text)
-            <!--Muestra el nombre en vez del id en la vista-->
-        </td>
-        <td>
-            <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdVentaCDP })">
-                <span class="glyphicon glyphicon-pencil" title="Editar"></span>
-            </a>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.Encode((ViewBag.Ejecutivo as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.Ejecutivo).Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CentroTrabajo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlazoMeses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Periocidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tasa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SobreTasa)
+            </td>
+            <td>
+                @Html.Encode((ViewBag.TipoCDP as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.TipoCDP).Text)
+                <!--Muestra el nombre en vez del id en la vista-->
+            </td>
+            <td>
+                <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdVentaCDP })">
+                    <span class="glyphicon glyphicon-pencil" title="Editar"></span>
+                </a>
 
-            <a class="btn btn-success" href="@Url.Action("Detalles", new { id = item.IdVentaCDP })">
-                <span class="glyphicon glyphicon-list-alt" title="Detalle"></span>
-            </a>
+                <a class="btn btn-success" href="@Url.Action("Detalles", new { id = item.IdVentaCDP })">
+                    <span class="glyphicon glyphicon-list-alt" title="Detalle"></span>
+                </a>
 
-            <a class="btn btn-danger" href="@Url.Action("Eliminar", new { id = item.IdVentaCDP })">
-                <span class="glyphicon glyphicon-trash" title="Eliminar"></span>
-            </a>
-        </td>
-    </tr>
-}
+                <a class="btn btn-danger" href="@Url.Action("Eliminar", new { id = item.IdVentaCDP })">
+                    <span class="glyphicon glyphicon-trash" title="Eliminar"></span>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>
+
+@section Styles {
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/datepicker")
+}

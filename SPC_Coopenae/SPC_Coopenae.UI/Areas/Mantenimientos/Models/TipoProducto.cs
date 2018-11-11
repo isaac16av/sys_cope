@@ -16,5 +16,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
         public string Moneda { get; set; }
 
         public bool Estado { get; set; } = true;
+
+        public decimal IDPNecesario { get; set; }
     }
 }
