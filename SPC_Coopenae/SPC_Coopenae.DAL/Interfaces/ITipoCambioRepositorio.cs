@@ -9,6 +9,7 @@ namespace SPC_Coopenae.DAL.Interfaces
 {
     public interface ITipoCambioRepositorio
     {
+        TipoCambio BuscarTipoCambioFecha(DateTime fechaP);
         List<TipoCambio> ListarTipoCambio();
     }
 }

@@ -35,22 +35,22 @@ namespace SPC_Coopenae.DAL.Metodos.Reportes
                 return (from ventaCred in dbc.VentaCredito
                         join tipoCred in dbc.TipoCredito on ventaCred.TipoCredito equals tipoCred.IdTipoCredito
                         where tipoCred.SumaIDP == true && tipoCred.Estado == true &&
-                        ventaCred.Ejecutivo == cedulaP &&
-                        ventaCred.Fecha.Month == fechaP.Month &&
-                        ventaCred.Fecha.Year == fechaP.Year
+                              ventaCred.Ejecutivo == cedulaP &&
+                              ventaCred.Fecha.Month == fechaP.Month &&
+                              ventaCred.Fecha.Year == fechaP.Year
                         select ventaCred.Monto).DefaultIfEmpty(0).Sum();
             }
         }
 
-        public List<ReporteTipoCreditos> ConsultaTiposCreditosConVentas(int cedulaP, DateTime fechaP)
+        public List<RTipoCreditos> ConsultaTiposCreditosConVentas(int cedulaP, DateTime fechaP)
         {
             using (var dbc = new SPC_BD())
             {
-                var resultado = (from tipoCredito in dbc.TipoCredito
+                var resultado = (from tipoCredito in dbc.TipoCredito.Where(tc => tc.Estado == true)
                                  join ventaCredito in dbc.VentaCredito.Where(vc => (vc.Ejecutivo == cedulaP) &&
                                                                                    (vc.Fecha.Month == fechaP.Month) &&
                                                                                    (vc.Fecha.Year == fechaP.Year))
-                                 on tipoCredito.IdTipoCredito equals ventaCredito.TipoCredito
+                                                   on tipoCredito.IdTipoCredito equals ventaCredito.TipoCredito
                                  into x
                                  from z in x.DefaultIfEmpty()
                                  group z by new { tipoCredito.Nombre, tipoCredito.ComisionDistinta, tipoCredito.MaximoComision } into g
@@ -62,12 +62,12 @@ namespace SPC_Coopenae.DAL.Metodos.Reportes
                                      SumaColocaciones = g.Sum(ventaCred => (decimal?)ventaCred.Monto) ?? 0
                                  }).ToList();
 
-                List<ReporteTipoCreditos> listaReporteTipoCreditos = new List<ReporteTipoCreditos>();
+                List<RTipoCreditos> listaReporteTipoCreditos = new List<RTipoCreditos>();
 
                 foreach (var x in resultado)
                 {
                     listaReporteTipoCreditos.Add(
-                        new ReporteTipoCreditos
+                        new RTipoCreditos
                         {
                             NombreTipo = x.NombreTipo,
                             PCTComisionGanada = x.PCTComisionGanada,

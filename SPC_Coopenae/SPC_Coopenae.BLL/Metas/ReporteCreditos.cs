@@ -21,7 +21,7 @@ namespace SPC_Coopenae.BLL.Metas
 
         public MetaCredito metaCreditoCorrespondinte { get; set; }
         public decimal SumaColocaciones { get; set; }
-        public List<ReporteTipoCreditos> ComisionesPorTipoCreditos { get; set; }
+        public List<RTipoCreditos> ComisionesPorTipoCreditos { get; set; }
 
         public void EstablecerMetaCorrespondiente(int cedula)
         {
@@ -33,13 +33,13 @@ namespace SPC_Coopenae.BLL.Metas
             this.SumaColocaciones = _reporteCredsBD.SumarMontosColocadosParaIDP(cedulaP, fechaP);
         }
 
-        public void AsignarComisionesTipoCreditos(int cedulaP, DateTime fechaP, decimal comisionGanadaP)
+        public void AsignarComisionesTipoCreditos(int cedulaP, DateTime fechaP, decimal PCTcomisionGanadaP)
         {
             var ConsultaTipoCreditosColocados = _reporteCredsBD.ConsultaTiposCreditosConVentas(cedulaP, fechaP);
             foreach (var x in ConsultaTipoCreditosColocados)
             {
                 //Asigna  la comision que viene de parametro, si es null, si no lo es, usa la que esta asignada
-                x.PCTComisionGanada = (x.PCTComisionGanada == null ? comisionGanadaP : Convert.ToDecimal(x.PCTComisionGanada));
+                x.PCTComisionGanada = (x.PCTComisionGanada == null ? PCTcomisionGanadaP : Convert.ToDecimal(x.PCTComisionGanada));
                 if (x.SumaColocaciones != 0)
                 {
                     //Pasa la comision a porcentaje
