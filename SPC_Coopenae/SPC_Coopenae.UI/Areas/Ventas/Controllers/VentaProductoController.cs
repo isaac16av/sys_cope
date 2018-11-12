@@ -62,11 +62,11 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
 
                 if (ListadoVentasBD.Any())
                 {
-                    ViewBag.MensajeBusqueda = "<div class='alert alert-success'>Usted está buscando con la cedula del ejecutivo: " + cedula + " y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
+                    ViewBag.MensajeBusqueda = "<div class='alert alert-success'>Buscando con la cedula del ejecutivo: " + cedula + ". Y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
                 }
                 else
                 {
-                    ViewBag.MensajeBusqueda = "<div class='alert alert-danger'>No se muestran datos con la cedula: " + cedula + " y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
+                    ViewBag.MensajeBusqueda = "<div class='alert alert-danger'>No se encuentran datos con la cedula: " + cedula + ". Y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
                 }
 
                 var VentasMostrar = Mapper.Map<List<Models.VentaProducto>>(ListadoVentasBD);
