@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Listado de VentasCDP</h2>
+<h2>Listado de Ventas de CDP</h2>
 <hr />
 @using (Html.BeginForm())
 {
@@ -31,7 +31,7 @@
 
 
 <p>
-    @Html.ActionLink("Registrar nueva Venta CDP", "Create")
+    @Html.ActionLink("Registrar nueva venta CDP", "Registrar")
 </p>
 <table class="table">
     <tr>
@@ -42,28 +42,7 @@
             @Html.DisplayNameFor(model => model.Fecha)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cedula)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CentroTrabajo)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Monto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlazoMeses)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Periocidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tasa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SobreTasa)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TipoCDP)
@@ -81,32 +60,12 @@
                 @Html.DisplayFor(modelItem => item.Fecha)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CentroTrabajo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Monto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlazoMeses)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Periocidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tasa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SobreTasa)
+                @{ var moneda = Html.Encode((ViewBag.Moneda as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.TipoCDP).Text);
+                    moneda = (moneda == "d") ? "$" : (moneda == "c") ? "₡" : "Error"; }
+                @moneda@(string.Format("{0:0,0.00}", item.Monto))
             </td>
             <td>
                 @Html.Encode((ViewBag.TipoCDP as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.TipoCDP).Text)
-                <!--Muestra el nombre en vez del id en la vista-->
             </td>
             <td>
                 <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdVentaCDP })">

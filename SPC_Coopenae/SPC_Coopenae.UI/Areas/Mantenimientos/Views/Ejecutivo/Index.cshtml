@@ -16,9 +16,6 @@
             @Html.DisplayNameFor(model => model.Cedula)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CodigoVendedor)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
@@ -35,12 +32,6 @@
         <th>
             @Html.DisplayNameFor(model => model.UnidadNegocio)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaNacimiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaContratacion)
-        </th>
 
         <th></th>
     </tr>
@@ -50,9 +41,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoVendedor)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
@@ -71,13 +59,6 @@
 
             <td>
                 @Html.Encode((ViewBag.listadoUnidadNegocio as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.UnidadNegocio).Text)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaNacimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaContratacion)
             </td>
 
             <td>

@@ -8,10 +8,10 @@
 <h2>Detalles</h2>
 
 <div>
-    <h4>TipoCDP</h4>
+    <h4>Tipo de CDP</h4>
     <hr />
     <dl class="dl-horizontal">
-       
+
         <dt>
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
@@ -25,7 +25,7 @@
         </dt>
 
         <dd>
-            @ViewBag.tipoMoneda
+            @(Model.Moneda == "d" ? "$ - Dólares" : (Model.Moneda == "c") ? "₡ - Colones" : "Error")
         </dd>
 
         <dt>
@@ -33,7 +33,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ComisionMaxima)
+            @(Model.Moneda == "d" ? "$" : "₡")@(string.Format("{0:0,0.00}", Model.ComisionMaxima))
         </dd>
 
         <dt>
@@ -42,6 +42,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.PlazoMesesMaximo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPNecesario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPNecesario)%
         </dd>
 
     </dl>

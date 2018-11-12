@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Listado de Ventas de Credito</h2>
+<h2>Listado de Ventas de Créditos</h2>
 
 <hr />
 
@@ -31,9 +31,8 @@
 
 <br />
 
-
 <p>
-    @Html.ActionLink("Registrar nueva venta credito", "Registrar")
+    @Html.ActionLink("Registrar nueva venta de crédito", "Registrar")
 </p>
 <table class="table">
     <tr>
@@ -44,25 +43,7 @@
             @Html.DisplayNameFor(model => model.Fecha)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cedula)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CentroTrabajo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaAfiliacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumeroOperacion)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Monto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlazoMeses)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TipoCredito)
@@ -80,25 +61,7 @@
                 @Html.DisplayFor(modelItem => item.Fecha)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CentroTrabajo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaAfiliacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroOperacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Monto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlazoMeses)
+                ₡@(string.Format("{0:0,0.00}", item.Monto))
             </td>
             <td>
                 @Html.Encode((ViewBag.TipoCredito as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.TipoCredito).Text)

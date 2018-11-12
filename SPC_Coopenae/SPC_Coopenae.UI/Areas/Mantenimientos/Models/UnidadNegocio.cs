@@ -14,6 +14,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
 
         public bool Estado { get; set; } = true;
 
+        [Display(Name = "Meta Asignada")]
         public int Meta { get; set; }
 
     }

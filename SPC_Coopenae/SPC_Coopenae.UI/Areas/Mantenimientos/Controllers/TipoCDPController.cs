@@ -88,7 +88,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             try
             {
                 var tipoCDPBuscar = _repositorioTipoCDP.BuscarTipoCDP(id);
-                ViewBag.tipoMoneda = (tipoCDPBuscar.Moneda == "d") ? "$ - Dólares" : (tipoCDPBuscar.Moneda == "d") ? "₡ - Colones" : "Error";
                 var tipoCDPDetallar = Mapper.Map<Models.TipoCDP>(tipoCDPBuscar);
                 return View(tipoCDPDetallar);
             }

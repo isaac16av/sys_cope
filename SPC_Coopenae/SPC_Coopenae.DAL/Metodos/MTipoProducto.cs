@@ -29,7 +29,12 @@ namespace SPC_Coopenae.DAL.Metodos
 
         public void EliminarTipoProducto(int id)
         {
-            throw new NotImplementedException();
+            using (var dbc = new SPC_BD())
+            {
+                var aEliminar = dbc.TipoProducto.Find(id);
+                aEliminar.Estado = false;
+                dbc.SaveChanges();
+            }
         }
 
         public void InsertarTipoProducto(TipoProducto tipoProducto)

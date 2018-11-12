@@ -67,7 +67,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             try
             {
                 var TipoProductoBuscar = _tipoProductoRepositorio.BuscarTipoProducto(id);
-                ViewBag.tipoMoneda = (TipoProductoBuscar.Moneda == "d") ? "$ - Dólares" : (TipoProductoBuscar.Moneda == "c") ? "₡ - Colones" : "Error";
                 var TipoProductoMostrar = Mapper.Map<Models.TipoProducto>(TipoProductoBuscar);
                 return View(TipoProductoMostrar);
             }

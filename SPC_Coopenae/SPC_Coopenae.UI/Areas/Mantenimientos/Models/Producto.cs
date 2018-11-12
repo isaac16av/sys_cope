@@ -14,10 +14,12 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
         [Required(ErrorMessage = "El campo nombre es requerido")]
         public string Nombre { get; set; }
 
+        [Display(Name = "Comisión")]
         public decimal Comision { get; set; }
 
         public bool Estado { get; set; } = true;
 
+        [Display(Name = "Tipo de Prodcuto")]
         public int TipoProducto { get; set; }
 
     }

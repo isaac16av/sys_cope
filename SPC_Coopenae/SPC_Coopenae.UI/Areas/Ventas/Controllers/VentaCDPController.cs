@@ -34,6 +34,7 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
                                                         CombinedFields = s.Nombre + " " + s.Apellidos
                                                     }), "Id", "CombinedFields");
                 ViewBag.TipoCDP = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
+                ViewBag.Moneda = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Moneda");
                 var ListaCDPsBD = _repositorioCDP.ListarCDP();
                 var ListaMostrarCDPs = Mapper.Map<List<Models.VentaCDP>>(ListaCDPsBD);
                 return View(ListaMostrarCDPs);
@@ -57,14 +58,15 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
                                                         CombinedFields = s.Nombre + " " + s.Apellidos
                                                     }), "Id", "CombinedFields");
                 ViewBag.TipoCDP = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
+                ViewBag.Moneda = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Moneda");
                 var ListaCDPsBD = _repositorioCDP.BuscarListarCDP(cedula, fecha);
                 if (ListaCDPsBD.Any())
                 {
-                    ViewBag.MensajeBusqueda = "<div class='alert alert-success'>Usted está buscando con la cedula del ejecutivo: " + cedula + " y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
+                    ViewBag.MensajeBusqueda = "<div class='alert alert-success'>Buscando con la cedula del ejecutivo: " + cedula + ". Y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
                 }
                 else
                 {
-                    ViewBag.MensajeBusqueda = "<div class='alert alert-danger'>No se muestran datos con la cedula: " + cedula + " y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
+                    ViewBag.MensajeBusqueda = "<div class='alert alert-danger'>No se encuentran ventas con la cedula: " + cedula + ". Y la fecha " + fecha.ToString("MMM") + " del " + fecha.Year + "</div>";
                 }
                
                 var ListaMostrarCDPs = Mapper.Map<List<Models.VentaCDP>>(ListaCDPsBD);
@@ -140,6 +142,7 @@ namespace SPC_Coopenae.UI.Areas.Ventas.Controllers
                                                                             CombinedFields = s.Nombre + " " + s.Apellidos
                                                                         }), "Id", "CombinedFields");
                 ViewBag.TipoCDP = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Nombre");
+                ViewBag.Moneda = new SelectList(_repositorioTipoCDP.ListarTipoCDP(), "IdTipoCDP", "Moneda");
                 var colCDPBuscar = _repositorioCDP.BuscarCDP(id);
                 var colCDPDetallar = Mapper.Map<Models.VentaCDP>(colCDPBuscar);
                 return View(colCDPDetallar);

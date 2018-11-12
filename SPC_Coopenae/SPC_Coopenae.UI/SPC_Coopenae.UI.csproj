@@ -241,7 +241,6 @@
     <Content Include="Areas\Mantenimientos\Views\UnidadNegocio\Detalles.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\UnidadNegocio\Editar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Ejecutivo\Index.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Ejecutivo\Registrar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Ejecutivo\Editar.cshtml" />
@@ -264,7 +263,6 @@
     <Content Include="Areas\Mantenimientos\Views\Meta\Detalles.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Meta\Editar.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaCDP\Index.cshtml" />
-    <Content Include="Areas\Ventas\Views\VentaCDP\Registrar.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaCDP\Detalles.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaCDP\Editar.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaCredito\Index.cshtml" />
@@ -282,6 +280,8 @@
     <Content Include="Areas\Mantenimientos\Views\Escala\Index.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Escala\Registrar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Escala\Detalles.cshtml" />
+    <Content Include="Areas\Ventas\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Ventas\Views\VentaCDP\Registrar.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -329,6 +329,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Mantenimientos\Views\Shared\" />
     <Folder Include="Areas\Ventas\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

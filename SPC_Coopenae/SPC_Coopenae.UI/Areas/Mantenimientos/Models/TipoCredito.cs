@@ -12,10 +12,13 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
 
         public string Nombre { get; set; }
 
+        [Display(Name = "Comisión Distinta")]
         public decimal? ComisionDistinta { get; set; }
 
+        [Display(Name = "Comisión Máxima")]
         public decimal? MaximoComision { get; set; }
 
+        [Display(Name = "¿Cuenta para IDP?")]
         public bool SumaIDP { get; set; }
 
         public bool Estado { get; set; } = true;

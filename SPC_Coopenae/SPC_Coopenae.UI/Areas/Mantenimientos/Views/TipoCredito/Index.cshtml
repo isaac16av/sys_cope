@@ -33,10 +33,10 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ComisionDistinta)
+            @(item.ComisionDistinta == null ? "" : item.ComisionDistinta + "%")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MaximoComision)
+            @(item.MaximoComision == null ? "":"₡")@(string.Format("{0:0,0.00}", item.MaximoComision))
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SumaIDP)

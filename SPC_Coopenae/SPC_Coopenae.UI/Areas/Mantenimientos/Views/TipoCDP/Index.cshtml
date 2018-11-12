@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Listado de TiposCDP</h2>
+<h2>Listado de Tipos de CDP</h2>
 
 <p>
-    @Html.ActionLink("Registrar nuevo tipo CDP", "Registrar")
+    @Html.ActionLink("Registrar nuevo Tipo de CDP", "Registrar")
 </p>
 <table class="table">
     <tr>
@@ -27,6 +27,7 @@
         <th>
             @Html.DisplayNameFor(model => model.IDPNecesario)
         </th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -41,13 +42,13 @@
             @tipoMoneda
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ComisionMaxima)
+            @(item.Moneda == "d" ? "$" : "₡")@(string.Format("{0:0,0.00}", item.ComisionMaxima))
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PlazoMesesMaximo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IDPNecesario)
+            @Html.DisplayFor(modelItem => item.IDPNecesario)%
         </td>
         <td>
             <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdTipoCDP })">

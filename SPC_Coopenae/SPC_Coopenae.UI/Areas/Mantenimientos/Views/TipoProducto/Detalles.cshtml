@@ -9,7 +9,7 @@
 
 <div>
 
-    <h4>TipoProducto</h4>
+    <h4>Tipo de Producto</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -25,12 +25,20 @@
         </dt>
 
         <dd>
-            @ViewBag.tipoMoneda
+            @(Model.Moneda == "d" ? "$ - Dólares" : (Model.Moneda == "c") ? "₡ - Colones" : "Error")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPNecesario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDPNecesario)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Editar", new { id = Model.IdTipoProducto })
+    @Html.ActionLink("Editar", "Editar", new { id = Model.IdTipoProducto }) |
     @Html.ActionLink("Regresar a la lista", "Index")
 </p>

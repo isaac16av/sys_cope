@@ -26,6 +26,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             try
             {
                 ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
+                ViewBag.Moneda = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Moneda");
                 var ListadoProductosBD = _repositorioProducto.ListarProducto();
                 var ProductosMostrar = Mapper.Map<List<Models.Producto>>(ListadoProductosBD);
                 return View(ProductosMostrar);
@@ -35,12 +36,17 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
-            
+
         }
 
         public ActionResult Registrar()
         {
-            ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
+            ViewBag.TipoProducto = new SelectList((from s in _tipoProducto.ListarTipoProducto()
+                                                   select new
+                                                   {
+                                                       Id = s.IdTipoProducto,
+                                                       Descripcion = s.Descripcion + " - " + (s.Moneda == "d" ? "$" : (s.Moneda == "c") ? "₡" : "Error")
+                                                   }), "Id", "Descripcion");
             return View();
         }
 
@@ -49,7 +55,12 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
+                ViewBag.TipoProducto = new SelectList((from s in _tipoProducto.ListarTipoProducto()
+                                                       select new
+                                                       {
+                                                           Id = s.IdTipoProducto,
+                                                           Descripcion = s.Descripcion + " - " + (s.Moneda == "d" ? "$" : (s.Moneda == "c") ? "₡" : "Error")
+                                                       }), "Id", "Descripcion");
                 if (!ModelState.IsValid)
                 {
                     return View();
@@ -85,6 +96,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             try
             {
                 ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
+                ViewBag.Moneda = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Moneda");
                 var ProductoBuscar = _repositorioProducto.BuscarProducto(id);
                 var ProductoDetallar = Mapper.Map<Models.Producto>(ProductoBuscar);
                 return View(ProductoDetallar);
@@ -100,7 +112,12 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
+                ViewBag.TipoProducto = new SelectList((from s in _tipoProducto.ListarTipoProducto()
+                                                       select new
+                                                       {
+                                                           Id = s.IdTipoProducto,
+                                                           Descripcion = s.Descripcion + " - " + (s.Moneda == "d" ? "$" : (s.Moneda == "c") ? "₡" : "Error")
+                                                       }), "Id", "Descripcion");
                 var ProductoBuscar = _repositorioProducto.BuscarProducto(id);
                 var ProductoEditar = Mapper.Map<Models.Producto>(ProductoBuscar);
                 return View(ProductoEditar);
@@ -117,7 +134,12 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
-                ViewBag.TipoProducto = new SelectList(_tipoProducto.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
+                ViewBag.TipoProducto = new SelectList((from s in _tipoProducto.ListarTipoProducto()
+                                                       select new
+                                                       {
+                                                           Id = s.IdTipoProducto,
+                                                           Descripcion = s.Descripcion + " - " + (s.Moneda == "d" ? "$" : (s.Moneda == "c") ? "₡" : "Error")
+                                                       }), "Id", "Descripcion");
                 if (!ModelState.IsValid)
                 {
                     return View();

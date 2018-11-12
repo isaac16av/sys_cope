@@ -25,7 +25,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Comision)
+            @{ var moneda = Html.Encode((ViewBag.Moneda as SelectList).SingleOrDefault(x => int.Parse(x.Value) == Model.TipoProducto).Text);
+                moneda = (moneda == "d") ? "$" : (moneda == "c") ? "₡" : "Error"; }
+
+            @moneda@(string.Format("{0:0,0.00}", Model.Comision))
         </dd>
 
         <dt>
