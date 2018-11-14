@@ -34,8 +34,8 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                TipoCDP colocacion = dbc.TipoCDP.Find(id);
-                dbc.TipoCDP.Remove(colocacion);
+                var aEliminar = dbc.TipoCDP.Find(id);
+                aEliminar.Estado = false;
                 dbc.SaveChanges();
             }
         }
@@ -53,7 +53,7 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.TipoCDP.ToList();
+                return dbc.TipoCDP.Where(x => x.Estado == true).ToList();
             }
         }
     }
