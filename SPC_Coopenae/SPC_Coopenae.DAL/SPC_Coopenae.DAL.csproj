@@ -58,7 +58,6 @@
     <Compile Include="Interfaces\ITipoCambioRepositorio.cs" />
     <Compile Include="Interfaces\ITipoProductoRepositorio.cs" />
     <Compile Include="Interfaces\IDetalleEscalaRepositorio.cs" />
-    <Compile Include="Interfaces\IDetalleInicioRepositorio.cs" />
     <Compile Include="Interfaces\IEscalaRepositorio.cs" />
     <Compile Include="Interfaces\IMetaTipoProductoRepositorio.cs" />
     <Compile Include="Interfaces\ISalarioRepositorio.cs" />
@@ -79,7 +78,6 @@
     <Compile Include="Metodos\MTipoCambioRepositorio.cs" />
     <Compile Include="Metodos\MTipoProducto.cs" />
     <Compile Include="Metodos\MDetalleEscalaRepositorio.cs" />
-    <Compile Include="Metodos\MDetalleInicioRepositorio.cs" />
     <Compile Include="Metodos\MEscalaRepositorio.cs" />
     <Compile Include="Metodos\MMetaTipoProductoRepositorio.cs" />
     <Compile Include="Metodos\MSalarioRepositorio.cs" />
