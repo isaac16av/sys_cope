@@ -11,5 +11,6 @@ namespace SPC_Coopenae.DAL.Interfaces
     {
         TipoCambio BuscarTipoCambioFecha(DateTime fechaP);
         List<TipoCambio> ListarTipoCambio();
+        void InsertarTipoCambio(TipoCambio tipoCambio);
     }
 }
