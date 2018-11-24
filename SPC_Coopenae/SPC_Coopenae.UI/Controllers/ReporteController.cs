@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
+
 namespace SPC_Coopenae.UI.Controllers
 {
     public class ReporteController : Controller
@@ -109,6 +110,9 @@ namespace SPC_Coopenae.UI.Controllers
 
             return reporteVista;
         }
+
+
+
 
     }
 }
