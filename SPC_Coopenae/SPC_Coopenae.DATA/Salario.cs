@@ -14,9 +14,13 @@ namespace SPC_Coopenae.DATA
 
         public decimal Base { get; set; }
 
-        public int DetalleInicio { get; set; }
-
         public string Descripcion { get; set; }
+
+        public int MesesInicio { get; set; }
+
+        public decimal SalarioInicio { get; set; }
+
+        public decimal BonoInicio { get; set; }
 
         public bool Estado { get; set; }
 

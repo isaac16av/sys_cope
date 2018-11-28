@@ -158,11 +158,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Mantenimientos\Controllers\SalarioController.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\TipoProductoController.cs" />
     <Compile Include="Areas\Mantenimientos\Models\TipoProducto.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\EscalaController.cs" />
     <Compile Include="Areas\Mantenimientos\Models\DetalleEscala.cs" />
-    <Compile Include="Areas\Mantenimientos\Models\DetalleInicio.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Escala.cs" />
     <Compile Include="Areas\Mantenimientos\Models\MetaTipoProducto.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Salario.cs" />
@@ -282,6 +282,10 @@
     <Content Include="Areas\Mantenimientos\Views\Escala\Detalles.cshtml" />
     <Content Include="Areas\Ventas\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaCDP\Registrar.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\Salario\Index.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\Salario\Registrar.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\Salario\Detalles.cshtml" />
+    <Content Include="Areas\Mantenimientos\Views\Salario\Editar.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
