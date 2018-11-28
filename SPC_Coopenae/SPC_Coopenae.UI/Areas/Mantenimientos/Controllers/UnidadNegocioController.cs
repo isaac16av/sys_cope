@@ -40,6 +40,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         public ActionResult Registrar()
         {
+            ViewBag.Meta = new SelectList(_meta.ListarMetas(), "IdMeta", "Descripcion");
             return View();
         }
 
@@ -48,6 +49,8 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.Meta = new SelectList(_meta.ListarMetas(), "IdMeta", "Descripcion");
+
                 if (!ModelState.IsValid)
                 {
                     return View();
@@ -99,6 +102,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.Meta = new SelectList(_meta.ListarMetas(), "IdMeta", "Descripcion");
                 var UnidadNegocioBuscar = _repositorioUnidadNegocio.BuscarUnidadNegocio(id);
                 var UnidadNegocioEditar = Mapper.Map<Models.UnidadNegocio>(UnidadNegocioBuscar);
                 return View(UnidadNegocioEditar);
@@ -115,6 +119,8 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
         {
             try
             {
+                ViewBag.Meta = new SelectList(_meta.ListarMetas(), "IdMeta", "Descripcion");
+
                 if (!ModelState.IsValid)
                 {
                     return View();
