@@ -25,7 +25,23 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.TipoCambio.ToList();
+                return dbc.TipoCambio.Where(x => x.Estado == true).OrderByDescending(x => x.Fecha).ToList();
+            }
+        }
+
+        public void InsertarTipoCambio(TipoCambio tipoCambio)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                var _tipoCambio = dbc.TipoCambio.Where(x => x.Fecha.Month == tipoCambio.Fecha.Month && 
+                                                            x.Fecha.Year == tipoCambio.Fecha.Year)
+                                                            .ToList();
+                _tipoCambio.ForEach(x => x.Estado = false);
+
+                dbc.TipoCambio.Add(tipoCambio);
+
+                dbc.SaveChanges();
+
             }
         }
     }

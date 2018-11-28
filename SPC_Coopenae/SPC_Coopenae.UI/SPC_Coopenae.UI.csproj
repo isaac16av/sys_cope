@@ -189,12 +189,14 @@
     <Compile Include="Areas\Mantenimientos\Models\TipoCredito.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
+    <Compile Include="Controllers\TipoCambioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ObjsReporte\RProductos.cs" />
     <Compile Include="Models\ObjsReporte\RTipoCreditos.cs" />
     <Compile Include="Models\Reporte.cs" />
+    <Compile Include="Models\TipoCambio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +332,7 @@
     <Content Include="Views\Reporte\Mensual.cshtml" />
     <Content Include="Views\Shared\_TipoCreditos.cshtml" />
     <Content Include="Views\Shared\_Productos.cshtml" />
+    <Content Include="Views\TipoCambio\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
