@@ -159,12 +159,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\TipoProductoController.cs" />
+    <Compile Include="Areas\Mantenimientos\Models\Metas\MetaCDP.cs" />
+    <Compile Include="Areas\Mantenimientos\Models\Metas\MetaCredito.cs" />
+    <Compile Include="Areas\Mantenimientos\Models\Metas\MetaProducto.cs" />
     <Compile Include="Areas\Mantenimientos\Models\TipoProducto.cs" />
     <Compile Include="Areas\Mantenimientos\Controllers\EscalaController.cs" />
     <Compile Include="Areas\Mantenimientos\Models\DetalleEscala.cs" />
     <Compile Include="Areas\Mantenimientos\Models\DetalleInicio.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Escala.cs" />
-    <Compile Include="Areas\Mantenimientos\Models\MetaTipoProducto.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Salario.cs" />
     <Compile Include="Areas\Ventas\VentasAreaRegistration.cs" />
     <Compile Include="Areas\Ventas\Controllers\ValidaEjecutivoController.cs" />
@@ -182,7 +184,7 @@
     <Compile Include="Areas\Ventas\Models\VentaProducto.cs" />
     <Compile Include="Areas\Ventas\Models\VentaCDP.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Ejecutivo.cs" />
-    <Compile Include="Areas\Mantenimientos\Models\Meta.cs" />
+    <Compile Include="Areas\Mantenimientos\Models\Metas\Meta.cs" />
     <Compile Include="Areas\Mantenimientos\Models\Producto.cs" />
     <Compile Include="Areas\Mantenimientos\Models\UnidadNegocio.cs" />
     <Compile Include="Areas\Mantenimientos\Models\TipoCDP.cs" />
@@ -261,7 +263,6 @@
     <Content Include="Areas\Mantenimientos\Views\Meta\Index.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Meta\Registrar.cshtml" />
     <Content Include="Areas\Mantenimientos\Views\Meta\Detalles.cshtml" />
-    <Content Include="Areas\Mantenimientos\Views\Meta\Editar.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaCDP\Index.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaCDP\Detalles.cshtml" />
     <Content Include="Areas\Ventas\Views\VentaCDP\Editar.cshtml" />
@@ -293,6 +294,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Otros\GuardarMeta.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />

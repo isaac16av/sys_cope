@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SPC_Coopenae.UI.Areas.Mantenimientos.Models.Meta>
+﻿@model IEnumerable<SPC_Coopenae.UI.Areas.Mantenimientos.Models.Metas.Meta>
 
 @{
     ViewBag.Title = "Index";
@@ -19,9 +19,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Escala)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Salario)
-        </th>
+
         <th></th>
     </tr>
 
@@ -31,17 +29,9 @@
             @Html.DisplayFor(modelItem => item.Descripcion)
         </td>        
         <td>
-            @Html.Encode((ViewBag.Escala as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.Escala).Text)
+            @Html.Encode((ViewBag.ListaEscala as SelectList).SingleOrDefault(x => int.Parse(x.Value) == item.Escala).Text)
         </td>         
-        
         <td>
-            @Html.DisplayFor(modelItem => item.Salario)
-        </td>
-        <td>
-            <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdMeta })">
-                <span class="glyphicon glyphicon-pencil" title="Editar"></span>
-            </a>
-
             <a class="btn btn-success" href="@Url.Action("Detalles", new { id = item.IdMeta })">
                 <span class="glyphicon glyphicon-list-alt" title="Detalle"></span>
             </a>
