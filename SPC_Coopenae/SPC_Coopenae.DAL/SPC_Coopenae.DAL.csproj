@@ -52,14 +52,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>ConexionBD.settings</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IMetaCDPRepositorio.cs" />
-    <Compile Include="Interfaces\IMetaCreditoRepositorio.cs" />
-    <Compile Include="Interfaces\IMetaTipoProductoDetalleRepositorio.cs" />
     <Compile Include="Interfaces\ITipoCambioRepositorio.cs" />
     <Compile Include="Interfaces\ITipoProductoRepositorio.cs" />
     <Compile Include="Interfaces\IDetalleEscalaRepositorio.cs" />
     <Compile Include="Interfaces\IEscalaRepositorio.cs" />
-    <Compile Include="Interfaces\IMetaTipoProductoRepositorio.cs" />
     <Compile Include="Interfaces\ISalarioRepositorio.cs" />
     <Compile Include="Interfaces\IVentaCDPRepositorio.cs" />
     <Compile Include="Interfaces\IVentaCreditoRepositorio.cs" />
@@ -70,16 +66,12 @@
     <Compile Include="Interfaces\IUnidadNegocioRepositorio.cs" />
     <Compile Include="Interfaces\ITipoCDPRepositorio.cs" />
     <Compile Include="Interfaces\ITipoCreditoRepositorio.cs" />
-    <Compile Include="Metodos\MMetaCDPRepositorio.cs" />
-    <Compile Include="Metodos\MMetaCreditoRepositorio.cs" />
     <Compile Include="Metodos\Reportes\MEscalaReporteRepositorio.cs" />
     <Compile Include="Metodos\Reportes\MReporteCreditosRepositorio.cs" />
-    <Compile Include="Metodos\MMetaTipoProductoDetalleRepositorio.cs" />
     <Compile Include="Metodos\MTipoCambioRepositorio.cs" />
     <Compile Include="Metodos\MTipoProducto.cs" />
     <Compile Include="Metodos\MDetalleEscalaRepositorio.cs" />
     <Compile Include="Metodos\MEscalaRepositorio.cs" />
-    <Compile Include="Metodos\MMetaTipoProductoRepositorio.cs" />
     <Compile Include="Metodos\MSalarioRepositorio.cs" />
     <Compile Include="Metodos\MVentaCDPRepositorio.cs" />
     <Compile Include="Metodos\MVentaCreditoRepositorio.cs" />

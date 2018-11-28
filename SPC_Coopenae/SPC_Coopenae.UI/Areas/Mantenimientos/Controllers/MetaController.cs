@@ -17,21 +17,25 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
 
         IMetaRepositorio _repositorio;
         IEscalaRepositorio _escala;
+        ITipoProductoRepositorio _tipoProductos;
+        ISalarioRepositorio _salario;
     
 
         public MetaController()
         {
             _repositorio = new MMetaRepositorio();
             _escala = new MEscalaRepositorio();
+            _tipoProductos = new MTipoProducto();
+            _salario = new MSalarioRepositorio();
         }
 
         public ActionResult Index()
         {
             try
             {
-                ViewBag.Escala = new SelectList(_escala.ListarEscalas(), "IdEscala", "Descripcion");
+                ViewBag.ListaEscala = new SelectList(_escala.ListarEscalas(), "IdEscala", "Descripcion");
                 var metas = _repositorio.ListarMetas();
-                var metasMostrar = Mapper.Map<List<Models.Meta>>(metas);
+                var metasMostrar = Mapper.Map<List<Models.Metas.Meta>>(metas);
 
                 return View(metasMostrar);
             }
@@ -41,33 +45,100 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 return View();
             }
 
-
-
         }
 
         public ActionResult Registrar()
         {
+            ViewBag.ListaEscala = new SelectList(_escala.ListarEscalas(), "IdEscala", "Descripcion");
+            ViewBag.Salario = new SelectList(_salario.ListarSalario(), "IdSalario", "Descripcion");
+            ViewBag.ListaTipoProductos = new SelectList(_tipoProductos.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Registrar(Models.Meta metasP)
+        public ActionResult Registrar(Models.Metas.Meta _meta,
+                                      Models.Metas.MetaCredito _metaCredito,
+                                      Models.Metas.MetaCDP _metaCDP,
+                                      Models.Metas.MetaProducto[] _metaProducto)
         {
+
+            string devolverMensaje = "Ocurrió un error";
+
             try
             {
-                if (!ModelState.IsValid)
+                ViewBag.ListaEscala = new SelectList(_escala.ListarEscalas(), "IdEscala", "Descripcion");
+                ViewBag.Salario = new SelectList(_salario.ListarSalario(), "IdSalario", "Descripcion");
+                ViewBag.ListaTipoProductos = new SelectList(_tipoProductos.ListarTipoProducto(), "IdTipoProducto", "Descripcion");
+
+                //Crear la meta con el parametro e insertar
+                var meta = new Models.Metas.Meta
                 {
-                    return View();
+                    IdMeta = 0,
+                    Descripcion = _meta.Descripcion,
+                    Estado = true,
+                    Salario = _meta.Salario,
+                    Escala = _meta.Escala
+                };
+
+                var MetaInsertar = Mapper.Map<DATA.Meta>(meta);
+                int IdMeta = _repositorio.InsertarMeta(MetaInsertar);
+
+                //Crear meta de creditos y de cdps
+
+                var metaCredito = new Models.Metas.MetaCredito
+                {
+                    IdMetaCredito = 0,
+                    MetaColocacion = _metaCredito.MetaColocacion,
+                    ValorIDP = _metaCredito.ValorIDP,
+                    Meta = IdMeta
+                };
+
+                var MetaCreditoInsertar = Mapper.Map<DATA.MetaCredito>(metaCredito);
+                _repositorio.InsertarMetaCredito(MetaCreditoInsertar);
+
+                var metaCDP = new Models.Metas.MetaCDP
+                {
+                    IdMetaCDP = 0,
+                    Metacdp = _metaCDP.Metacdp,
+                    ValorIDP = _metaCDP.ValorIDP,
+                    Meta = IdMeta
+                };
+
+                var MetaCDPInsertar = Mapper.Map<DATA.MetaCDP>(metaCDP);
+                _repositorio.InsertarMetaCDP(MetaCDPInsertar);
+
+                //Insertar Meta de productos
+                foreach (var item in _metaProducto)
+                {
+                    var metaTipoProducto = new DATA.MetaTipoProducto
+                    {
+                        IdMetaTipoProducto = 0,
+                        MetaCantidad = item.MetaCantidad,
+                        ValorIDP = item.ValorIDP,
+                        Meta = IdMeta
+                    };
+
+                    int idMetaTP = _repositorio.InsertarMetaProducto(metaTipoProducto);
+
+                    foreach (var x in item.TipoProductos)
+                    {
+                        var metaTipoProductoDetalle = new DATA.MetaTipoProductoDetalle
+                        {
+                            MetaTipoProducto = idMetaTP,
+                            TipoProducto = x
+                        };
+
+                        _repositorio.InsertarMetaProductoDetalle(metaTipoProductoDetalle);
+                    }
+
                 }
-                var metaRegistrar = Mapper.Map<DATA.Meta>(metasP);
-                _repositorio.InsertarMeta(metaRegistrar);
-                return RedirectToAction("Index");
+
+                return Json(new { success = true, responseText = devolverMensaje }, JsonRequestBehavior.AllowGet);
             }
 
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
-                return View();
+                return Json(new { success = false, responseText = "Ocurrió un error: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -92,7 +163,7 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             {
                 ViewBag.Escala = new SelectList(_escala.ListarEscalas(), "IdEscala", "Descripcion");
                 var MetaBuscar = _repositorio.BuscarMeta(id);
-                var MetaDetallar = Mapper.Map<Models.Meta>(MetaBuscar);
+                var MetaDetallar = Mapper.Map<Models.Metas.Meta>(MetaBuscar);
                 return View(MetaDetallar);
             }
             catch (Exception ex)
@@ -101,42 +172,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 return View();
             }
         }
-
-        public ActionResult Editar(int id)
-        {
-            try
-            {
-                var MetaBuscar = _repositorio.BuscarMeta(id);
-                var MetaEditar = Mapper.Map<Models.Meta>(MetaBuscar);
-                return View(MetaEditar);
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
-                return View();
-            }
-        }
-
-        [HttpPost]
-        public ActionResult Editar(Models.Meta metaP)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return View();
-                }
-                var MetaEditarBD = Mapper.Map<DATA.Meta>(metaP);
-                _repositorio.ActualizarMeta(MetaEditarBD);
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
-                return View();
-            }
-        }
-
 
     }
 }

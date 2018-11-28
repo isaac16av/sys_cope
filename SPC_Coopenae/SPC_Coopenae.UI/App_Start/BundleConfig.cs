@@ -12,9 +12,12 @@ namespace SPC_Coopenae.UI
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
-            //registra los scripts encargados de guardar las escalas
+            //registra los scripts encargados de guardar las escalas y metas
             bundles.Add(new ScriptBundle("~/bundles/escalas").Include(
                         "~/Scripts/Otros/GuardarEscala.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/metas").Include(
+                        "~/Scripts/Otros/GuardarMeta.js"));
 
             //registra los sripts de validacion de mvc
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

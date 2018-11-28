@@ -11,22 +11,15 @@ namespace SPC_Coopenae.DAL.Metodos
 {
     public class MMetaRepositorio : IMetaRepositorio
     {
-        public void ActualizarMeta(Meta meta)
+
+        public int InsertarMeta(Meta meta)
         {
             using (var dbc = new SPC_BD())
             {
-                dbc.Entry(meta).State = EntityState.Modified;
-
+                dbc.Meta.Add(meta);
                 dbc.SaveChanges();
 
-            }
-        }
-
-        public Meta BuscarMeta(int id)
-        {
-            using (var dbc = new SPC_BD())
-            {
-                return dbc.Meta.Find(id);
+                return meta.IdMeta;
             }
         }
 
@@ -34,17 +27,35 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                var eMeta = dbc.Meta.Find(id);
-                eMeta.Estado = false;
+                var metaEliminar = dbc.Meta.Find(id);
+                metaEliminar.Estado = false;
                 dbc.SaveChanges();
             }
         }
 
-        public void InsertarMeta(Meta meta)
+        public Meta BuscarMeta(int id)
         {
             using (var dbc = new SPC_BD())
             {
-                var iMeta = dbc.Meta.Add(meta);
+                var metaB = dbc.Meta.Find(id);
+                return metaB;
+            }
+        }
+
+        public void InsertarMetaCredito(MetaCredito meta)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                dbc.MetaCredito.Add(meta);
+                dbc.SaveChanges();
+            }
+        }
+
+        public void InsertarMetaCDP(MetaCDP meta)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                dbc.MetaCDP.Add(meta);
                 dbc.SaveChanges();
             }
         }
@@ -57,7 +68,25 @@ namespace SPC_Coopenae.DAL.Metodos
             }
         }
 
-      
+        public int InsertarMetaProducto(MetaTipoProducto meta)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                dbc.MetaTipoProducto.Add(meta);
+                dbc.SaveChanges();
+
+                return meta.IdMetaTipoProducto;
+            }
+        }
+
+        public void InsertarMetaProductoDetalle(MetaTipoProductoDetalle meta)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                dbc.MetaTipoProductoDetalle.Add(meta);
+                dbc.SaveChanges();
+            }
+        }
 
     }
 }

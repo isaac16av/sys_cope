@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
+namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models.Metas
 {
     public class Meta
     {

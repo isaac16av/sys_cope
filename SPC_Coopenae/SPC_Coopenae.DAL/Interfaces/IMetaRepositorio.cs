@@ -9,12 +9,15 @@ namespace SPC_Coopenae.DAL.Interfaces
 {
     public interface IMetaRepositorio
     {
-        List<Meta> ListarMetas();
-        Meta BuscarMeta(int id);
-        void InsertarMeta(Meta meta);
-        void ActualizarMeta(Meta meta);
-        void EliminarMeta(int id);
 
-      
+        int InsertarMeta(Meta meta);
+        void EliminarMeta(int id);
+        Meta BuscarMeta(int id);
+        List<Meta> ListarMetas();
+
+        void InsertarMetaCredito(MetaCredito meta);
+        void InsertarMetaCDP(MetaCDP meta);
+        int InsertarMetaProducto(MetaTipoProducto meta);
+        void InsertarMetaProductoDetalle(MetaTipoProductoDetalle meta);
     }
 }

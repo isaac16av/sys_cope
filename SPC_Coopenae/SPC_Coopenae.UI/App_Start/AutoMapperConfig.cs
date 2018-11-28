@@ -18,9 +18,6 @@ namespace SPC_Coopenae
                 cfg.CreateMap<UI.Areas.Mantenimientos.Models.UnidadNegocio, DATA.UnidadNegocio>();
                 cfg.CreateMap<DATA.UnidadNegocio, UI.Areas.Mantenimientos.Models.UnidadNegocio>();
 
-                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Meta, DATA.Meta>();
-                cfg.CreateMap<DATA.Meta, UI.Areas.Mantenimientos.Models.Meta>();
-
                 cfg.CreateMap<UI.Areas.Ventas.Models.VentaCredito, DATA.VentaCredito>();
                 cfg.CreateMap<DATA.VentaCredito, UI.Areas.Ventas.Models.VentaCredito>();
               
@@ -51,8 +48,14 @@ namespace SPC_Coopenae
                 cfg.CreateMap<UI.Areas.Mantenimientos.Models.Salario, DATA.Salario>();
                 cfg.CreateMap<DATA.Salario, UI.Areas.Mantenimientos.Models.Salario>();
 
-                cfg.CreateMap<UI.Areas.Mantenimientos.Models.MetaTipoProducto, DATA.MetaTipoProducto>();
-                cfg.CreateMap<DATA.MetaTipoProducto, UI.Areas.Mantenimientos.Models.MetaTipoProducto>();
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Metas.Meta, DATA.Meta>();
+                cfg.CreateMap<DATA.Meta, UI.Areas.Mantenimientos.Models.Metas.Meta>();
+
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Metas.MetaCredito, DATA.MetaCredito>();
+                cfg.CreateMap<DATA.MetaCredito, UI.Areas.Mantenimientos.Models.Metas.MetaCredito>();
+
+                cfg.CreateMap<UI.Areas.Mantenimientos.Models.Metas.MetaCDP, DATA.MetaCDP>();
+                cfg.CreateMap<DATA.MetaCDP, UI.Areas.Mantenimientos.Models.Metas.MetaCDP>();
 
             });
         }
