@@ -28,14 +28,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MesesInicio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MesesInicio)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.SalarioInicio)
         </dt>
 
@@ -49,6 +41,14 @@
 
         <dd>
             ₡@string.Format("{0:0,0.00}", Model.BonoInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MesesInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MesesInicio)
         </dd>
 
     </dl>
