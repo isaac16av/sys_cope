@@ -35,7 +35,6 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
                 ModelState.AddModelError("", "Ocurrió un error: " + ex.Message);
                 return View();
             }
-            
         }
 
         public ActionResult Registrar()
