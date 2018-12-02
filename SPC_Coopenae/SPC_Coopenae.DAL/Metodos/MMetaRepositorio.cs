@@ -88,5 +88,85 @@ namespace SPC_Coopenae.DAL.Metodos
             }
         }
 
+        public DetalleMeta DetallarMeta(int id)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                var resultado = (from metaDetallar in dbc.Meta
+                                 join mCredito in dbc.MetaCredito on metaDetallar.IdMeta equals mCredito.Meta
+                                 join mCDP in dbc.MetaCDP on metaDetallar.IdMeta equals mCDP.Meta
+                                 where metaDetallar.IdMeta == id
+                                 select new
+                                 {
+                                     metaDetallar.Descripcion,
+                                     metaDetallar.Escala,
+                                     metaDetallar.Salario,
+                                     mCredito.MetaColocacion,
+                                     idp_cred = mCredito.ValorIDP,
+                                     mCDP.Metacdp,
+                                     idp_cdp = mCDP.ValorIDP,
+                                 }).First();
+
+                var resultadoProds = (from metaDetallar in dbc.Meta
+                                      join mProductos in dbc.MetaTipoProducto on metaDetallar.IdMeta equals mProductos.Meta
+                                      join mProdDetalle in dbc.MetaTipoProductoDetalle on mProductos.IdMetaTipoProducto equals mProdDetalle.MetaTipoProducto
+                                      join tipoProductos in dbc.TipoProducto on mProdDetalle.TipoProducto equals tipoProductos.IdTipoProducto
+                                      where metaDetallar.IdMeta == id
+                                      orderby mProductos.IdMetaTipoProducto
+                                      select new
+                                      {
+                                          mProductos.IdMetaTipoProducto,
+                                          mProductos.MetaCantidad,
+                                          mProductos.ValorIDP,
+                                          tipoProductos.Descripcion
+                                      }).ToList();
+
+                DetalleMeta metaEnviar = new DetalleMeta()
+                {
+                    Descripcion = resultado.Descripcion,
+                    Escala = resultado.Escala,
+                    Salario = resultado.Salario,
+                    ColocacionCredito = resultado.MetaColocacion,
+                    IDP_Credito = resultado.idp_cred,
+                    ColocacionCDP = resultado.Metacdp,
+                    IDP_CDP = resultado.idp_cdp
+                };
+
+                List<DetalleMetaTipoProducto> ListaMetaSTP = new List<DetalleMetaTipoProducto>();
+
+                int idAnterior = -1;
+                foreach (var x in resultadoProds)
+                {
+                    if (x.IdMetaTipoProducto != idAnterior)
+                    {
+                        DetalleMetaTipoProducto mtp_detalle = new DetalleMetaTipoProducto()
+                        {
+                            Id_MTP = x.IdMetaTipoProducto,
+                            Cantidad = x.MetaCantidad,
+                            IDP_TProductos = x.ValorIDP,
+                        };
+                        mtp_detalle.ListaTipoProductos = new List<string>();
+                        ListaMetaSTP.Add(mtp_detalle);
+                    }
+                    idAnterior = x.IdMetaTipoProducto;
+                }
+
+                foreach (var x in resultadoProds)
+                {
+                    foreach (var y in ListaMetaSTP)
+                    {
+                        if (x.IdMetaTipoProducto == y.Id_MTP)
+                        {
+                            y.ListaTipoProductos.Add(x.Descripcion);
+                        }
+                    }
+                }
+
+                metaEnviar.TipoProductos = ListaMetaSTP;
+                return metaEnviar;
+
+            }
+        }
+
     }
 }

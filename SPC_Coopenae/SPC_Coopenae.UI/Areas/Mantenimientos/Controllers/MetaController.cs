@@ -162,9 +162,11 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Controllers
             try
             {
                 ViewBag.Escala = new SelectList(_escala.ListarEscalas(), "IdEscala", "Descripcion");
-                var MetaBuscar = _repositorio.BuscarMeta(id);
-                var MetaDetallar = Mapper.Map<Models.Metas.Meta>(MetaBuscar);
-                return View(MetaDetallar);
+                ViewBag.Salario = new SelectList(_salario.ListarSalario(), "IdSalario", "Descripcion");
+
+                DetalleMeta metaMostrar = _repositorio.DetallarMeta(id);
+
+                return View(metaMostrar);
             }
             catch (Exception ex)
             {
