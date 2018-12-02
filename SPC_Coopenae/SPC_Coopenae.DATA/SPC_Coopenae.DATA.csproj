@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DetalleMeta.cs" />
     <Compile Include="MetaCDP.cs" />
     <Compile Include="MetaCredito.cs" />
     <Compile Include="DetalleEscala.cs" />

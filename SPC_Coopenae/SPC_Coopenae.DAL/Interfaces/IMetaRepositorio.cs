@@ -14,6 +14,7 @@ namespace SPC_Coopenae.DAL.Interfaces
         void EliminarMeta(int id);
         Meta BuscarMeta(int id);
         List<Meta> ListarMetas();
+        DetalleMeta DetallarMeta(int id);
 
         void InsertarMetaCredito(MetaCredito meta);
         void InsertarMetaCDP(MetaCDP meta);
