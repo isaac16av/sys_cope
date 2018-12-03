@@ -189,6 +189,7 @@
     <Compile Include="Areas\Mantenimientos\Models\UnidadNegocio.cs" />
     <Compile Include="Areas\Mantenimientos\Models\TipoCDP.cs" />
     <Compile Include="Areas\Mantenimientos\Models\TipoCredito.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\TipoCambioController.cs" />
@@ -318,7 +319,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -335,6 +336,7 @@
     <Content Include="Views\Shared\_TipoCreditos.cshtml" />
     <Content Include="Views\Shared\_Productos.cshtml" />
     <Content Include="Views\TipoCambio\Index.cshtml" />
+    <Content Include="Views\ErrorPage\ErrorMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
