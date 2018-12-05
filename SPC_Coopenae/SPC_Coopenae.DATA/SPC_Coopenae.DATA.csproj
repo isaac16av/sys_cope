@@ -49,6 +49,7 @@
     <Compile Include="ObjReportes\MetaProductosParaIDP.cs" />
     <Compile Include="ObjReportes\RCDPs.cs" />
     <Compile Include="ObjReportes\RProductos.cs" />
+    <Compile Include="ObjReportes\RTProducto_IDP.cs" />
     <Compile Include="ObjReportes\RTipoCreditos.cs" />
     <Compile Include="MetaTipoProducto.cs" />
     <Compile Include="MetaTipoProductoDetalle.cs" />

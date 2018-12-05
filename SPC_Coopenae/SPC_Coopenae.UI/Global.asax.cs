@@ -19,11 +19,12 @@ namespace SPC_Coopenae.UI
             AutoMapperConfig.Configure();
         }
 
-        //protected void Application_Error(object sender, EventArgs e)
-        //{
-        //    Exception exc = Server.GetLastError();
-        //    Server.ClearError();
-        //    Response.Redirect("/Error/Message");
-        //}
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exc = Server.GetLastError();
+            Server.ClearError();
+            Response.Redirect("/Error/Message");
+        }
+
     }
 }

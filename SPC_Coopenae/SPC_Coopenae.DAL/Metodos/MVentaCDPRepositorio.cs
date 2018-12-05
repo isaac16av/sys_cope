@@ -53,7 +53,9 @@ namespace SPC_Coopenae.DAL.Metodos
             {
                 return (from ventaCDP in dbc.VentaCDP
                         join tipoCDP in dbc.TipoCDP on ventaCDP.TipoCDP equals tipoCDP.IdTipoCDP
+                        join ejec in dbc.Ejecutivo on ventaCDP.Ejecutivo equals ejec.Cedula
                         where ventaCDP.Estado == true &&
+                        ejec.Estado == true &&
                         tipoCDP.Estado == true
                         select ventaCDP).ToList();
             }
@@ -65,7 +67,9 @@ namespace SPC_Coopenae.DAL.Metodos
             {
                 return (from ventaCDP in dbc.VentaCDP
                         join tipoCDP in dbc.TipoCDP on ventaCDP.TipoCDP equals tipoCDP.IdTipoCDP
+                        join ejec in dbc.Ejecutivo on ventaCDP.Ejecutivo equals ejec.Cedula
                         where ventaCDP.Ejecutivo == ejecutivo &&
+                        ejec.Estado == true &&
                         ventaCDP.Fecha.Month == fecha.Month &&
                         ventaCDP.Fecha.Year == fecha.Year &&
                         ventaCDP.Estado == true &&

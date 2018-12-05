@@ -48,7 +48,7 @@ namespace SPC_Coopenae.UI.Controllers
                     int cedula = id.Value;
                     var EjecutivoReportar = _repositorioEjecutivo.BuscarEjecutivo(cedula);
 
-                    if (EjecutivoReportar == null)
+                    if (EjecutivoReportar == null || EjecutivoReportar.Estado == false)
                     {
                         TempData["MensajeError"] = "No se encontró la cédula " + cedula;
                         return RedirectToAction("Index");
@@ -60,6 +60,12 @@ namespace SPC_Coopenae.UI.Controllers
                     reporteMostrar.Cedula = EjecutivoReportar.Cedula;
                     reporteMostrar.Nombre = EjecutivoReportar.Nombre + " " + EjecutivoReportar.Apellidos;
                     reporteMostrar.Fecha = FechaReporte;
+
+                    if (reporteMostrar.TipoCambio == -321)
+                    {
+                        TempData["MensajeError"] = "No se ha definido el tipo de cambio para el mes de " + FechaReporte.ToString("MMM") + " del " + FechaReporte.Year;
+                        return RedirectToAction("Index");
+                    }
 
                     return View(reporteMostrar);
                 }
@@ -143,7 +149,7 @@ namespace SPC_Coopenae.UI.Controllers
             //Asigna los IDPs para mostrarlos en el reporte
             reporteVista.Estado_IDP.IDP_Creditos = _reporteBLL.GetIDPCredito();
             reporteVista.Estado_IDP.IDP_CDPs = _reporteBLL.GetIDPsCDP();
-            reporteVista.Estado_IDP.IDP_Productos = _reporteBLL.GetIDPsProductos();
+            reporteVista.Estado_IDP.TipoProductos = Mapper.Map<List<RTProducto_IDP>>(_reporteBLL.GetIDPsProductos());
             reporteVista.Estado_IDP.Metas_Creditos = _reporteBLL.GetMetaCredito();
             reporteVista.Estado_IDP.Metas_CDPs = _reporteBLL.GetMetaCDP();
             reporteVista.Estado_IDP.TotalIDP = _reporteBLL.GetTotalIDP();

@@ -15,9 +15,17 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
+                TipoCambio defaultTP = new TipoCambio()
+                {
+                    Estado = false,
+                    Fecha = fechaP,
+                    IdTipoCambio = -1,
+                    Valor = -321
+                };
+
                 return dbc.TipoCambio.Where(x => (x.Fecha.Month == fechaP.Month &&
                                                   x.Fecha.Year == fechaP.Year &&
-                                                  x.Estado == true)).First();
+                                                  x.Estado == true)).FirstOrDefault() ?? defaultTP;
             }
         }
 

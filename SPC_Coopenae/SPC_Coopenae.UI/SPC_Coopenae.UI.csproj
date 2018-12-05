@@ -199,6 +199,7 @@
     <Compile Include="Models\ObjsReporte\RCDPs.cs" />
     <Compile Include="Models\ObjsReporte\RProductos.cs" />
     <Compile Include="Models\ObjsReporte\RTipoCreditos.cs" />
+    <Compile Include="Models\ObjsReporte\RTProducto.cs" />
     <Compile Include="Models\ObjsReporte\R_IDP.cs" />
     <Compile Include="Models\Reporte.cs" />
     <Compile Include="Models\TipoCambio.cs" />

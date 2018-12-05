@@ -56,7 +56,9 @@ namespace SPC_Coopenae.DAL.Metodos
                 return (from ventaProductos in dbc.VentaProducto
                         join prod in dbc.Producto on ventaProductos.Producto equals prod.IdProducto
                         join tipo in dbc.TipoProducto on prod.TipoProducto equals tipo.IdTipoProducto
+                        join ejec in dbc.Ejecutivo on ventaProductos.Ejecutivo equals ejec.Cedula
                         where ventaProductos.Estado == true &&
+                        ejec.Estado == true &&
                         tipo.Estado == true && prod.Estado == true
                         select ventaProductos).ToList();
             }
@@ -69,7 +71,9 @@ namespace SPC_Coopenae.DAL.Metodos
                 return (from ventaProductos in dbc.VentaProducto
                         join prod in dbc.Producto on ventaProductos.Producto equals prod.IdProducto
                         join tipo in dbc.TipoProducto on prod.TipoProducto equals tipo.IdTipoProducto
+                        join ejec in dbc.Ejecutivo on ventaProductos.Ejecutivo equals ejec.Cedula
                         where ventaProductos.Ejecutivo == cedula &&
+                        ejec.Estado == true &&
                         ventaProductos.Fecha.Month == fecha.Month &&
                         ventaProductos.Fecha.Year == fecha.Year &&
                         ventaProductos.Estado == true &&

@@ -151,15 +151,10 @@ namespace SPC_Coopenae.DAL.Metodos
                     idAnterior = x.IdMetaTipoProducto;
                 }
 
-                foreach (var x in resultadoProds)
+                foreach (var res in resultadoProds)
                 {
-                    foreach (var y in ListaMetaSTP)
-                    {
-                        if (x.IdMetaTipoProducto == y.Id_MTP)
-                        {
-                            y.ListaTipoProductos.Add(x.Descripcion);
-                        }
-                    }
+                    var dmtp = ListaMetaSTP.Find(x => x.Id_MTP == res.IdMetaTipoProducto);
+                    dmtp.ListaTipoProductos.Add(res.Descripcion);
                 }
 
                 metaEnviar.TipoProductos = ListaMetaSTP;

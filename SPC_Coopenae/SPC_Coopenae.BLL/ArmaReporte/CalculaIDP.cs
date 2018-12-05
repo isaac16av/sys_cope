@@ -40,7 +40,7 @@ namespace SPC_Coopenae.BLL.ArmaReporte
             }
         }
 
-        public void FijarIDPProductos(List<MetaProductosParaIDP> metaYCantidad)
+        public void FijarIDPProductos(List<MetaProductosParaIDP> metaYCantidad, ref List<RTProducto_IDP> reporteIDP)
         {
             ProductosIDP = 0;
             foreach (var meta in metaTipoProducto)
@@ -58,6 +58,7 @@ namespace SPC_Coopenae.BLL.ArmaReporte
                 
                 decimal IDPProdGanado = porcentajeObtenido * meta.ValorIDP;
                 IDPProdGanado = IDPProdGanado > meta.ValorIDP ? meta.ValorIDP : IDPProdGanado;
+                reporteIDP.Find(x => x.Id == meta.IdMetaTipoProducto).IDPGanado = IDPProdGanado;
                 ProductosIDP += IDPProdGanado;
             }
         }

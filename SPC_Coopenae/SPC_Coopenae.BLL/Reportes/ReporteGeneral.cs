@@ -91,7 +91,7 @@ namespace SPC_Coopenae.BLL.Reportes
             _calculaIDP.FijarIDPCred(_reporteCreditos.SumaColocaciones);
 
             _calculaIDP.metaTipoProducto = _reporteProductos.metaTipoProductosCorrespondiente;
-            _calculaIDP.FijarIDPProductos(_reporteProductos.metaYCantidadParaIDP);
+            _calculaIDP.FijarIDPProductos(_reporteProductos.metaYCantidadParaIDP, ref _reporteProductos.TProductosReporteIDP);
 
             _calculaIDP.metaCDP = _reporteCDPs.metaCDPCorrespondiente;
             _calculaIDP.FijarIDP_CPDs(_reporteCDPs.SumaColocacionesCDP);
@@ -177,15 +177,9 @@ namespace SPC_Coopenae.BLL.Reportes
             return metasDevolver;
         }
 
-        public decimal[] GetIDPsProductos()
+        public List<RTProducto_IDP> GetIDPsProductos()
         {
-            decimal[] IDPsDevolver = new decimal[2];
-            //Agrega el valor del IDP de Prods
-            IDPsDevolver[0] = _reporteProductos.metaTipoProductosCorrespondiente.Sum(x => x.ValorIDP);
-            //Agrega el IDP que lleva
-            IDPsDevolver[1] = _calculaIDP.ProductosIDP;
-
-            return IDPsDevolver;
+            return _reporteProductos.TProductosReporteIDP;
         }
 
         public decimal[] GetIDPsCDP()

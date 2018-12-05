@@ -47,6 +47,7 @@ namespace SPC_Coopenae.DAL.Metodos.Reportes
                                 Cantidad = x.Count()
                             };
 
+
                 List<MetaProductosParaIDP> listaDevolver = new List<MetaProductosParaIDP>();
 
                 foreach (var x in query)
@@ -77,8 +78,14 @@ namespace SPC_Coopenae.DAL.Metodos.Reportes
                                                 on producto.IdProducto equals ventaProducto.Producto
                              into x
                              from z in x.DefaultIfEmpty()
-                             group z by new { tipoProducto.Descripcion, tipoProducto.IDPNecesario, tipoProducto.Moneda,
-                                              producto.Nombre, producto.Comision } into g
+                             group z by new
+                             {
+                                 tipoProducto.Descripcion,
+                                 tipoProducto.IDPNecesario,
+                                 tipoProducto.Moneda,
+                                 producto.Nombre,
+                                 producto.Comision
+                             } into g
                              select new
                              {
                                  TipoProducto = g.Key.Descripcion,
@@ -109,6 +116,25 @@ namespace SPC_Coopenae.DAL.Metodos.Reportes
             }
         }
 
+        public void TraeNombres(ref List<RTProducto_IDP> ListaRProdsIDP)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                int[] idsMetas = ListaRProdsIDP.Select(x => x.Id).ToArray();
+
+                var resultado = (from m in dbc.MetaTipoProducto
+                                 join mtpd in dbc.MetaTipoProductoDetalle on m.IdMetaTipoProducto equals mtpd.MetaTipoProducto
+                                 join tp in dbc.TipoProducto on mtpd.TipoProducto equals tp.IdTipoProducto
+                                 where idsMetas.Contains(m.IdMetaTipoProducto)
+                                 select new { m.IdMetaTipoProducto, tp.Descripcion }).ToList();
+
+                foreach (var r in resultado)
+                {
+                    ListaRProdsIDP.Find(x => x.Id == r.IdMetaTipoProducto).TipoProductos.Add(r.Descripcion);
+                }
+
+            }
+        }
 
     }
 }

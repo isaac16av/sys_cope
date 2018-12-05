@@ -22,6 +22,7 @@ namespace SPC_Coopenae.BLL.ArmaReporte
         public List<MetaTipoProducto> metaTipoProductosCorrespondiente { get; set; }
         public List<MetaProductosParaIDP> metaYCantidadParaIDP { get; set; }
         public List<RProductos> ComisionesPorProductos { get; set; }
+        public List<RTProducto_IDP> TProductosReporteIDP = new List<RTProducto_IDP>();
 
         public void EstablecerMetaCorrespondiente(int cedula)
         {
@@ -32,6 +33,26 @@ namespace SPC_Coopenae.BLL.ArmaReporte
         {
             int [] idsMetas = metaTipoProductosCorrespondiente.Select(x => x.IdMetaTipoProducto).ToArray();
             metaYCantidadParaIDP = _reporteProductosBD.ConsultaCantidadPorMetas(idsMetas, fecha, cedula);
+            foreach (var x in metaTipoProductosCorrespondiente)
+            {
+                int cantidadVendida;
+                if ((metaYCantidadParaIDP.Count == 0) || (!(metaYCantidadParaIDP.Any(y => y.IdMeta == x.IdMetaTipoProducto))))
+                {
+                    cantidadVendida = 0;
+                }
+                else
+                {
+                    cantidadVendida = metaYCantidadParaIDP.Find(y => y.IdMeta == x.IdMetaTipoProducto).Cantidad;
+                }
+
+                TProductosReporteIDP.Add(
+                    new RTProducto_IDP() {
+                        Id = x.IdMetaTipoProducto,
+                        CantVendida = cantidadVendida,
+                        CantMeta = x.MetaCantidad,
+                        IDPMeta = x.ValorIDP
+                    });
+            }
         }
 
         public void AsignarComisionesProductos(int cedulaP, DateTime fechaP, decimal IDPActual, decimal tipoCambioP)
@@ -45,7 +66,7 @@ namespace SPC_Coopenae.BLL.ArmaReporte
             }
 
             this.ComisionesPorProductos = ConsultaProductosVendidos.ToList();
-
+            _reporteProductosBD.TraeNombres(ref TProductosReporteIDP);
         }
 
     }

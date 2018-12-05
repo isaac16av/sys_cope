@@ -57,7 +57,9 @@ namespace SPC_Coopenae.DAL.Metodos
             {
                 return (from creditos in dbc.VentaCredito
                         join tipo in dbc.TipoCredito on creditos.TipoCredito equals tipo.IdTipoCredito
+                        join ejec in dbc.Ejecutivo on creditos.Ejecutivo equals ejec.Cedula
                         where creditos.Estado == true &&
+                        ejec.Estado == true &&
                         tipo.Estado == true
                         select creditos).ToList();
             }
@@ -69,7 +71,9 @@ namespace SPC_Coopenae.DAL.Metodos
             {
                 return (from creditos in dbc.VentaCredito
                         join tipo in dbc.TipoCredito on creditos.TipoCredito equals tipo.IdTipoCredito
+                        join ejec in dbc.Ejecutivo on creditos.Ejecutivo equals ejec.Cedula
                         where creditos.Ejecutivo == ejecutivo &&
+                        ejec.Estado == true &&
                         creditos.Fecha.Month == fecha.Month &&
                         creditos.Fecha.Year == fecha.Year &&
                         creditos.Estado == true && 
