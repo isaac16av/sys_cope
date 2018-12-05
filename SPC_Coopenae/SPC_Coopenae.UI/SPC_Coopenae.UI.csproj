@@ -189,15 +189,17 @@
     <Compile Include="Areas\Mantenimientos\Models\UnidadNegocio.cs" />
     <Compile Include="Areas\Mantenimientos\Models\TipoCDP.cs" />
     <Compile Include="Areas\Mantenimientos\Models\TipoCredito.cs" />
-    <Compile Include="Controllers\ErrorPageController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\TipoCambioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ObjsReporte\RCDPs.cs" />
     <Compile Include="Models\ObjsReporte\RProductos.cs" />
     <Compile Include="Models\ObjsReporte\RTipoCreditos.cs" />
+    <Compile Include="Models\ObjsReporte\R_IDP.cs" />
     <Compile Include="Models\Reporte.cs" />
     <Compile Include="Models\TipoCambio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -215,8 +217,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\logo.png" />
-    <Content Include="Resources\Images\logo3.png" />
     <Content Include="Resources\Images\logo_coopenae.png" />
     <Content Include="Scripts\Otros\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -336,7 +336,9 @@
     <Content Include="Views\Shared\_TipoCreditos.cshtml" />
     <Content Include="Views\Shared\_Productos.cshtml" />
     <Content Include="Views\TipoCambio\Index.cshtml" />
-    <Content Include="Views\ErrorPage\ErrorMessage.cshtml" />
+    <Content Include="Views\Error\Message.cshtml" />
+    <Content Include="Views\Shared\_TipoCDPs.cshtml" />
+    <Content Include="Views\Shared\_IDPReporte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

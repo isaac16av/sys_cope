@@ -7,7 +7,7 @@ using SPC_Coopenae.DATA;
 using SPC_Coopenae.DAL.Metodos;
 using SPC_Coopenae.DAL.Interfaces;
 
-namespace SPC_Coopenae.BLL.Metas
+namespace SPC_Coopenae.BLL.ArmaReporte
 {
     public class TipoCambioReporte
     {

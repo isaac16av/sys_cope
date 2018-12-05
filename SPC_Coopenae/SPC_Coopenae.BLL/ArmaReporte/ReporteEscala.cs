@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPC_Coopenae.BLL.Metas
+namespace SPC_Coopenae.BLL.ArmaReporte
 {
     public class ReporteEscala
     {

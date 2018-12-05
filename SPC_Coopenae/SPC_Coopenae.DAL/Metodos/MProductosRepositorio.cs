@@ -51,7 +51,10 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.Producto.Where(x => x.Estado == true).ToList();
+                return (from prod in dbc.Producto
+                        join tipo in dbc.TipoProducto on prod.TipoProducto equals tipo.IdTipoProducto
+                        where tipo.Estado == true && prod.Estado == true
+                        select prod).ToList();
             }
         }
     }

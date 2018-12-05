@@ -22,10 +22,10 @@
             @Html.DisplayNameFor(model => model.ComisionMaxima)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PlazoMesesMaximo)
+            @Html.DisplayNameFor(model => model.IDPNecesario)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IDPNecesario)
+            @Html.DisplayNameFor(model => model.PCTComision)
         </th>
         <th></th>
     </tr>
@@ -45,10 +45,10 @@
             @(item.Moneda == "d" ? "$" : "₡")@(string.Format("{0:0,0.00}", item.ComisionMaxima))
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PlazoMesesMaximo)
+            @Html.DisplayFor(modelItem => item.IDPNecesario)%
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IDPNecesario)%
+            @Html.DisplayFor(modelItem => item.PCTComision)%
         </td>
         <td>
             <a class="btn btn-default" href="@Url.Action("Editar", new { id = item.IdTipoCDP })">

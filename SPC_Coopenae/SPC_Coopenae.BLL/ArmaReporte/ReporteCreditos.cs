@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPC_Coopenae.BLL.Metas
+namespace SPC_Coopenae.BLL.ArmaReporte
 {
     public class ReporteCreditos
     {
@@ -47,7 +47,7 @@ namespace SPC_Coopenae.BLL.Metas
                     //Saca la comision ganada en colones y la asgna al objeto
                     decimal TotalComisionCls = Convert.ToDecimal(x.SumaColocaciones) * pctComision;
                     //Comprueba que la comision no sea mayor
-                    if ((x.MaxComision != null))
+                    if (x.MaxComision != null)
                     {
                         TotalComisionCls = (TotalComisionCls > x.MaxComision ? Convert.ToDecimal(x.MaxComision) : TotalComisionCls);
                     }

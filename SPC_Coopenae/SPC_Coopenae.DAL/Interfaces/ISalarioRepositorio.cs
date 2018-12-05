@@ -18,5 +18,7 @@ namespace SPC_Coopenae.DAL.Interfaces
         void EliminarSalario(int id);
 
         Salario BuscarSalario(int id);
+
+        Salario BuscarSalarioEjecutivo(int cedula);
     }
 }

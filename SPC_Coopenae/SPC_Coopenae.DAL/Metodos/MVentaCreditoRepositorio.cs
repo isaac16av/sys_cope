@@ -55,7 +55,11 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.VentaCredito.ToList();
+                return (from creditos in dbc.VentaCredito
+                        join tipo in dbc.TipoCredito on creditos.TipoCredito equals tipo.IdTipoCredito
+                        where creditos.Estado == true &&
+                        tipo.Estado == true
+                        select creditos).ToList();
             }
         }
 
@@ -64,9 +68,12 @@ namespace SPC_Coopenae.DAL.Metodos
             using (var dbc = new SPC_BD())
             {
                 return (from creditos in dbc.VentaCredito
+                        join tipo in dbc.TipoCredito on creditos.TipoCredito equals tipo.IdTipoCredito
                         where creditos.Ejecutivo == ejecutivo &&
                         creditos.Fecha.Month == fecha.Month &&
-                        creditos.Fecha.Year == fecha.Year
+                        creditos.Fecha.Year == fecha.Year &&
+                        creditos.Estado == true && 
+                        tipo.Estado == true
                         select creditos).ToList();
             }
         }

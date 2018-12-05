@@ -18,11 +18,11 @@ namespace SPC_Coopenae.DATA
 
         public decimal ComisionMaxima { get; set; }
 
-        public int PlazoMesesMaximo { get; set; }
-
         public bool Estado { get; set; }
 
         public decimal IDPNecesario { get; set; }
+
+        public decimal PCTComision { get; set; }
 
     }
 

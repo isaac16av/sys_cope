@@ -53,7 +53,12 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.VentaProducto.ToList();
+                return (from ventaProductos in dbc.VentaProducto
+                        join prod in dbc.Producto on ventaProductos.Producto equals prod.IdProducto
+                        join tipo in dbc.TipoProducto on prod.TipoProducto equals tipo.IdTipoProducto
+                        where ventaProductos.Estado == true &&
+                        tipo.Estado == true && prod.Estado == true
+                        select ventaProductos).ToList();
             }
         }
 
@@ -62,9 +67,13 @@ namespace SPC_Coopenae.DAL.Metodos
             using (var dbc = new SPC_BD())
             {
                 return (from ventaProductos in dbc.VentaProducto
+                        join prod in dbc.Producto on ventaProductos.Producto equals prod.IdProducto
+                        join tipo in dbc.TipoProducto on prod.TipoProducto equals tipo.IdTipoProducto
                         where ventaProductos.Ejecutivo == cedula &&
                         ventaProductos.Fecha.Month == fecha.Month &&
-                        ventaProductos.Fecha.Year == fecha.Year
+                        ventaProductos.Fecha.Year == fecha.Year &&
+                        ventaProductos.Estado == true &&
+                        tipo.Estado == true && prod.Estado == true
                         select ventaProductos).ToList();
             }
             

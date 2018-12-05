@@ -42,6 +42,9 @@ namespace SPC_Coopenae
                 cfg.CreateMap<UI.Models.ObjsReporte.RTipoCreditos, DATA.ObjReportes.RTipoCreditos>();
                 cfg.CreateMap<DATA.ObjReportes.RTipoCreditos, UI.Models.ObjsReporte.RTipoCreditos>();
 
+                cfg.CreateMap<UI.Models.ObjsReporte.RTipoCreditos, DATA.ObjReportes.RCDPs>();
+                cfg.CreateMap<DATA.ObjReportes.RTipoCreditos, UI.Models.ObjsReporte.RCDPs>();
+
                 cfg.CreateMap<UI.Models.ObjsReporte.RProductos, DATA.ObjReportes.RProductos>();
                 cfg.CreateMap<DATA.ObjReportes.RProductos, UI.Models.ObjsReporte.RProductos>();
 

@@ -51,7 +51,11 @@ namespace SPC_Coopenae.DAL.Metodos
         {
             using (var dbc = new SPC_BD())
             {
-                return dbc.VentaCDP.ToList();
+                return (from ventaCDP in dbc.VentaCDP
+                        join tipoCDP in dbc.TipoCDP on ventaCDP.TipoCDP equals tipoCDP.IdTipoCDP
+                        where ventaCDP.Estado == true &&
+                        tipoCDP.Estado == true
+                        select ventaCDP).ToList();
             }
         }
 
@@ -60,9 +64,12 @@ namespace SPC_Coopenae.DAL.Metodos
             using (var dbc = new SPC_BD())
             {
                 return (from ventaCDP in dbc.VentaCDP
+                        join tipoCDP in dbc.TipoCDP on ventaCDP.TipoCDP equals tipoCDP.IdTipoCDP
                         where ventaCDP.Ejecutivo == ejecutivo &&
                         ventaCDP.Fecha.Month == fecha.Month &&
-                        ventaCDP.Fecha.Year == fecha.Year
+                        ventaCDP.Fecha.Year == fecha.Year &&
+                        ventaCDP.Estado == true &&
+                        tipoCDP.Estado == true
                         select ventaCDP).ToList();
             }
         }

@@ -67,6 +67,7 @@
     <Compile Include="Interfaces\ITipoCDPRepositorio.cs" />
     <Compile Include="Interfaces\ITipoCreditoRepositorio.cs" />
     <Compile Include="Metodos\Reportes\MEscalaReporteRepositorio.cs" />
+    <Compile Include="Metodos\Reportes\MReporteCDPRepositorio.cs" />
     <Compile Include="Metodos\Reportes\MReporteCreditosRepositorio.cs" />
     <Compile Include="Metodos\MTipoCambioRepositorio.cs" />
     <Compile Include="Metodos\MTipoProducto.cs" />

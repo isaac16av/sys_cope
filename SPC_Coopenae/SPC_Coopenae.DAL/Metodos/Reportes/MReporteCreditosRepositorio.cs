@@ -49,7 +49,8 @@ namespace SPC_Coopenae.DAL.Metodos.Reportes
                 var resultado = (from tipoCredito in dbc.TipoCredito.Where(tc => tc.Estado == true)
                                  join ventaCredito in dbc.VentaCredito.Where(vc => (vc.Ejecutivo == cedulaP) &&
                                                                                    (vc.Fecha.Month == fechaP.Month) &&
-                                                                                   (vc.Fecha.Year == fechaP.Year))
+                                                                                   (vc.Fecha.Year == fechaP.Year) &&
+                                                                                   (vc.Estado == true))
                                                    on tipoCredito.IdTipoCredito equals ventaCredito.TipoCredito
                                  into x
                                  from z in x.DefaultIfEmpty()

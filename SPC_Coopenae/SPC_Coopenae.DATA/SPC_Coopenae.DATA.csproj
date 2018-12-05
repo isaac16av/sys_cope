@@ -47,6 +47,7 @@
     <Compile Include="DetalleEscala.cs" />
     <Compile Include="Escala.cs" />
     <Compile Include="ObjReportes\MetaProductosParaIDP.cs" />
+    <Compile Include="ObjReportes\RCDPs.cs" />
     <Compile Include="ObjReportes\RProductos.cs" />
     <Compile Include="ObjReportes\RTipoCreditos.cs" />
     <Compile Include="MetaTipoProducto.cs" />

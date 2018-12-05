@@ -2,6 +2,7 @@
 using SPC_Coopenae.BLL.Reportes;
 using SPC_Coopenae.DAL.Interfaces;
 using SPC_Coopenae.DAL.Metodos;
+using SPC_Coopenae.UI.Areas.Mantenimientos.Models;
 using SPC_Coopenae.UI.Models;
 using SPC_Coopenae.UI.Models.ObjsReporte;
 using System;
@@ -91,28 +92,64 @@ namespace SPC_Coopenae.UI.Controllers
         [NonAction]
         private Reporte GenerarReporte(int cedulaReporte, DateTime fechaReporte)
         {
+            //Inicio el reporte
             _reporteBLL = new ReporteGeneral(cedulaReporte, fechaReporte);
             _reporteBLL.IniciarReporte();
 
+            //Inicio el reporte modelo de vista
             Reporte reporteVista = new Reporte();
 
+            //Trae el tipo de cambio para mostrar y asigna datos
             reporteVista.TipoCambio = _reporteBLL.GetTipoCambio();
+            reporteVista.UnidadNegocio = _reporteBLL.GetUnidadNegocio();
+            reporteVista.FechaContratacion = _reporteBLL.GetFechaContratacion();
 
+            //Asigna lo correspondiente a creditos
             var reporteTipoCreditosBLL = _reporteBLL.GetReporteTipoCreditos();
             reporteVista.listaTipoCreditos = Mapper.Map<List<RTipoCreditos>>(reporteTipoCreditosBLL);
             reporteVista.TotalComisionCreditos = reporteVista.listaTipoCreditos.Sum(x => x.TotalComision);
 
-            var reporteProductos = _reporteBLL.GetReporteProductos();
-            reporteVista.listaProductos = Mapper.Map<List<RProductos>>(reporteProductos);
+            //Asigna lo correspondiente a productos
+            var reporteProductosBLL = _reporteBLL.GetReporteProductos();
+            reporteVista.listaProductos = Mapper.Map<List<RProductos>>(reporteProductosBLL);
             reporteVista.TotalComisionProductos = reporteVista.listaProductos.Sum(x => x.TotalComision);
 
-            reporteVista.TotalComisionesGanadas = reporteVista.TotalComisionCreditos.Value + reporteVista.TotalComisionProductos;
+            //Asigna lo correspondiente a cdps
+            var reporteCDPsBLL = _reporteBLL.GetReporteTipoCDPs();
+            reporteVista.listaCDPs = Mapper.Map<List<RCDPs>>(reporteCDPsBLL);
+            reporteVista.TotalComisionCDPs = reporteVista.listaCDPs.Sum(x => x.TotalComision);
+
+            //Suma las comisiones
+            reporteVista.TotalGenerado = reporteVista.TotalComisionCreditos.Value + reporteVista.TotalComisionProductos + reporteVista.TotalComisionCDPs.Value;
+
+            //Asignacion del salario
+            Salario salarioBLL = Mapper.Map<Salario>(_reporteBLL.GetSalario());
+            int mesesTrabajados = _reporteBLL.GetMesesTrabajados();
+
+            if (mesesTrabajados <= salarioBLL.MesesInicio)
+            {
+                reporteVista.Salario = salarioBLL.SalarioInicio;
+                reporteVista.Bono = reporteVista.TotalGenerado < salarioBLL.BonoInicio ? salarioBLL.BonoInicio : 0;
+                reporteVista.TotalGenerado = reporteVista.Bono != 0 ? reporteVista.Bono : reporteVista.TotalGenerado;
+            }
+            else
+            {
+                reporteVista.Salario = salarioBLL.Base;
+                reporteVista.Bono = 0;
+            }
+            
+            reporteVista.TotalGenerado += reporteVista.Salario;
+
+            //Asigna los IDPs para mostrarlos en el reporte
+            reporteVista.Estado_IDP.IDP_Creditos = _reporteBLL.GetIDPCredito();
+            reporteVista.Estado_IDP.IDP_CDPs = _reporteBLL.GetIDPsCDP();
+            reporteVista.Estado_IDP.IDP_Productos = _reporteBLL.GetIDPsProductos();
+            reporteVista.Estado_IDP.Metas_Creditos = _reporteBLL.GetMetaCredito();
+            reporteVista.Estado_IDP.Metas_CDPs = _reporteBLL.GetMetaCDP();
+            reporteVista.Estado_IDP.TotalIDP = _reporteBLL.GetTotalIDP();
 
             return reporteVista;
         }
-
-
-
 
     }
 }

@@ -28,6 +28,18 @@ namespace SPC_Coopenae.DAL.Metodos
             }
         }
 
+        public Salario BuscarSalarioEjecutivo(int cedula)
+        {
+            using (var dbc = new SPC_BD())
+            {
+                return (from ej in dbc.Ejecutivo.Where(x => x.Cedula == cedula)
+                        join un in dbc.UnidadNegocio.Where(x => x.Estado == true) on ej.UnidadNegocio equals un.IdUnidad
+                        join me in dbc.Meta.Where(x => x.Estado == true) on un.Meta equals me.IdMeta
+                        join sa in dbc.Salario.Where(x => x.Estado == true) on me.Salario equals sa.IdSalario
+                        select sa).FirstOrDefault();
+            }
+        }
+
         public void EliminarSalario(int id)
         {
             using (var dbc = new SPC_BD())

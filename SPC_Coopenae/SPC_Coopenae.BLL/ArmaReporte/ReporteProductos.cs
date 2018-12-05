@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPC_Coopenae.BLL.Metas
+namespace SPC_Coopenae.BLL.ArmaReporte
 {
     public class ReporteProductos
     {
@@ -28,10 +28,10 @@ namespace SPC_Coopenae.BLL.Metas
             metaTipoProductosCorrespondiente = _reporteProductosBD.BuscarMetaProducto(cedula);
         }
 
-        public void TraerCantidadPorMeta(DateTime fecha)
+        public void TraerCantidadPorMeta(DateTime fecha, int cedula)
         {
             int [] idsMetas = metaTipoProductosCorrespondiente.Select(x => x.IdMetaTipoProducto).ToArray();
-            metaYCantidadParaIDP = _reporteProductosBD.ConsultaCantidadPorMetas(idsMetas, fecha);
+            metaYCantidadParaIDP = _reporteProductosBD.ConsultaCantidadPorMetas(idsMetas, fecha, cedula);
         }
 
         public void AsignarComisionesProductos(int cedulaP, DateTime fechaP, decimal IDPActual, decimal tipoCambioP)

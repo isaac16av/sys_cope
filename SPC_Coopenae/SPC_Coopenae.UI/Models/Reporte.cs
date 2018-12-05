@@ -8,7 +8,7 @@ namespace SPC_Coopenae.UI.Models
 {
     public class Reporte
     {
-
+        //Parametros
         public int Cedula { get; set; }
 
         public string Nombre { get; set; }
@@ -16,6 +16,12 @@ namespace SPC_Coopenae.UI.Models
         public DateTime Fecha { get; set; }
 
         public decimal TipoCambio { get; set; }
+
+        public decimal Salario { get; set; }
+
+        public decimal Bono { get; set; }
+
+        //Listas Y comisiones
 
         public List<RTipoCreditos> listaTipoCreditos { get; set; }
 
@@ -25,9 +31,24 @@ namespace SPC_Coopenae.UI.Models
 
         public decimal TotalComisionProductos { get; set; }
 
+        public List<RCDPs> listaCDPs { get; set; }
 
+        public decimal? TotalComisionCDPs { get; set; }
 
-        public decimal TotalComisionesGanadas { get; set; }
+        public decimal TotalGenerado { get; set; }
+
+        //Datos
+        public DateTime FechaContratacion { get; set; }
+
+        public string UnidadNegocio { get; set; }
+
+        public R_IDP Estado_IDP { get; set; }
+
+        //Constructor
+        public Reporte()
+        {
+            Estado_IDP = new R_IDP();
+        }
 
     }
 }

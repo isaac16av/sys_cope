@@ -27,7 +27,7 @@ namespace SPC_Coopenae.DAL.Metodos.Reportes
         }
 
         //Metodo que devuelve los IDs de producto de cada meta de tipo de producto
-        public List<MetaProductosParaIDP> ConsultaCantidadPorMetas(int[] metaProd, DateTime fecha)
+        public List<MetaProductosParaIDP> ConsultaCantidadPorMetas(int[] metaProd, DateTime fecha, int cedula)
         {
             using (var dbc = new SPC_BD())
             {
@@ -38,7 +38,8 @@ namespace SPC_Coopenae.DAL.Metodos.Reportes
                             join meta in dbc.MetaTipoProducto on detalle.MetaTipoProducto equals meta.IdMetaTipoProducto
                             where ventaProd.Fecha.Month == fecha.Month && ventaProd.Fecha.Year == fecha.Year &&
                                   ventaProd.Estado == true && producto.Estado == true && tipoProducto.Estado == true &&
-                                  metaProd.Contains(meta.IdMetaTipoProducto)
+                                  metaProd.Contains(meta.IdMetaTipoProducto) &&
+                                  ventaProd.Ejecutivo == cedula
                             group ventaProd by meta.IdMetaTipoProducto into x
                             select new
                             {

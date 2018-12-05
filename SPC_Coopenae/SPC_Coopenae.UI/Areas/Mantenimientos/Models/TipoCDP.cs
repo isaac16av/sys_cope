@@ -14,16 +14,16 @@ namespace SPC_Coopenae.UI.Areas.Mantenimientos.Models
 
         public string Moneda { get; set; }
 
-        [Display(Name = "Comisión Máxima")]
+        [Display(Name = "Comisión Máxima (Colones)")]
         public decimal ComisionMaxima { get; set; }
-
-        [Display(Name = "Plazo (Meses)")]
-        public int PlazoMesesMaximo { get; set; }
 
         public bool Estado { get; set; } = true;
 
         [Display(Name = "IDP Necesario para comisión")]
         public decimal IDPNecesario { get; set; }
+
+        [Display(Name = "Porcentaje de comisión sobre CDP")]
+        public decimal PCTComision { get; set; }
 
     }
 }

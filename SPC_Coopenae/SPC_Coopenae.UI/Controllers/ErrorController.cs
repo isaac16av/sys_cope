@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace SPC_Coopenae.UI.Controllers
 {
-    public class ErrorPageController : Controller
+    public class ErrorController : Controller
     {
         // GET: ErrorPage
-        public ActionResult ErrorMessage()
+        public ActionResult Message()
         {
             return View();
         }

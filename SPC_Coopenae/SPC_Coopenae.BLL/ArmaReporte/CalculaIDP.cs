@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPC_Coopenae.BLL.Metas
+namespace SPC_Coopenae.BLL.ArmaReporte
 {
     public class CalculaIDP
     {
@@ -14,13 +14,20 @@ namespace SPC_Coopenae.BLL.Metas
         public decimal TotalIDP { get; set; }
 
         public MetaCredito metaCred { get; set; }
+        public MetaCDP metaCDP { get; set; }
         public List<MetaTipoProducto> metaTipoProducto { get; set; }
         //hay que hacer que no se pase de la cantidad del idp, porque por ejemplo si es 70 puede que en la suma haya mas de eso
         public decimal CreditoIDP;
         public decimal ProductosIDP;
+        public decimal CDP_IDP;
 
         public void FijarIDPCred(decimal montoColocado)
         {
+            if (metaCred.MetaColocacion == 0)
+            {
+                CreditoIDP = 0;
+                return;
+            }
             if (metaCred != null)
             {
                 decimal porcentajeObtenido = montoColocado / metaCred.MetaColocacion;
@@ -55,11 +62,29 @@ namespace SPC_Coopenae.BLL.Metas
             }
         }
 
+        public void FijarIDP_CPDs(decimal montoColocado)
+        {
+            if (metaCDP.Metacdp == 0)
+            {
+                CDP_IDP = 0;
+                return;
+            }
+            if (metaCDP != null)
+            {
+                decimal porcentajeObtenido = montoColocado / metaCDP.Metacdp;
+                CDP_IDP = porcentajeObtenido * metaCDP.ValorIDP;
+                CDP_IDP = CDP_IDP > metaCDP.ValorIDP ? metaCDP.ValorIDP : CDP_IDP;
+            }
+            else
+            {
+                return;
+            }
+        }
+
         public void SumarIDps()
         {
             TotalIDP = 0;
-            TotalIDP += CreditoIDP;
-            TotalIDP += ProductosIDP;
+            TotalIDP += CreditoIDP + ProductosIDP + CDP_IDP;
         }
 
 
